@@ -1,0 +1,18 @@
+[
+  {
+    "name": "sql.js",
+    "version": "1.15.1",
+    "license": "MIT",
+    "tarball": "https://registry.npmjs.org/sql.js/-/sql.js-1.15.1.tgz",
+    "npm_integrity": "sha512-i0M/6s+lcl67Flm/1m8/AeVU5caDramlILXU/udUwpTQym2qKMSe2sJiXB5d5WXFB272aj4B2v1JbtQ93ID3Pg==",
+    "download_sha256": "b1b800e6a9dcb64ed50eefd285ac8e765834a602f402b9306fed7ea1c0335e7d"
+  },
+  {
+    "name": "papaparse",
+    "version": "5.7.0",
+    "license": "MIT",
+    "tarball": "https://registry.npmjs.org/papaparse/-/papaparse-5.7.0.tgz",
+    "npm_integrity": "sha512-qBGxg/7Q3Kl9Wfhrz2Z74UnvnHTXLNG6jmKJFeBvP2+y4lV7So+7SR62+Zd47JvdrCkX+nDcnr0ObPzek/+6RA==",
+    "download_sha256": "263bac53bab292390bcf2697a8c14f0bc382ab3c192fa088e1caa9a8241956b1"
+  }
+]

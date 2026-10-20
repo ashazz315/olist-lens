@@ -1,0 +1,25 @@
+{
+  "ok": true,
+  "viewports": [
+    1440,
+    1024,
+    768,
+    390,
+    320
+  ],
+  "coreBrowserFlows": [
+    "empty blocked",
+    "valid preview commit",
+    "reload persistence",
+    "idempotence",
+    "invalid rating retains old",
+    "CSV errors download",
+    "case restore",
+    "backup recomputed",
+    "cancellation",
+    "full real-data import matches published"
+  ],
+  "filesUploadedToServer": 0,
+  "pageErrors": [],
+  "publicId": "ab7a405f82b7cf35559a7bea"
+}

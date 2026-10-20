@@ -1,0 +1,15 @@
+node_modules/
+data/
+tmp/
+__pycache__/
+*.py[cod]
+.runtime*/
+.openai/
+.env
+.env.*
+!.env.example
+output/site/
+output/previews/
+output/*.tar.gz
+.DS_Store
+Thumbs.db

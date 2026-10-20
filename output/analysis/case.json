@@ -1,0 +1,8727 @@
+{
+  "app_version": "1.0.0",
+  "metric_version": "1.0.0",
+  "manifest": {
+    "schema_version": "1.0.0",
+    "dataset_name": "Olist 公开案例 · 第 2 版",
+    "source_uri_or_description": "https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce",
+    "extracted_at": "2026-10-19T11:35:23.545967+00:00",
+    "coverage_start": "2016-09-04",
+    "coverage_end": "2018-10-17",
+    "currency": "BRL",
+    "source_timezone": "source_local_unknown",
+    "import_mode": "full_snapshot",
+    "coverage_notes": "全量历史截面；末期和边界月份不代表完整经营期间，按购买月份归属。",
+    "license_or_usage_notes": "CC BY-NC-SA 4.0 · Olist / Kaggle；个人非商业求职案例，衍生数据同许可。"
+  },
+  "quality": {
+    "status": "需说明",
+    "errors": 0,
+    "warnings": 2812,
+    "issues": [
+      {
+        "severity": "warning",
+        "code": "timezone_unknown",
+        "file": "dataset_manifest.json",
+        "row": 1,
+        "field": "source_timezone",
+        "message": "来源本地时区未注明：仅作同来源日期比较，不进行跨时区合并",
+        "count": 1
+      },
+      {
+        "severity": "warning",
+        "code": "missing_dates",
+        "file": "orders.csv",
+        "row": null,
+        "field": "delivered_at",
+        "message": "缺履约日期的已交付订单排除延迟率，其他有效指标保留",
+        "count": 8
+      },
+      {
+        "severity": "warning",
+        "code": "status_dates",
+        "file": "orders.csv",
+        "row": null,
+        "field": "order_status",
+        "message": "未交付状态但有实际交付日期：按明确状态口径排除已交付指标，需来源核查",
+        "count": 6
+      },
+      {
+        "severity": "warning",
+        "code": "missing_optional",
+        "file": "order_items.csv",
+        "row": null,
+        "field": "category",
+        "message": "空值保留，相关指标或分组披露覆盖率",
+        "count": 1603
+      },
+      {
+        "severity": "warning",
+        "code": "unreviewed",
+        "file": "order_reviews.csv",
+        "row": null,
+        "field": "order_id",
+        "message": "已交付但无评价的订单不进入评分分母",
+        "count": 646
+      },
+      {
+        "severity": "warning",
+        "code": "multiple_reviews",
+        "file": "order_reviews.csv",
+        "row": null,
+        "field": "order_id",
+        "message": "同订单多评价按最新回答、创建时间及评价 ID 取一条",
+        "count": 547
+      },
+      {
+        "severity": "warning",
+        "code": "period_boundary",
+        "file": "orders.csv",
+        "row": null,
+        "field": "purchased_at",
+        "message": "边界月份与历史覆盖不代表完整经营期间，不能将末期下降直接解释为业务下滑",
+        "count": 1
+      }
+    ],
+    "summary": [
+      {
+        "severity": "warning",
+        "code": "timezone_unknown",
+        "file": "dataset_manifest.json",
+        "field": "source_timezone",
+        "count": 1,
+        "message": "来源本地时区未注明：仅作同来源日期比较，不进行跨时区合并"
+      },
+      {
+        "severity": "warning",
+        "code": "missing_dates",
+        "file": "orders.csv",
+        "field": "delivered_at",
+        "count": 8,
+        "message": "缺履约日期的已交付订单排除延迟率，其他有效指标保留"
+      },
+      {
+        "severity": "warning",
+        "code": "status_dates",
+        "file": "orders.csv",
+        "field": "order_status",
+        "count": 6,
+        "message": "未交付状态但有实际交付日期：按明确状态口径排除已交付指标，需来源核查"
+      },
+      {
+        "severity": "warning",
+        "code": "missing_optional",
+        "file": "order_items.csv",
+        "field": "category",
+        "count": 1603,
+        "message": "空值保留，相关指标或分组披露覆盖率"
+      },
+      {
+        "severity": "warning",
+        "code": "unreviewed",
+        "file": "order_reviews.csv",
+        "field": "order_id",
+        "count": 646,
+        "message": "已交付但无评价的订单不进入评分分母"
+      },
+      {
+        "severity": "warning",
+        "code": "multiple_reviews",
+        "file": "order_reviews.csv",
+        "field": "order_id",
+        "count": 547,
+        "message": "同订单多评价按最新回答、创建时间及评价 ID 取一条"
+      },
+      {
+        "severity": "warning",
+        "code": "period_boundary",
+        "file": "orders.csv",
+        "field": "purchased_at",
+        "count": 1,
+        "message": "边界月份与历史覆盖不代表完整经营期间，不能将末期下降直接解释为业务下滑"
+      }
+    ],
+    "profiles": [
+      {
+        "file": "orders.csv",
+        "input_rows": 99441,
+        "accepted_rows": 99441,
+        "missing": {
+          "order_id": 0,
+          "customer_id": 0,
+          "customer_state": 0,
+          "order_status": 0,
+          "purchased_at": 0,
+          "delivered_at": 2965,
+          "estimated_delivery_at": 0
+        }
+      },
+      {
+        "file": "order_items.csv",
+        "input_rows": 112650,
+        "accepted_rows": 112650,
+        "missing": {
+          "order_id": 0,
+          "order_item_id": 0,
+          "product_id": 0,
+          "seller_id": 0,
+          "category": 1603,
+          "price": 0,
+          "freight_value": 0
+        }
+      },
+      {
+        "file": "order_reviews.csv",
+        "input_rows": 99224,
+        "accepted_rows": 99224,
+        "missing": {
+          "review_id": 0,
+          "order_id": 0,
+          "review_score": 0,
+          "review_created_at": 0,
+          "review_answered_at": 0
+        }
+      }
+    ],
+    "rules_version": "1.0.0",
+    "details_truncated": false
+  },
+  "generated_at": "2026-10-19T11:51:50.263Z",
+  "metrics": {
+    "total_orders": 99441,
+    "delivered_orders": 96478,
+    "amount_cents": 1322149811,
+    "delivery_eligible": 96470,
+    "late_orders": 6534,
+    "review_eligible": 95832,
+    "low_reviews": 12273,
+    "late_rate": 0.06773090079817559,
+    "low_rate": 0.12806786877034812
+  },
+  "monthly": [
+    {
+      "month": "2016-09",
+      "total_orders": 4,
+      "delivered_orders": 1,
+      "amount_cents": 13497,
+      "delivery_eligible": 1,
+      "late_orders": 1,
+      "review_eligible": 1,
+      "low_reviews": 1,
+      "late_rate": 1,
+      "low_rate": 1
+    },
+    {
+      "month": "2016-10",
+      "total_orders": 324,
+      "delivered_orders": 265,
+      "amount_cents": 4032511,
+      "delivery_eligible": 265,
+      "late_orders": 2,
+      "review_eligible": 262,
+      "low_reviews": 43,
+      "late_rate": 0.007547169811320755,
+      "low_rate": 0.16412213740458015
+    },
+    {
+      "month": "2016-12",
+      "total_orders": 1,
+      "delivered_orders": 1,
+      "amount_cents": 1090,
+      "delivery_eligible": 1,
+      "late_orders": 0,
+      "review_eligible": 1,
+      "low_reviews": 0,
+      "late_rate": 0,
+      "low_rate": 0
+    },
+    {
+      "month": "2017-01",
+      "total_orders": 800,
+      "delivered_orders": 750,
+      "amount_cents": 11179836,
+      "delivery_eligible": 750,
+      "late_orders": 22,
+      "review_eligible": 741,
+      "low_reviews": 89,
+      "late_rate": 0.029333333333333333,
+      "low_rate": 0.12010796221322537
+    },
+    {
+      "month": "2017-02",
+      "total_orders": 1780,
+      "delivered_orders": 1653,
+      "amount_cents": 23422340,
+      "delivery_eligible": 1653,
+      "late_orders": 49,
+      "review_eligible": 1643,
+      "low_reviews": 182,
+      "late_rate": 0.029643073200241985,
+      "low_rate": 0.11077297626293366
+    },
+    {
+      "month": "2017-03",
+      "total_orders": 2682,
+      "delivered_orders": 2546,
+      "amount_cents": 35919885,
+      "delivery_eligible": 2546,
+      "late_orders": 116,
+      "review_eligible": 2527,
+      "low_reviews": 284,
+      "late_rate": 0.04556166535742341,
+      "low_rate": 0.11238622872971904
+    },
+    {
+      "month": "2017-04",
+      "total_orders": 2404,
+      "delivered_orders": 2303,
+      "amount_cents": 34066968,
+      "delivery_eligible": 2303,
+      "late_orders": 151,
+      "review_eligible": 2290,
+      "low_reviews": 296,
+      "late_rate": 0.06556665219279201,
+      "low_rate": 0.12925764192139738
+    },
+    {
+      "month": "2017-05",
+      "total_orders": 3700,
+      "delivered_orders": 3546,
+      "amount_cents": 48933825,
+      "delivery_eligible": 3545,
+      "late_orders": 106,
+      "review_eligible": 3518,
+      "low_reviews": 354,
+      "late_rate": 0.029901269393511988,
+      "low_rate": 0.10062535531552018
+    },
+    {
+      "month": "2017-06",
+      "total_orders": 3245,
+      "delivered_orders": 3135,
+      "amount_cents": 42192337,
+      "delivery_eligible": 3135,
+      "late_orders": 95,
+      "review_eligible": 3111,
+      "low_reviews": 334,
+      "late_rate": 0.030303030303030304,
+      "low_rate": 0.10736097717775635
+    },
+    {
+      "month": "2017-07",
+      "total_orders": 4026,
+      "delivered_orders": 3872,
+      "amount_cents": 48160452,
+      "delivery_eligible": 3872,
+      "late_orders": 108,
+      "review_eligible": 3842,
+      "low_reviews": 382,
+      "late_rate": 0.027892561983471075,
+      "low_rate": 0.09942738157209786
+    },
+    {
+      "month": "2017-08",
+      "total_orders": 4331,
+      "delivered_orders": 4193,
+      "amount_cents": 55469970,
+      "delivery_eligible": 4193,
+      "late_orders": 122,
+      "review_eligible": 4165,
+      "low_reviews": 391,
+      "late_rate": 0.02909611256856666,
+      "low_rate": 0.09387755102040816
+    },
+    {
+      "month": "2017-09",
+      "total_orders": 4285,
+      "delivered_orders": 4150,
+      "amount_cents": 60739967,
+      "delivery_eligible": 4150,
+      "late_orders": 182,
+      "review_eligible": 4118,
+      "low_reviews": 423,
+      "late_rate": 0.04385542168674699,
+      "low_rate": 0.10271976687712482
+    },
+    {
+      "month": "2017-10",
+      "total_orders": 4631,
+      "delivered_orders": 4478,
+      "amount_cents": 64824765,
+      "delivery_eligible": 4478,
+      "late_orders": 187,
+      "review_eligible": 4446,
+      "low_reviews": 492,
+      "late_rate": 0.041759714158106295,
+      "low_rate": 0.1106612685560054
+    },
+    {
+      "month": "2017-11",
+      "total_orders": 7544,
+      "delivered_orders": 7289,
+      "amount_cents": 98776537,
+      "delivery_eligible": 7288,
+      "late_orders": 904,
+      "review_eligible": 7238,
+      "low_reviews": 1199,
+      "late_rate": 0.12403951701427003,
+      "low_rate": 0.1656534954407295
+    },
+    {
+      "month": "2017-12",
+      "total_orders": 5673,
+      "delivered_orders": 5513,
+      "amount_cents": 72603319,
+      "delivery_eligible": 5513,
+      "late_orders": 411,
+      "review_eligible": 5461,
+      "low_reviews": 788,
+      "late_rate": 0.07455106112824234,
+      "low_rate": 0.14429591649880974
+    },
+    {
+      "month": "2018-01",
+      "total_orders": 7269,
+      "delivered_orders": 7069,
+      "amount_cents": 92464500,
+      "delivery_eligible": 7069,
+      "late_orders": 403,
+      "review_eligible": 7013,
+      "low_reviews": 961,
+      "late_rate": 0.05700947800254633,
+      "low_rate": 0.13703122771994866
+    },
+    {
+      "month": "2018-02",
+      "total_orders": 6728,
+      "delivered_orders": 6555,
+      "amount_cents": 82643713,
+      "delivery_eligible": 6555,
+      "late_orders": 926,
+      "review_eligible": 6507,
+      "low_reviews": 1261,
+      "late_rate": 0.14126620900076278,
+      "low_rate": 0.1937913016751191
+    },
+    {
+      "month": "2018-03",
+      "total_orders": 7211,
+      "delivered_orders": 7003,
+      "amount_cents": 95335625,
+      "delivery_eligible": 7003,
+      "late_orders": 1328,
+      "review_eligible": 6948,
+      "low_reviews": 1471,
+      "late_rate": 0.18963301442239042,
+      "low_rate": 0.21171560161197467
+    },
+    {
+      "month": "2018-04",
+      "total_orders": 6939,
+      "delivered_orders": 6798,
+      "amount_cents": 97353409,
+      "delivery_eligible": 6798,
+      "late_orders": 306,
+      "review_eligible": 6752,
+      "low_reviews": 796,
+      "late_rate": 0.04501323918799647,
+      "low_rate": 0.1178909952606635
+    },
+    {
+      "month": "2018-05",
+      "total_orders": 6873,
+      "delivered_orders": 6749,
+      "amount_cents": 97754469,
+      "delivery_eligible": 6749,
+      "late_orders": 443,
+      "review_eligible": 6722,
+      "low_reviews": 723,
+      "late_rate": 0.06563935397836716,
+      "low_rate": 0.10755727462064861
+    },
+    {
+      "month": "2018-06",
+      "total_orders": 6167,
+      "delivered_orders": 6099,
+      "amount_cents": 85607786,
+      "delivery_eligible": 6096,
+      "late_orders": 71,
+      "review_eligible": 6075,
+      "low_reviews": 607,
+      "late_rate": 0.011646981627296589,
+      "low_rate": 0.09991769547325102
+    },
+    {
+      "month": "2018-07",
+      "total_orders": 6292,
+      "delivered_orders": 6159,
+      "amount_cents": 86795346,
+      "delivery_eligible": 6156,
+      "late_orders": 208,
+      "review_eligible": 6121,
+      "low_reviews": 592,
+      "late_rate": 0.03378817413905133,
+      "low_rate": 0.09671622283940533
+    },
+    {
+      "month": "2018-08",
+      "total_orders": 6512,
+      "delivered_orders": 6351,
+      "amount_cents": 83857664,
+      "delivery_eligible": 6351,
+      "late_orders": 393,
+      "review_eligible": 6330,
+      "low_reviews": 604,
+      "late_rate": 0.061880018894662256,
+      "low_rate": 0.09541864139020537
+    },
+    {
+      "month": "2018-09",
+      "total_orders": 16,
+      "delivered_orders": 0,
+      "amount_cents": 0,
+      "delivery_eligible": 0,
+      "late_orders": 0,
+      "review_eligible": 0,
+      "low_reviews": 0,
+      "late_rate": null,
+      "low_rate": null
+    },
+    {
+      "month": "2018-10",
+      "total_orders": 4,
+      "delivered_orders": 0,
+      "amount_cents": 0,
+      "delivery_eligible": 0,
+      "late_orders": 0,
+      "review_eligible": 0,
+      "low_reviews": 0,
+      "late_rate": null,
+      "low_rate": null
+    }
+  ],
+  "states": [
+    {
+      "state": "SP",
+      "total_orders": 41746,
+      "delivered_orders": 40501,
+      "delivery_eligible": 40494,
+      "late_orders": 1820,
+      "review_eligible": 40273,
+      "low_reviews": 4304,
+      "late_rate": 0.044944930113103174,
+      "low_rate": 0.10687060809971942
+    },
+    {
+      "state": "RJ",
+      "total_orders": 12852,
+      "delivered_orders": 12350,
+      "delivery_eligible": 12350,
+      "late_orders": 1495,
+      "review_eligible": 12211,
+      "low_reviews": 2238,
+      "late_rate": 0.12105263157894737,
+      "low_rate": 0.18327737286053558
+    },
+    {
+      "state": "MG",
+      "total_orders": 11635,
+      "delivered_orders": 11354,
+      "delivery_eligible": 11354,
+      "late_orders": 519,
+      "review_eligible": 11285,
+      "low_reviews": 1326,
+      "late_rate": 0.04571076272679232,
+      "low_rate": 0.11750110766504208
+    },
+    {
+      "state": "BA",
+      "total_orders": 3380,
+      "delivered_orders": 3256,
+      "delivery_eligible": 3256,
+      "late_orders": 396,
+      "review_eligible": 3229,
+      "low_reviews": 549,
+      "late_rate": 0.12162162162162163,
+      "low_rate": 0.17002167853824712
+    },
+    {
+      "state": "RS",
+      "total_orders": 5466,
+      "delivered_orders": 5345,
+      "delivery_eligible": 5344,
+      "late_orders": 325,
+      "review_eligible": 5327,
+      "low_reviews": 635,
+      "late_rate": 0.06081586826347305,
+      "low_rate": 0.11920405481509293
+    },
+    {
+      "state": "SC",
+      "total_orders": 3637,
+      "delivered_orders": 3546,
+      "delivery_eligible": 3546,
+      "late_orders": 291,
+      "review_eligible": 3519,
+      "low_reviews": 457,
+      "late_rate": 0.08206429780033841,
+      "low_rate": 0.12986643932935493
+    },
+    {
+      "state": "ES",
+      "total_orders": 2033,
+      "delivered_orders": 1995,
+      "delivery_eligible": 1995,
+      "late_orders": 214,
+      "review_eligible": 1969,
+      "low_reviews": 272,
+      "late_rate": 0.10726817042606517,
+      "low_rate": 0.13814118842051804
+    },
+    {
+      "state": "PR",
+      "total_orders": 5045,
+      "delivered_orders": 4923,
+      "delivery_eligible": 4923,
+      "late_orders": 199,
+      "review_eligible": 4900,
+      "low_reviews": 533,
+      "late_rate": 0.04042250660166565,
+      "low_rate": 0.10877551020408163
+    },
+    {
+      "state": "CE",
+      "total_orders": 1336,
+      "delivered_orders": 1279,
+      "delivery_eligible": 1279,
+      "late_orders": 176,
+      "review_eligible": 1273,
+      "low_reviews": 218,
+      "late_rate": 0.1376075058639562,
+      "low_rate": 0.17124901806755696
+    },
+    {
+      "state": "PE",
+      "total_orders": 1652,
+      "delivered_orders": 1593,
+      "delivery_eligible": 1593,
+      "late_orders": 153,
+      "review_eligible": 1579,
+      "low_reviews": 234,
+      "late_rate": 0.096045197740113,
+      "low_rate": 0.1481950601646612
+    },
+    {
+      "state": "GO",
+      "total_orders": 2020,
+      "delivered_orders": 1957,
+      "delivery_eligible": 1957,
+      "late_orders": 128,
+      "review_eligible": 1946,
+      "low_reviews": 256,
+      "late_rate": 0.06540623403168115,
+      "low_rate": 0.131551901336074
+    },
+    {
+      "state": "MA",
+      "total_orders": 747,
+      "delivered_orders": 717,
+      "delivery_eligible": 717,
+      "late_orders": 125,
+      "review_eligible": 712,
+      "low_reviews": 142,
+      "late_rate": 0.17433751743375175,
+      "low_rate": 0.199438202247191
+    },
+    {
+      "state": "DF",
+      "total_orders": 2140,
+      "delivered_orders": 2080,
+      "delivery_eligible": 2080,
+      "late_orders": 118,
+      "review_eligible": 2070,
+      "low_reviews": 274,
+      "late_rate": 0.05673076923076923,
+      "low_rate": 0.1323671497584541
+    },
+    {
+      "state": "PA",
+      "total_orders": 975,
+      "delivered_orders": 946,
+      "delivery_eligible": 946,
+      "late_orders": 106,
+      "review_eligible": 933,
+      "low_reviews": 167,
+      "late_rate": 0.11205073995771671,
+      "low_rate": 0.1789924973204716
+    },
+    {
+      "state": "AL",
+      "total_orders": 413,
+      "delivered_orders": 397,
+      "delivery_eligible": 397,
+      "late_orders": 85,
+      "review_eligible": 394,
+      "low_reviews": 84,
+      "late_rate": 0.2141057934508816,
+      "low_rate": 0.2131979695431472
+    },
+    {
+      "state": "MS",
+      "total_orders": 715,
+      "delivered_orders": 701,
+      "delivery_eligible": 701,
+      "late_orders": 68,
+      "review_eligible": 699,
+      "low_reviews": 93,
+      "late_rate": 0.09700427960057062,
+      "low_rate": 0.13304721030042918
+    },
+    {
+      "state": "PI",
+      "total_orders": 495,
+      "delivered_orders": 476,
+      "delivery_eligible": 476,
+      "late_orders": 66,
+      "review_eligible": 471,
+      "low_reviews": 76,
+      "late_rate": 0.13865546218487396,
+      "low_rate": 0.1613588110403397
+    },
+    {
+      "state": "PB",
+      "total_orders": 536,
+      "delivered_orders": 517,
+      "delivery_eligible": 517,
+      "late_orders": 54,
+      "review_eligible": 512,
+      "low_reviews": 76,
+      "late_rate": 0.10444874274661509,
+      "low_rate": 0.1484375
+    },
+    {
+      "state": "MT",
+      "total_orders": 907,
+      "delivered_orders": 886,
+      "delivery_eligible": 886,
+      "late_orders": 53,
+      "review_eligible": 879,
+      "low_reviews": 112,
+      "late_rate": 0.05981941309255079,
+      "low_rate": 0.12741751990898748
+    },
+    {
+      "state": "SE",
+      "total_orders": 350,
+      "delivered_orders": 335,
+      "delivery_eligible": 335,
+      "late_orders": 51,
+      "review_eligible": 334,
+      "low_reviews": 63,
+      "late_rate": 0.15223880597014924,
+      "low_rate": 0.18862275449101795
+    },
+    {
+      "state": "RN",
+      "total_orders": 485,
+      "delivered_orders": 474,
+      "delivery_eligible": 474,
+      "late_orders": 44,
+      "review_eligible": 471,
+      "low_reviews": 61,
+      "late_rate": 0.09282700421940929,
+      "low_rate": 0.12951167728237792
+    },
+    {
+      "state": "TO",
+      "total_orders": 280,
+      "delivered_orders": 274,
+      "delivery_eligible": 274,
+      "late_orders": 27,
+      "review_eligible": 273,
+      "low_reviews": 33,
+      "late_rate": 0.09854014598540146,
+      "low_rate": 0.12087912087912088
+    },
+    {
+      "state": "RO",
+      "total_orders": 253,
+      "delivered_orders": 243,
+      "delivery_eligible": 243,
+      "late_orders": 7,
+      "review_eligible": 242,
+      "low_reviews": 29,
+      "late_rate": 0.02880658436213992,
+      "low_rate": 0.11983471074380166
+    },
+    {
+      "state": "RR",
+      "total_orders": 46,
+      "delivered_orders": 41,
+      "delivery_eligible": 41,
+      "late_orders": 5,
+      "review_eligible": 41,
+      "low_reviews": 6,
+      "late_rate": 0.12195121951219512,
+      "low_rate": 0.14634146341463414
+    },
+    {
+      "state": "AM",
+      "total_orders": 148,
+      "delivered_orders": 145,
+      "delivery_eligible": 145,
+      "late_orders": 4,
+      "review_eligible": 144,
+      "low_reviews": 19,
+      "late_rate": 0.027586206896551724,
+      "low_rate": 0.13194444444444445
+    },
+    {
+      "state": "AC",
+      "total_orders": 81,
+      "delivered_orders": 80,
+      "delivery_eligible": 80,
+      "late_orders": 3,
+      "review_eligible": 80,
+      "low_reviews": 12,
+      "late_rate": 0.0375,
+      "low_rate": 0.15
+    },
+    {
+      "state": "AP",
+      "total_orders": 68,
+      "delivered_orders": 67,
+      "delivery_eligible": 67,
+      "late_orders": 2,
+      "review_eligible": 66,
+      "low_reviews": 4,
+      "late_rate": 0.029850746268656716,
+      "low_rate": 0.06060606060606061
+    }
+  ],
+  "association": [
+    {
+      "delivery_group": "on_time",
+      "n": 89443,
+      "low": 8289,
+      "rate": 0.09267354628087161
+    },
+    {
+      "delivery_group": "late",
+      "n": 6381,
+      "low": 3983,
+      "rate": 0.6241968343519825
+    }
+  ],
+  "strata": [
+    {
+      "month": "2016-09",
+      "state": "SP",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2016-10",
+      "state": "AL",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2016-10",
+      "state": "BA",
+      "late": 0,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2016-10",
+      "state": "CE",
+      "late": 0,
+      "n": 6,
+      "low": 0
+    },
+    {
+      "month": "2016-10",
+      "state": "DF",
+      "late": 0,
+      "n": 6,
+      "low": 2
+    },
+    {
+      "month": "2016-10",
+      "state": "ES",
+      "late": 0,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2016-10",
+      "state": "GO",
+      "late": 0,
+      "n": 7,
+      "low": 0
+    },
+    {
+      "month": "2016-10",
+      "state": "MA",
+      "late": 0,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2016-10",
+      "state": "MG",
+      "late": 0,
+      "n": 34,
+      "low": 8
+    },
+    {
+      "month": "2016-10",
+      "state": "MT",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2016-10",
+      "state": "PA",
+      "late": 0,
+      "n": 4,
+      "low": 0
+    },
+    {
+      "month": "2016-10",
+      "state": "PB",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2016-10",
+      "state": "PE",
+      "late": 0,
+      "n": 6,
+      "low": 1
+    },
+    {
+      "month": "2016-10",
+      "state": "PI",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2016-10",
+      "state": "PR",
+      "late": 0,
+      "n": 19,
+      "low": 3
+    },
+    {
+      "month": "2016-10",
+      "state": "RJ",
+      "late": 0,
+      "n": 39,
+      "low": 7
+    },
+    {
+      "month": "2016-10",
+      "state": "RN",
+      "late": 0,
+      "n": 4,
+      "low": 0
+    },
+    {
+      "month": "2016-10",
+      "state": "RR",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2016-10",
+      "state": "RS",
+      "late": 0,
+      "n": 17,
+      "low": 2
+    },
+    {
+      "month": "2016-10",
+      "state": "SC",
+      "late": 0,
+      "n": 9,
+      "low": 2
+    },
+    {
+      "month": "2016-10",
+      "state": "SE",
+      "late": 0,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2016-10",
+      "state": "SP",
+      "late": 0,
+      "n": 92,
+      "low": 17
+    },
+    {
+      "month": "2016-10",
+      "state": "SP",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2016-12",
+      "state": "PR",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-01",
+      "state": "AC",
+      "late": 0,
+      "n": 2,
+      "low": 2
+    },
+    {
+      "month": "2017-01",
+      "state": "AL",
+      "late": 0,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2017-01",
+      "state": "BA",
+      "late": 0,
+      "n": 23,
+      "low": 4
+    },
+    {
+      "month": "2017-01",
+      "state": "BA",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-01",
+      "state": "CE",
+      "late": 0,
+      "n": 7,
+      "low": 0
+    },
+    {
+      "month": "2017-01",
+      "state": "CE",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-01",
+      "state": "DF",
+      "late": 0,
+      "n": 11,
+      "low": 3
+    },
+    {
+      "month": "2017-01",
+      "state": "DF",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2017-01",
+      "state": "ES",
+      "late": 0,
+      "n": 8,
+      "low": 0
+    },
+    {
+      "month": "2017-01",
+      "state": "ES",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-01",
+      "state": "GO",
+      "late": 0,
+      "n": 18,
+      "low": 2
+    },
+    {
+      "month": "2017-01",
+      "state": "MA",
+      "late": 0,
+      "n": 5,
+      "low": 0
+    },
+    {
+      "month": "2017-01",
+      "state": "MA",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-01",
+      "state": "MG",
+      "late": 0,
+      "n": 101,
+      "low": 10
+    },
+    {
+      "month": "2017-01",
+      "state": "MS",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-01",
+      "state": "MT",
+      "late": 0,
+      "n": 9,
+      "low": 3
+    },
+    {
+      "month": "2017-01",
+      "state": "PA",
+      "late": 0,
+      "n": 10,
+      "low": 1
+    },
+    {
+      "month": "2017-01",
+      "state": "PB",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-01",
+      "state": "PE",
+      "late": 0,
+      "n": 7,
+      "low": 0
+    },
+    {
+      "month": "2017-01",
+      "state": "PE",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-01",
+      "state": "PI",
+      "late": 0,
+      "n": 7,
+      "low": 0
+    },
+    {
+      "month": "2017-01",
+      "state": "PR",
+      "late": 0,
+      "n": 60,
+      "low": 5
+    },
+    {
+      "month": "2017-01",
+      "state": "PR",
+      "late": 1,
+      "n": 2,
+      "low": 2
+    },
+    {
+      "month": "2017-01",
+      "state": "RJ",
+      "late": 0,
+      "n": 85,
+      "low": 10
+    },
+    {
+      "month": "2017-01",
+      "state": "RJ",
+      "late": 1,
+      "n": 3,
+      "low": 1
+    },
+    {
+      "month": "2017-01",
+      "state": "RN",
+      "late": 0,
+      "n": 5,
+      "low": 0
+    },
+    {
+      "month": "2017-01",
+      "state": "RO",
+      "late": 0,
+      "n": 3,
+      "low": 1
+    },
+    {
+      "month": "2017-01",
+      "state": "RS",
+      "late": 0,
+      "n": 50,
+      "low": 5
+    },
+    {
+      "month": "2017-01",
+      "state": "RS",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-01",
+      "state": "SC",
+      "late": 0,
+      "n": 25,
+      "low": 1
+    },
+    {
+      "month": "2017-01",
+      "state": "SC",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-01",
+      "state": "SE",
+      "late": 0,
+      "n": 4,
+      "low": 0
+    },
+    {
+      "month": "2017-01",
+      "state": "SP",
+      "late": 0,
+      "n": 273,
+      "low": 26
+    },
+    {
+      "month": "2017-01",
+      "state": "SP",
+      "late": 1,
+      "n": 7,
+      "low": 5
+    },
+    {
+      "month": "2017-01",
+      "state": "TO",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-02",
+      "state": "AC",
+      "late": 0,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2017-02",
+      "state": "AL",
+      "late": 0,
+      "n": 11,
+      "low": 0
+    },
+    {
+      "month": "2017-02",
+      "state": "AL",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-02",
+      "state": "AM",
+      "late": 0,
+      "n": 8,
+      "low": 0
+    },
+    {
+      "month": "2017-02",
+      "state": "AP",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-02",
+      "state": "BA",
+      "late": 0,
+      "n": 53,
+      "low": 9
+    },
+    {
+      "month": "2017-02",
+      "state": "BA",
+      "late": 1,
+      "n": 5,
+      "low": 2
+    },
+    {
+      "month": "2017-02",
+      "state": "CE",
+      "late": 0,
+      "n": 12,
+      "low": 1
+    },
+    {
+      "month": "2017-02",
+      "state": "CE",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-02",
+      "state": "DF",
+      "late": 0,
+      "n": 20,
+      "low": 0
+    },
+    {
+      "month": "2017-02",
+      "state": "ES",
+      "late": 0,
+      "n": 28,
+      "low": 5
+    },
+    {
+      "month": "2017-02",
+      "state": "ES",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-02",
+      "state": "GO",
+      "late": 0,
+      "n": 23,
+      "low": 2
+    },
+    {
+      "month": "2017-02",
+      "state": "GO",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-02",
+      "state": "MA",
+      "late": 0,
+      "n": 11,
+      "low": 0
+    },
+    {
+      "month": "2017-02",
+      "state": "MG",
+      "late": 0,
+      "n": 239,
+      "low": 32
+    },
+    {
+      "month": "2017-02",
+      "state": "MG",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2017-02",
+      "state": "MS",
+      "late": 0,
+      "n": 11,
+      "low": 0
+    },
+    {
+      "month": "2017-02",
+      "state": "MT",
+      "late": 0,
+      "n": 17,
+      "low": 6
+    },
+    {
+      "month": "2017-02",
+      "state": "PA",
+      "late": 0,
+      "n": 24,
+      "low": 1
+    },
+    {
+      "month": "2017-02",
+      "state": "PB",
+      "late": 0,
+      "n": 10,
+      "low": 1
+    },
+    {
+      "month": "2017-02",
+      "state": "PE",
+      "late": 0,
+      "n": 19,
+      "low": 1
+    },
+    {
+      "month": "2017-02",
+      "state": "PE",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-02",
+      "state": "PI",
+      "late": 0,
+      "n": 10,
+      "low": 1
+    },
+    {
+      "month": "2017-02",
+      "state": "PR",
+      "late": 0,
+      "n": 107,
+      "low": 14
+    },
+    {
+      "month": "2017-02",
+      "state": "PR",
+      "late": 1,
+      "n": 2,
+      "low": 2
+    },
+    {
+      "month": "2017-02",
+      "state": "RJ",
+      "late": 0,
+      "n": 222,
+      "low": 24
+    },
+    {
+      "month": "2017-02",
+      "state": "RJ",
+      "late": 1,
+      "n": 6,
+      "low": 3
+    },
+    {
+      "month": "2017-02",
+      "state": "RN",
+      "late": 0,
+      "n": 8,
+      "low": 0
+    },
+    {
+      "month": "2017-02",
+      "state": "RO",
+      "late": 0,
+      "n": 9,
+      "low": 1
+    },
+    {
+      "month": "2017-02",
+      "state": "RR",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-02",
+      "state": "RS",
+      "late": 0,
+      "n": 97,
+      "low": 4
+    },
+    {
+      "month": "2017-02",
+      "state": "RS",
+      "late": 1,
+      "n": 3,
+      "low": 3
+    },
+    {
+      "month": "2017-02",
+      "state": "SC",
+      "late": 0,
+      "n": 54,
+      "low": 6
+    },
+    {
+      "month": "2017-02",
+      "state": "SC",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-02",
+      "state": "SE",
+      "late": 0,
+      "n": 12,
+      "low": 2
+    },
+    {
+      "month": "2017-02",
+      "state": "SP",
+      "late": 0,
+      "n": 582,
+      "low": 43
+    },
+    {
+      "month": "2017-02",
+      "state": "SP",
+      "late": 1,
+      "n": 18,
+      "low": 13
+    },
+    {
+      "month": "2017-02",
+      "state": "TO",
+      "late": 0,
+      "n": 7,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "AC",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "AL",
+      "late": 0,
+      "n": 8,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "AL",
+      "late": 1,
+      "n": 2,
+      "low": 2
+    },
+    {
+      "month": "2017-03",
+      "state": "AM",
+      "late": 0,
+      "n": 5,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "AP",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "AP",
+      "late": 1,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "BA",
+      "late": 0,
+      "n": 79,
+      "low": 16
+    },
+    {
+      "month": "2017-03",
+      "state": "BA",
+      "late": 1,
+      "n": 6,
+      "low": 3
+    },
+    {
+      "month": "2017-03",
+      "state": "CE",
+      "late": 0,
+      "n": 18,
+      "low": 2
+    },
+    {
+      "month": "2017-03",
+      "state": "CE",
+      "late": 1,
+      "n": 8,
+      "low": 7
+    },
+    {
+      "month": "2017-03",
+      "state": "DF",
+      "late": 0,
+      "n": 54,
+      "low": 6
+    },
+    {
+      "month": "2017-03",
+      "state": "ES",
+      "late": 0,
+      "n": 47,
+      "low": 2
+    },
+    {
+      "month": "2017-03",
+      "state": "GO",
+      "late": 0,
+      "n": 47,
+      "low": 7
+    },
+    {
+      "month": "2017-03",
+      "state": "MA",
+      "late": 0,
+      "n": 18,
+      "low": 3
+    },
+    {
+      "month": "2017-03",
+      "state": "MA",
+      "late": 1,
+      "n": 4,
+      "low": 3
+    },
+    {
+      "month": "2017-03",
+      "state": "MG",
+      "late": 0,
+      "n": 332,
+      "low": 23
+    },
+    {
+      "month": "2017-03",
+      "state": "MG",
+      "late": 1,
+      "n": 8,
+      "low": 6
+    },
+    {
+      "month": "2017-03",
+      "state": "MS",
+      "late": 0,
+      "n": 19,
+      "low": 1
+    },
+    {
+      "month": "2017-03",
+      "state": "MT",
+      "late": 0,
+      "n": 12,
+      "low": 2
+    },
+    {
+      "month": "2017-03",
+      "state": "MT",
+      "late": 1,
+      "n": 4,
+      "low": 3
+    },
+    {
+      "month": "2017-03",
+      "state": "PA",
+      "late": 0,
+      "n": 32,
+      "low": 4
+    },
+    {
+      "month": "2017-03",
+      "state": "PA",
+      "late": 1,
+      "n": 3,
+      "low": 3
+    },
+    {
+      "month": "2017-03",
+      "state": "PB",
+      "late": 0,
+      "n": 15,
+      "low": 2
+    },
+    {
+      "month": "2017-03",
+      "state": "PB",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "PE",
+      "late": 0,
+      "n": 35,
+      "low": 2
+    },
+    {
+      "month": "2017-03",
+      "state": "PE",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "PI",
+      "late": 0,
+      "n": 10,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "PI",
+      "late": 1,
+      "n": 3,
+      "low": 1
+    },
+    {
+      "month": "2017-03",
+      "state": "PR",
+      "late": 0,
+      "n": 116,
+      "low": 10
+    },
+    {
+      "month": "2017-03",
+      "state": "PR",
+      "late": 1,
+      "n": 5,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "RJ",
+      "late": 0,
+      "n": 350,
+      "low": 42
+    },
+    {
+      "month": "2017-03",
+      "state": "RJ",
+      "late": 1,
+      "n": 16,
+      "low": 11
+    },
+    {
+      "month": "2017-03",
+      "state": "RN",
+      "late": 0,
+      "n": 10,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "RN",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2017-03",
+      "state": "RO",
+      "late": 0,
+      "n": 14,
+      "low": 2
+    },
+    {
+      "month": "2017-03",
+      "state": "RO",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2017-03",
+      "state": "RR",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "RR",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "RS",
+      "late": 0,
+      "n": 142,
+      "low": 11
+    },
+    {
+      "month": "2017-03",
+      "state": "RS",
+      "late": 1,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-03",
+      "state": "SC",
+      "late": 0,
+      "n": 84,
+      "low": 3
+    },
+    {
+      "month": "2017-03",
+      "state": "SC",
+      "late": 1,
+      "n": 19,
+      "low": 9
+    },
+    {
+      "month": "2017-03",
+      "state": "SE",
+      "late": 0,
+      "n": 19,
+      "low": 2
+    },
+    {
+      "month": "2017-03",
+      "state": "SE",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2017-03",
+      "state": "SP",
+      "late": 0,
+      "n": 937,
+      "low": 77
+    },
+    {
+      "month": "2017-03",
+      "state": "SP",
+      "late": 1,
+      "n": 20,
+      "low": 13
+    },
+    {
+      "month": "2017-03",
+      "state": "TO",
+      "late": 0,
+      "n": 7,
+      "low": 1
+    },
+    {
+      "month": "2017-04",
+      "state": "AC",
+      "late": 0,
+      "n": 5,
+      "low": 2
+    },
+    {
+      "month": "2017-04",
+      "state": "AL",
+      "late": 0,
+      "n": 13,
+      "low": 4
+    },
+    {
+      "month": "2017-04",
+      "state": "AL",
+      "late": 1,
+      "n": 8,
+      "low": 6
+    },
+    {
+      "month": "2017-04",
+      "state": "AM",
+      "late": 0,
+      "n": 13,
+      "low": 1
+    },
+    {
+      "month": "2017-04",
+      "state": "BA",
+      "late": 0,
+      "n": 72,
+      "low": 11
+    },
+    {
+      "month": "2017-04",
+      "state": "BA",
+      "late": 1,
+      "n": 11,
+      "low": 4
+    },
+    {
+      "month": "2017-04",
+      "state": "CE",
+      "late": 0,
+      "n": 37,
+      "low": 1
+    },
+    {
+      "month": "2017-04",
+      "state": "CE",
+      "late": 1,
+      "n": 5,
+      "low": 3
+    },
+    {
+      "month": "2017-04",
+      "state": "DF",
+      "late": 0,
+      "n": 34,
+      "low": 8
+    },
+    {
+      "month": "2017-04",
+      "state": "ES",
+      "late": 0,
+      "n": 43,
+      "low": 6
+    },
+    {
+      "month": "2017-04",
+      "state": "ES",
+      "late": 1,
+      "n": 2,
+      "low": 2
+    },
+    {
+      "month": "2017-04",
+      "state": "GO",
+      "late": 0,
+      "n": 35,
+      "low": 5
+    },
+    {
+      "month": "2017-04",
+      "state": "GO",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2017-04",
+      "state": "MA",
+      "late": 0,
+      "n": 24,
+      "low": 2
+    },
+    {
+      "month": "2017-04",
+      "state": "MG",
+      "late": 0,
+      "n": 259,
+      "low": 25
+    },
+    {
+      "month": "2017-04",
+      "state": "MG",
+      "late": 1,
+      "n": 6,
+      "low": 2
+    },
+    {
+      "month": "2017-04",
+      "state": "MS",
+      "late": 0,
+      "n": 14,
+      "low": 1
+    },
+    {
+      "month": "2017-04",
+      "state": "MS",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-04",
+      "state": "MT",
+      "late": 0,
+      "n": 23,
+      "low": 1
+    },
+    {
+      "month": "2017-04",
+      "state": "MT",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2017-04",
+      "state": "PA",
+      "late": 0,
+      "n": 36,
+      "low": 4
+    },
+    {
+      "month": "2017-04",
+      "state": "PB",
+      "late": 0,
+      "n": 16,
+      "low": 3
+    },
+    {
+      "month": "2017-04",
+      "state": "PB",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2017-04",
+      "state": "PE",
+      "late": 0,
+      "n": 33,
+      "low": 1
+    },
+    {
+      "month": "2017-04",
+      "state": "PE",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2017-04",
+      "state": "PI",
+      "late": 0,
+      "n": 10,
+      "low": 0
+    },
+    {
+      "month": "2017-04",
+      "state": "PR",
+      "late": 0,
+      "n": 109,
+      "low": 7
+    },
+    {
+      "month": "2017-04",
+      "state": "PR",
+      "late": 1,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2017-04",
+      "state": "RJ",
+      "late": 0,
+      "n": 301,
+      "low": 27
+    },
+    {
+      "month": "2017-04",
+      "state": "RJ",
+      "late": 1,
+      "n": 21,
+      "low": 14
+    },
+    {
+      "month": "2017-04",
+      "state": "RN",
+      "late": 0,
+      "n": 10,
+      "low": 0
+    },
+    {
+      "month": "2017-04",
+      "state": "RO",
+      "late": 0,
+      "n": 6,
+      "low": 0
+    },
+    {
+      "month": "2017-04",
+      "state": "RO",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-04",
+      "state": "RR",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-04",
+      "state": "RS",
+      "late": 0,
+      "n": 129,
+      "low": 16
+    },
+    {
+      "month": "2017-04",
+      "state": "RS",
+      "late": 1,
+      "n": 3,
+      "low": 3
+    },
+    {
+      "month": "2017-04",
+      "state": "SC",
+      "late": 0,
+      "n": 91,
+      "low": 8
+    },
+    {
+      "month": "2017-04",
+      "state": "SC",
+      "late": 1,
+      "n": 9,
+      "low": 7
+    },
+    {
+      "month": "2017-04",
+      "state": "SE",
+      "late": 0,
+      "n": 9,
+      "low": 1
+    },
+    {
+      "month": "2017-04",
+      "state": "SE",
+      "late": 1,
+      "n": 3,
+      "low": 1
+    },
+    {
+      "month": "2017-04",
+      "state": "SP",
+      "late": 0,
+      "n": 808,
+      "low": 75
+    },
+    {
+      "month": "2017-04",
+      "state": "SP",
+      "late": 1,
+      "n": 61,
+      "low": 37
+    },
+    {
+      "month": "2017-04",
+      "state": "TO",
+      "late": 0,
+      "n": 11,
+      "low": 0
+    },
+    {
+      "month": "2017-04",
+      "state": "TO",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2017-05",
+      "state": "AC",
+      "late": 0,
+      "n": 8,
+      "low": 1
+    },
+    {
+      "month": "2017-05",
+      "state": "AL",
+      "late": 0,
+      "n": 24,
+      "low": 4
+    },
+    {
+      "month": "2017-05",
+      "state": "AL",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-05",
+      "state": "AM",
+      "late": 0,
+      "n": 7,
+      "low": 1
+    },
+    {
+      "month": "2017-05",
+      "state": "AM",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-05",
+      "state": "AP",
+      "late": 0,
+      "n": 4,
+      "low": 0
+    },
+    {
+      "month": "2017-05",
+      "state": "BA",
+      "late": 0,
+      "n": 115,
+      "low": 14
+    },
+    {
+      "month": "2017-05",
+      "state": "BA",
+      "late": 1,
+      "n": 4,
+      "low": 2
+    },
+    {
+      "month": "2017-05",
+      "state": "CE",
+      "late": 0,
+      "n": 61,
+      "low": 5
+    },
+    {
+      "month": "2017-05",
+      "state": "CE",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-05",
+      "state": "DF",
+      "late": 0,
+      "n": 60,
+      "low": 4
+    },
+    {
+      "month": "2017-05",
+      "state": "ES",
+      "late": 0,
+      "n": 84,
+      "low": 6
+    },
+    {
+      "month": "2017-05",
+      "state": "ES",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2017-05",
+      "state": "GO",
+      "late": 0,
+      "n": 80,
+      "low": 6
+    },
+    {
+      "month": "2017-05",
+      "state": "GO",
+      "late": 1,
+      "n": 3,
+      "low": 3
+    },
+    {
+      "month": "2017-05",
+      "state": "MA",
+      "late": 0,
+      "n": 31,
+      "low": 1
+    },
+    {
+      "month": "2017-05",
+      "state": "MG",
+      "late": 0,
+      "n": 404,
+      "low": 40
+    },
+    {
+      "month": "2017-05",
+      "state": "MG",
+      "late": 1,
+      "n": 7,
+      "low": 4
+    },
+    {
+      "month": "2017-05",
+      "state": "MS",
+      "late": 0,
+      "n": 26,
+      "low": 1
+    },
+    {
+      "month": "2017-05",
+      "state": "MT",
+      "late": 0,
+      "n": 36,
+      "low": 3
+    },
+    {
+      "month": "2017-05",
+      "state": "MT",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-05",
+      "state": "PA",
+      "late": 0,
+      "n": 34,
+      "low": 3
+    },
+    {
+      "month": "2017-05",
+      "state": "PA",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-05",
+      "state": "PB",
+      "late": 0,
+      "n": 16,
+      "low": 2
+    },
+    {
+      "month": "2017-05",
+      "state": "PB",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-05",
+      "state": "PE",
+      "late": 0,
+      "n": 62,
+      "low": 6
+    },
+    {
+      "month": "2017-05",
+      "state": "PE",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-05",
+      "state": "PI",
+      "late": 0,
+      "n": 23,
+      "low": 1
+    },
+    {
+      "month": "2017-05",
+      "state": "PR",
+      "late": 0,
+      "n": 203,
+      "low": 16
+    },
+    {
+      "month": "2017-05",
+      "state": "PR",
+      "late": 1,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-05",
+      "state": "RJ",
+      "late": 0,
+      "n": 451,
+      "low": 54
+    },
+    {
+      "month": "2017-05",
+      "state": "RJ",
+      "late": 1,
+      "n": 11,
+      "low": 6
+    },
+    {
+      "month": "2017-05",
+      "state": "RN",
+      "late": 0,
+      "n": 17,
+      "low": 2
+    },
+    {
+      "month": "2017-05",
+      "state": "RO",
+      "late": 0,
+      "n": 7,
+      "low": 1
+    },
+    {
+      "month": "2017-05",
+      "state": "RR",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-05",
+      "state": "RS",
+      "late": 0,
+      "n": 204,
+      "low": 16
+    },
+    {
+      "month": "2017-05",
+      "state": "RS",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-05",
+      "state": "SC",
+      "late": 0,
+      "n": 137,
+      "low": 13
+    },
+    {
+      "month": "2017-05",
+      "state": "SC",
+      "late": 1,
+      "n": 5,
+      "low": 2
+    },
+    {
+      "month": "2017-05",
+      "state": "SE",
+      "late": 0,
+      "n": 11,
+      "low": 0
+    },
+    {
+      "month": "2017-05",
+      "state": "SP",
+      "late": 0,
+      "n": 1295,
+      "low": 103
+    },
+    {
+      "month": "2017-05",
+      "state": "SP",
+      "late": 1,
+      "n": 56,
+      "low": 24
+    },
+    {
+      "month": "2017-05",
+      "state": "TO",
+      "late": 0,
+      "n": 16,
+      "low": 2
+    },
+    {
+      "month": "2017-06",
+      "state": "AC",
+      "late": 0,
+      "n": 4,
+      "low": 0
+    },
+    {
+      "month": "2017-06",
+      "state": "AL",
+      "late": 0,
+      "n": 7,
+      "low": 0
+    },
+    {
+      "month": "2017-06",
+      "state": "AL",
+      "late": 1,
+      "n": 3,
+      "low": 3
+    },
+    {
+      "month": "2017-06",
+      "state": "AM",
+      "late": 0,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-06",
+      "state": "AP",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-06",
+      "state": "BA",
+      "late": 0,
+      "n": 95,
+      "low": 22
+    },
+    {
+      "month": "2017-06",
+      "state": "BA",
+      "late": 1,
+      "n": 7,
+      "low": 3
+    },
+    {
+      "month": "2017-06",
+      "state": "CE",
+      "late": 0,
+      "n": 43,
+      "low": 4
+    },
+    {
+      "month": "2017-06",
+      "state": "DF",
+      "late": 0,
+      "n": 68,
+      "low": 8
+    },
+    {
+      "month": "2017-06",
+      "state": "DF",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-06",
+      "state": "ES",
+      "late": 0,
+      "n": 73,
+      "low": 4
+    },
+    {
+      "month": "2017-06",
+      "state": "ES",
+      "late": 1,
+      "n": 5,
+      "low": 1
+    },
+    {
+      "month": "2017-06",
+      "state": "GO",
+      "late": 0,
+      "n": 70,
+      "low": 7
+    },
+    {
+      "month": "2017-06",
+      "state": "GO",
+      "late": 1,
+      "n": 3,
+      "low": 1
+    },
+    {
+      "month": "2017-06",
+      "state": "MA",
+      "late": 0,
+      "n": 15,
+      "low": 2
+    },
+    {
+      "month": "2017-06",
+      "state": "MG",
+      "late": 0,
+      "n": 350,
+      "low": 34
+    },
+    {
+      "month": "2017-06",
+      "state": "MG",
+      "late": 1,
+      "n": 5,
+      "low": 3
+    },
+    {
+      "month": "2017-06",
+      "state": "MS",
+      "late": 0,
+      "n": 27,
+      "low": 4
+    },
+    {
+      "month": "2017-06",
+      "state": "MT",
+      "late": 0,
+      "n": 23,
+      "low": 2
+    },
+    {
+      "month": "2017-06",
+      "state": "MT",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-06",
+      "state": "PA",
+      "late": 0,
+      "n": 34,
+      "low": 1
+    },
+    {
+      "month": "2017-06",
+      "state": "PA",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2017-06",
+      "state": "PB",
+      "late": 0,
+      "n": 20,
+      "low": 2
+    },
+    {
+      "month": "2017-06",
+      "state": "PB",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2017-06",
+      "state": "PE",
+      "late": 0,
+      "n": 39,
+      "low": 2
+    },
+    {
+      "month": "2017-06",
+      "state": "PE",
+      "late": 1,
+      "n": 2,
+      "low": 2
+    },
+    {
+      "month": "2017-06",
+      "state": "PI",
+      "late": 0,
+      "n": 14,
+      "low": 1
+    },
+    {
+      "month": "2017-06",
+      "state": "PR",
+      "late": 0,
+      "n": 165,
+      "low": 10
+    },
+    {
+      "month": "2017-06",
+      "state": "PR",
+      "late": 1,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-06",
+      "state": "RJ",
+      "late": 0,
+      "n": 380,
+      "low": 36
+    },
+    {
+      "month": "2017-06",
+      "state": "RJ",
+      "late": 1,
+      "n": 12,
+      "low": 6
+    },
+    {
+      "month": "2017-06",
+      "state": "RN",
+      "late": 0,
+      "n": 11,
+      "low": 1
+    },
+    {
+      "month": "2017-06",
+      "state": "RN",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-06",
+      "state": "RO",
+      "late": 0,
+      "n": 10,
+      "low": 0
+    },
+    {
+      "month": "2017-06",
+      "state": "RR",
+      "late": 0,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2017-06",
+      "state": "RS",
+      "late": 0,
+      "n": 214,
+      "low": 8
+    },
+    {
+      "month": "2017-06",
+      "state": "RS",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-06",
+      "state": "SC",
+      "late": 0,
+      "n": 104,
+      "low": 11
+    },
+    {
+      "month": "2017-06",
+      "state": "SC",
+      "late": 1,
+      "n": 4,
+      "low": 2
+    },
+    {
+      "month": "2017-06",
+      "state": "SE",
+      "late": 0,
+      "n": 8,
+      "low": 3
+    },
+    {
+      "month": "2017-06",
+      "state": "SP",
+      "late": 0,
+      "n": 1231,
+      "low": 119
+    },
+    {
+      "month": "2017-06",
+      "state": "SP",
+      "late": 1,
+      "n": 41,
+      "low": 26
+    },
+    {
+      "month": "2017-06",
+      "state": "TO",
+      "late": 0,
+      "n": 8,
+      "low": 0
+    },
+    {
+      "month": "2017-07",
+      "state": "AC",
+      "late": 0,
+      "n": 5,
+      "low": 1
+    },
+    {
+      "month": "2017-07",
+      "state": "AL",
+      "late": 0,
+      "n": 8,
+      "low": 0
+    },
+    {
+      "month": "2017-07",
+      "state": "AL",
+      "late": 1,
+      "n": 6,
+      "low": 4
+    },
+    {
+      "month": "2017-07",
+      "state": "AM",
+      "late": 0,
+      "n": 5,
+      "low": 1
+    },
+    {
+      "month": "2017-07",
+      "state": "AP",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-07",
+      "state": "BA",
+      "late": 0,
+      "n": 136,
+      "low": 11
+    },
+    {
+      "month": "2017-07",
+      "state": "BA",
+      "late": 1,
+      "n": 7,
+      "low": 3
+    },
+    {
+      "month": "2017-07",
+      "state": "CE",
+      "late": 0,
+      "n": 53,
+      "low": 5
+    },
+    {
+      "month": "2017-07",
+      "state": "DF",
+      "late": 0,
+      "n": 75,
+      "low": 4
+    },
+    {
+      "month": "2017-07",
+      "state": "ES",
+      "late": 0,
+      "n": 78,
+      "low": 14
+    },
+    {
+      "month": "2017-07",
+      "state": "ES",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-07",
+      "state": "GO",
+      "late": 0,
+      "n": 74,
+      "low": 4
+    },
+    {
+      "month": "2017-07",
+      "state": "GO",
+      "late": 1,
+      "n": 3,
+      "low": 1
+    },
+    {
+      "month": "2017-07",
+      "state": "MA",
+      "late": 0,
+      "n": 37,
+      "low": 4
+    },
+    {
+      "month": "2017-07",
+      "state": "MG",
+      "late": 0,
+      "n": 425,
+      "low": 43
+    },
+    {
+      "month": "2017-07",
+      "state": "MG",
+      "late": 1,
+      "n": 4,
+      "low": 4
+    },
+    {
+      "month": "2017-07",
+      "state": "MS",
+      "late": 0,
+      "n": 24,
+      "low": 3
+    },
+    {
+      "month": "2017-07",
+      "state": "MT",
+      "late": 0,
+      "n": 36,
+      "low": 2
+    },
+    {
+      "month": "2017-07",
+      "state": "PA",
+      "late": 0,
+      "n": 33,
+      "low": 4
+    },
+    {
+      "month": "2017-07",
+      "state": "PA",
+      "late": 1,
+      "n": 3,
+      "low": 1
+    },
+    {
+      "month": "2017-07",
+      "state": "PB",
+      "late": 0,
+      "n": 21,
+      "low": 1
+    },
+    {
+      "month": "2017-07",
+      "state": "PB",
+      "late": 1,
+      "n": 5,
+      "low": 2
+    },
+    {
+      "month": "2017-07",
+      "state": "PE",
+      "late": 0,
+      "n": 57,
+      "low": 5
+    },
+    {
+      "month": "2017-07",
+      "state": "PE",
+      "late": 1,
+      "n": 13,
+      "low": 12
+    },
+    {
+      "month": "2017-07",
+      "state": "PI",
+      "late": 0,
+      "n": 18,
+      "low": 2
+    },
+    {
+      "month": "2017-07",
+      "state": "PI",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-07",
+      "state": "PR",
+      "late": 0,
+      "n": 193,
+      "low": 12
+    },
+    {
+      "month": "2017-07",
+      "state": "PR",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-07",
+      "state": "RJ",
+      "late": 0,
+      "n": 521,
+      "low": 50
+    },
+    {
+      "month": "2017-07",
+      "state": "RJ",
+      "late": 1,
+      "n": 17,
+      "low": 11
+    },
+    {
+      "month": "2017-07",
+      "state": "RN",
+      "late": 0,
+      "n": 24,
+      "low": 1
+    },
+    {
+      "month": "2017-07",
+      "state": "RN",
+      "late": 1,
+      "n": 3,
+      "low": 3
+    },
+    {
+      "month": "2017-07",
+      "state": "RO",
+      "late": 0,
+      "n": 10,
+      "low": 1
+    },
+    {
+      "month": "2017-07",
+      "state": "RR",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-07",
+      "state": "RS",
+      "late": 0,
+      "n": 235,
+      "low": 17
+    },
+    {
+      "month": "2017-07",
+      "state": "RS",
+      "late": 1,
+      "n": 6,
+      "low": 2
+    },
+    {
+      "month": "2017-07",
+      "state": "SC",
+      "late": 0,
+      "n": 145,
+      "low": 8
+    },
+    {
+      "month": "2017-07",
+      "state": "SC",
+      "late": 1,
+      "n": 7,
+      "low": 2
+    },
+    {
+      "month": "2017-07",
+      "state": "SE",
+      "late": 0,
+      "n": 13,
+      "low": 2
+    },
+    {
+      "month": "2017-07",
+      "state": "SP",
+      "late": 0,
+      "n": 1508,
+      "low": 121
+    },
+    {
+      "month": "2017-07",
+      "state": "SP",
+      "late": 1,
+      "n": 28,
+      "low": 18
+    },
+    {
+      "month": "2017-07",
+      "state": "TO",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-08",
+      "state": "AC",
+      "late": 0,
+      "n": 4,
+      "low": 1
+    },
+    {
+      "month": "2017-08",
+      "state": "AL",
+      "late": 0,
+      "n": 14,
+      "low": 1
+    },
+    {
+      "month": "2017-08",
+      "state": "AL",
+      "late": 1,
+      "n": 3,
+      "low": 3
+    },
+    {
+      "month": "2017-08",
+      "state": "AM",
+      "late": 0,
+      "n": 5,
+      "low": 0
+    },
+    {
+      "month": "2017-08",
+      "state": "AP",
+      "late": 0,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2017-08",
+      "state": "BA",
+      "late": 0,
+      "n": 145,
+      "low": 12
+    },
+    {
+      "month": "2017-08",
+      "state": "BA",
+      "late": 1,
+      "n": 5,
+      "low": 3
+    },
+    {
+      "month": "2017-08",
+      "state": "CE",
+      "late": 0,
+      "n": 72,
+      "low": 2
+    },
+    {
+      "month": "2017-08",
+      "state": "CE",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-08",
+      "state": "DF",
+      "late": 0,
+      "n": 82,
+      "low": 7
+    },
+    {
+      "month": "2017-08",
+      "state": "DF",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-08",
+      "state": "ES",
+      "late": 0,
+      "n": 90,
+      "low": 8
+    },
+    {
+      "month": "2017-08",
+      "state": "ES",
+      "late": 1,
+      "n": 4,
+      "low": 2
+    },
+    {
+      "month": "2017-08",
+      "state": "GO",
+      "late": 0,
+      "n": 86,
+      "low": 12
+    },
+    {
+      "month": "2017-08",
+      "state": "GO",
+      "late": 1,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-08",
+      "state": "MA",
+      "late": 0,
+      "n": 36,
+      "low": 7
+    },
+    {
+      "month": "2017-08",
+      "state": "MA",
+      "late": 1,
+      "n": 2,
+      "low": 2
+    },
+    {
+      "month": "2017-08",
+      "state": "MG",
+      "late": 0,
+      "n": 445,
+      "low": 34
+    },
+    {
+      "month": "2017-08",
+      "state": "MG",
+      "late": 1,
+      "n": 10,
+      "low": 6
+    },
+    {
+      "month": "2017-08",
+      "state": "MS",
+      "late": 0,
+      "n": 23,
+      "low": 3
+    },
+    {
+      "month": "2017-08",
+      "state": "MT",
+      "late": 0,
+      "n": 36,
+      "low": 5
+    },
+    {
+      "month": "2017-08",
+      "state": "PA",
+      "late": 0,
+      "n": 57,
+      "low": 9
+    },
+    {
+      "month": "2017-08",
+      "state": "PB",
+      "late": 0,
+      "n": 15,
+      "low": 0
+    },
+    {
+      "month": "2017-08",
+      "state": "PB",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-08",
+      "state": "PE",
+      "late": 0,
+      "n": 71,
+      "low": 7
+    },
+    {
+      "month": "2017-08",
+      "state": "PE",
+      "late": 1,
+      "n": 12,
+      "low": 10
+    },
+    {
+      "month": "2017-08",
+      "state": "PI",
+      "late": 0,
+      "n": 20,
+      "low": 1
+    },
+    {
+      "month": "2017-08",
+      "state": "PR",
+      "late": 0,
+      "n": 219,
+      "low": 18
+    },
+    {
+      "month": "2017-08",
+      "state": "RJ",
+      "late": 0,
+      "n": 516,
+      "low": 45
+    },
+    {
+      "month": "2017-08",
+      "state": "RJ",
+      "late": 1,
+      "n": 16,
+      "low": 7
+    },
+    {
+      "month": "2017-08",
+      "state": "RN",
+      "late": 0,
+      "n": 18,
+      "low": 1
+    },
+    {
+      "month": "2017-08",
+      "state": "RN",
+      "late": 1,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-08",
+      "state": "RO",
+      "late": 0,
+      "n": 14,
+      "low": 1
+    },
+    {
+      "month": "2017-08",
+      "state": "RS",
+      "late": 0,
+      "n": 273,
+      "low": 22
+    },
+    {
+      "month": "2017-08",
+      "state": "RS",
+      "late": 1,
+      "n": 22,
+      "low": 9
+    },
+    {
+      "month": "2017-08",
+      "state": "SC",
+      "late": 0,
+      "n": 148,
+      "low": 14
+    },
+    {
+      "month": "2017-08",
+      "state": "SC",
+      "late": 1,
+      "n": 4,
+      "low": 2
+    },
+    {
+      "month": "2017-08",
+      "state": "SE",
+      "late": 0,
+      "n": 17,
+      "low": 1
+    },
+    {
+      "month": "2017-08",
+      "state": "SE",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2017-08",
+      "state": "SP",
+      "late": 0,
+      "n": 1620,
+      "low": 116
+    },
+    {
+      "month": "2017-08",
+      "state": "SP",
+      "late": 1,
+      "n": 34,
+      "low": 17
+    },
+    {
+      "month": "2017-08",
+      "state": "TO",
+      "late": 0,
+      "n": 15,
+      "low": 0
+    },
+    {
+      "month": "2017-09",
+      "state": "AC",
+      "late": 0,
+      "n": 4,
+      "low": 0
+    },
+    {
+      "month": "2017-09",
+      "state": "AC",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-09",
+      "state": "AL",
+      "late": 0,
+      "n": 11,
+      "low": 0
+    },
+    {
+      "month": "2017-09",
+      "state": "AL",
+      "late": 1,
+      "n": 8,
+      "low": 5
+    },
+    {
+      "month": "2017-09",
+      "state": "AM",
+      "late": 0,
+      "n": 8,
+      "low": 1
+    },
+    {
+      "month": "2017-09",
+      "state": "AP",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-09",
+      "state": "BA",
+      "late": 0,
+      "n": 137,
+      "low": 10
+    },
+    {
+      "month": "2017-09",
+      "state": "BA",
+      "late": 1,
+      "n": 28,
+      "low": 16
+    },
+    {
+      "month": "2017-09",
+      "state": "CE",
+      "late": 0,
+      "n": 72,
+      "low": 7
+    },
+    {
+      "month": "2017-09",
+      "state": "CE",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2017-09",
+      "state": "DF",
+      "late": 0,
+      "n": 87,
+      "low": 8
+    },
+    {
+      "month": "2017-09",
+      "state": "DF",
+      "late": 1,
+      "n": 7,
+      "low": 4
+    },
+    {
+      "month": "2017-09",
+      "state": "ES",
+      "late": 0,
+      "n": 89,
+      "low": 6
+    },
+    {
+      "month": "2017-09",
+      "state": "ES",
+      "late": 1,
+      "n": 3,
+      "low": 1
+    },
+    {
+      "month": "2017-09",
+      "state": "GO",
+      "late": 0,
+      "n": 82,
+      "low": 10
+    },
+    {
+      "month": "2017-09",
+      "state": "GO",
+      "late": 1,
+      "n": 2,
+      "low": 2
+    },
+    {
+      "month": "2017-09",
+      "state": "MA",
+      "late": 0,
+      "n": 38,
+      "low": 3
+    },
+    {
+      "month": "2017-09",
+      "state": "MA",
+      "late": 1,
+      "n": 3,
+      "low": 1
+    },
+    {
+      "month": "2017-09",
+      "state": "MG",
+      "late": 0,
+      "n": 486,
+      "low": 35
+    },
+    {
+      "month": "2017-09",
+      "state": "MG",
+      "late": 1,
+      "n": 5,
+      "low": 2
+    },
+    {
+      "month": "2017-09",
+      "state": "MS",
+      "late": 0,
+      "n": 32,
+      "low": 4
+    },
+    {
+      "month": "2017-09",
+      "state": "MT",
+      "late": 0,
+      "n": 32,
+      "low": 6
+    },
+    {
+      "month": "2017-09",
+      "state": "MT",
+      "late": 1,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-09",
+      "state": "PA",
+      "late": 0,
+      "n": 36,
+      "low": 2
+    },
+    {
+      "month": "2017-09",
+      "state": "PA",
+      "late": 1,
+      "n": 5,
+      "low": 4
+    },
+    {
+      "month": "2017-09",
+      "state": "PB",
+      "late": 0,
+      "n": 18,
+      "low": 1
+    },
+    {
+      "month": "2017-09",
+      "state": "PB",
+      "late": 1,
+      "n": 6,
+      "low": 1
+    },
+    {
+      "month": "2017-09",
+      "state": "PE",
+      "late": 0,
+      "n": 67,
+      "low": 7
+    },
+    {
+      "month": "2017-09",
+      "state": "PE",
+      "late": 1,
+      "n": 6,
+      "low": 4
+    },
+    {
+      "month": "2017-09",
+      "state": "PI",
+      "late": 0,
+      "n": 20,
+      "low": 2
+    },
+    {
+      "month": "2017-09",
+      "state": "PI",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-09",
+      "state": "PR",
+      "late": 0,
+      "n": 173,
+      "low": 19
+    },
+    {
+      "month": "2017-09",
+      "state": "PR",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-09",
+      "state": "RJ",
+      "late": 0,
+      "n": 556,
+      "low": 48
+    },
+    {
+      "month": "2017-09",
+      "state": "RJ",
+      "late": 1,
+      "n": 28,
+      "low": 15
+    },
+    {
+      "month": "2017-09",
+      "state": "RN",
+      "late": 0,
+      "n": 20,
+      "low": 4
+    },
+    {
+      "month": "2017-09",
+      "state": "RN",
+      "late": 1,
+      "n": 3,
+      "low": 3
+    },
+    {
+      "month": "2017-09",
+      "state": "RO",
+      "late": 0,
+      "n": 16,
+      "low": 3
+    },
+    {
+      "month": "2017-09",
+      "state": "RR",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-09",
+      "state": "RS",
+      "late": 0,
+      "n": 268,
+      "low": 20
+    },
+    {
+      "month": "2017-09",
+      "state": "RS",
+      "late": 1,
+      "n": 5,
+      "low": 4
+    },
+    {
+      "month": "2017-09",
+      "state": "SC",
+      "late": 0,
+      "n": 142,
+      "low": 12
+    },
+    {
+      "month": "2017-09",
+      "state": "SC",
+      "late": 1,
+      "n": 11,
+      "low": 4
+    },
+    {
+      "month": "2017-09",
+      "state": "SE",
+      "late": 0,
+      "n": 14,
+      "low": 2
+    },
+    {
+      "month": "2017-09",
+      "state": "SE",
+      "late": 1,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-09",
+      "state": "SP",
+      "late": 0,
+      "n": 1514,
+      "low": 118
+    },
+    {
+      "month": "2017-09",
+      "state": "SP",
+      "late": 1,
+      "n": 48,
+      "low": 26
+    },
+    {
+      "month": "2017-09",
+      "state": "TO",
+      "late": 0,
+      "n": 16,
+      "low": 1
+    },
+    {
+      "month": "2017-10",
+      "state": "AC",
+      "late": 0,
+      "n": 5,
+      "low": 1
+    },
+    {
+      "month": "2017-10",
+      "state": "AL",
+      "late": 0,
+      "n": 26,
+      "low": 2
+    },
+    {
+      "month": "2017-10",
+      "state": "AL",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2017-10",
+      "state": "AM",
+      "late": 0,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2017-10",
+      "state": "AP",
+      "late": 0,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2017-10",
+      "state": "BA",
+      "late": 0,
+      "n": 142,
+      "low": 16
+    },
+    {
+      "month": "2017-10",
+      "state": "BA",
+      "late": 1,
+      "n": 15,
+      "low": 11
+    },
+    {
+      "month": "2017-10",
+      "state": "CE",
+      "late": 0,
+      "n": 59,
+      "low": 9
+    },
+    {
+      "month": "2017-10",
+      "state": "CE",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2017-10",
+      "state": "DF",
+      "late": 0,
+      "n": 89,
+      "low": 10
+    },
+    {
+      "month": "2017-10",
+      "state": "DF",
+      "late": 1,
+      "n": 3,
+      "low": 3
+    },
+    {
+      "month": "2017-10",
+      "state": "ES",
+      "late": 0,
+      "n": 95,
+      "low": 6
+    },
+    {
+      "month": "2017-10",
+      "state": "ES",
+      "late": 1,
+      "n": 5,
+      "low": 1
+    },
+    {
+      "month": "2017-10",
+      "state": "GO",
+      "late": 0,
+      "n": 103,
+      "low": 5
+    },
+    {
+      "month": "2017-10",
+      "state": "GO",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2017-10",
+      "state": "MA",
+      "late": 0,
+      "n": 36,
+      "low": 3
+    },
+    {
+      "month": "2017-10",
+      "state": "MA",
+      "late": 1,
+      "n": 12,
+      "low": 8
+    },
+    {
+      "month": "2017-10",
+      "state": "MG",
+      "late": 0,
+      "n": 535,
+      "low": 46
+    },
+    {
+      "month": "2017-10",
+      "state": "MG",
+      "late": 1,
+      "n": 4,
+      "low": 3
+    },
+    {
+      "month": "2017-10",
+      "state": "MS",
+      "late": 0,
+      "n": 31,
+      "low": 2
+    },
+    {
+      "month": "2017-10",
+      "state": "MS",
+      "late": 1,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-10",
+      "state": "MT",
+      "late": 0,
+      "n": 49,
+      "low": 4
+    },
+    {
+      "month": "2017-10",
+      "state": "MT",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-10",
+      "state": "PA",
+      "late": 0,
+      "n": 49,
+      "low": 5
+    },
+    {
+      "month": "2017-10",
+      "state": "PA",
+      "late": 1,
+      "n": 3,
+      "low": 1
+    },
+    {
+      "month": "2017-10",
+      "state": "PB",
+      "late": 0,
+      "n": 27,
+      "low": 2
+    },
+    {
+      "month": "2017-10",
+      "state": "PE",
+      "late": 0,
+      "n": 72,
+      "low": 5
+    },
+    {
+      "month": "2017-10",
+      "state": "PE",
+      "late": 1,
+      "n": 4,
+      "low": 1
+    },
+    {
+      "month": "2017-10",
+      "state": "PI",
+      "late": 0,
+      "n": 23,
+      "low": 3
+    },
+    {
+      "month": "2017-10",
+      "state": "PR",
+      "late": 0,
+      "n": 191,
+      "low": 19
+    },
+    {
+      "month": "2017-10",
+      "state": "PR",
+      "late": 1,
+      "n": 6,
+      "low": 3
+    },
+    {
+      "month": "2017-10",
+      "state": "RJ",
+      "late": 0,
+      "n": 605,
+      "low": 59
+    },
+    {
+      "month": "2017-10",
+      "state": "RJ",
+      "late": 1,
+      "n": 40,
+      "low": 23
+    },
+    {
+      "month": "2017-10",
+      "state": "RN",
+      "late": 0,
+      "n": 22,
+      "low": 2
+    },
+    {
+      "month": "2017-10",
+      "state": "RN",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-10",
+      "state": "RO",
+      "late": 0,
+      "n": 13,
+      "low": 0
+    },
+    {
+      "month": "2017-10",
+      "state": "RR",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2017-10",
+      "state": "RR",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-10",
+      "state": "RS",
+      "late": 0,
+      "n": 237,
+      "low": 24
+    },
+    {
+      "month": "2017-10",
+      "state": "RS",
+      "late": 1,
+      "n": 5,
+      "low": 4
+    },
+    {
+      "month": "2017-10",
+      "state": "SC",
+      "late": 0,
+      "n": 165,
+      "low": 12
+    },
+    {
+      "month": "2017-10",
+      "state": "SC",
+      "late": 1,
+      "n": 8,
+      "low": 4
+    },
+    {
+      "month": "2017-10",
+      "state": "SE",
+      "late": 0,
+      "n": 16,
+      "low": 3
+    },
+    {
+      "month": "2017-10",
+      "state": "SE",
+      "late": 1,
+      "n": 6,
+      "low": 5
+    },
+    {
+      "month": "2017-10",
+      "state": "SP",
+      "late": 0,
+      "n": 1656,
+      "low": 154
+    },
+    {
+      "month": "2017-10",
+      "state": "SP",
+      "late": 1,
+      "n": 56,
+      "low": 25
+    },
+    {
+      "month": "2017-10",
+      "state": "TO",
+      "late": 0,
+      "n": 13,
+      "low": 3
+    },
+    {
+      "month": "2017-11",
+      "state": "AC",
+      "late": 0,
+      "n": 4,
+      "low": 1
+    },
+    {
+      "month": "2017-11",
+      "state": "AC",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-11",
+      "state": "AL",
+      "late": 0,
+      "n": 21,
+      "low": 3
+    },
+    {
+      "month": "2017-11",
+      "state": "AL",
+      "late": 1,
+      "n": 5,
+      "low": 1
+    },
+    {
+      "month": "2017-11",
+      "state": "AM",
+      "late": 0,
+      "n": 10,
+      "low": 0
+    },
+    {
+      "month": "2017-11",
+      "state": "AP",
+      "late": 0,
+      "n": 4,
+      "low": 0
+    },
+    {
+      "month": "2017-11",
+      "state": "BA",
+      "late": 0,
+      "n": 206,
+      "low": 21
+    },
+    {
+      "month": "2017-11",
+      "state": "BA",
+      "late": 1,
+      "n": 36,
+      "low": 25
+    },
+    {
+      "month": "2017-11",
+      "state": "CE",
+      "late": 0,
+      "n": 76,
+      "low": 10
+    },
+    {
+      "month": "2017-11",
+      "state": "CE",
+      "late": 1,
+      "n": 27,
+      "low": 20
+    },
+    {
+      "month": "2017-11",
+      "state": "DF",
+      "late": 0,
+      "n": 139,
+      "low": 15
+    },
+    {
+      "month": "2017-11",
+      "state": "DF",
+      "late": 1,
+      "n": 18,
+      "low": 15
+    },
+    {
+      "month": "2017-11",
+      "state": "ES",
+      "late": 0,
+      "n": 131,
+      "low": 14
+    },
+    {
+      "month": "2017-11",
+      "state": "ES",
+      "late": 1,
+      "n": 34,
+      "low": 22
+    },
+    {
+      "month": "2017-11",
+      "state": "GO",
+      "late": 0,
+      "n": 130,
+      "low": 13
+    },
+    {
+      "month": "2017-11",
+      "state": "GO",
+      "late": 1,
+      "n": 19,
+      "low": 12
+    },
+    {
+      "month": "2017-11",
+      "state": "MA",
+      "late": 0,
+      "n": 25,
+      "low": 5
+    },
+    {
+      "month": "2017-11",
+      "state": "MA",
+      "late": 1,
+      "n": 27,
+      "low": 15
+    },
+    {
+      "month": "2017-11",
+      "state": "MG",
+      "late": 0,
+      "n": 852,
+      "low": 69
+    },
+    {
+      "month": "2017-11",
+      "state": "MG",
+      "late": 1,
+      "n": 63,
+      "low": 35
+    },
+    {
+      "month": "2017-11",
+      "state": "MS",
+      "late": 0,
+      "n": 40,
+      "low": 3
+    },
+    {
+      "month": "2017-11",
+      "state": "MS",
+      "late": 1,
+      "n": 4,
+      "low": 4
+    },
+    {
+      "month": "2017-11",
+      "state": "MT",
+      "late": 0,
+      "n": 64,
+      "low": 7
+    },
+    {
+      "month": "2017-11",
+      "state": "MT",
+      "late": 1,
+      "n": 9,
+      "low": 3
+    },
+    {
+      "month": "2017-11",
+      "state": "PA",
+      "late": 0,
+      "n": 59,
+      "low": 11
+    },
+    {
+      "month": "2017-11",
+      "state": "PA",
+      "late": 1,
+      "n": 9,
+      "low": 9
+    },
+    {
+      "month": "2017-11",
+      "state": "PB",
+      "late": 0,
+      "n": 22,
+      "low": 5
+    },
+    {
+      "month": "2017-11",
+      "state": "PB",
+      "late": 1,
+      "n": 5,
+      "low": 3
+    },
+    {
+      "month": "2017-11",
+      "state": "PE",
+      "late": 0,
+      "n": 109,
+      "low": 17
+    },
+    {
+      "month": "2017-11",
+      "state": "PE",
+      "late": 1,
+      "n": 15,
+      "low": 10
+    },
+    {
+      "month": "2017-11",
+      "state": "PI",
+      "late": 0,
+      "n": 16,
+      "low": 1
+    },
+    {
+      "month": "2017-11",
+      "state": "PI",
+      "late": 1,
+      "n": 15,
+      "low": 10
+    },
+    {
+      "month": "2017-11",
+      "state": "PR",
+      "late": 0,
+      "n": 332,
+      "low": 31
+    },
+    {
+      "month": "2017-11",
+      "state": "PR",
+      "late": 1,
+      "n": 31,
+      "low": 17
+    },
+    {
+      "month": "2017-11",
+      "state": "RJ",
+      "late": 0,
+      "n": 743,
+      "low": 77
+    },
+    {
+      "month": "2017-11",
+      "state": "RJ",
+      "late": 1,
+      "n": 261,
+      "low": 182
+    },
+    {
+      "month": "2017-11",
+      "state": "RN",
+      "late": 0,
+      "n": 33,
+      "low": 4
+    },
+    {
+      "month": "2017-11",
+      "state": "RN",
+      "late": 1,
+      "n": 8,
+      "low": 8
+    },
+    {
+      "month": "2017-11",
+      "state": "RO",
+      "late": 0,
+      "n": 17,
+      "low": 3
+    },
+    {
+      "month": "2017-11",
+      "state": "RR",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2017-11",
+      "state": "RR",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2017-11",
+      "state": "RS",
+      "late": 0,
+      "n": 356,
+      "low": 46
+    },
+    {
+      "month": "2017-11",
+      "state": "RS",
+      "late": 1,
+      "n": 51,
+      "low": 37
+    },
+    {
+      "month": "2017-11",
+      "state": "SC",
+      "late": 0,
+      "n": 243,
+      "low": 21
+    },
+    {
+      "month": "2017-11",
+      "state": "SC",
+      "late": 1,
+      "n": 43,
+      "low": 32
+    },
+    {
+      "month": "2017-11",
+      "state": "SE",
+      "late": 0,
+      "n": 19,
+      "low": 4
+    },
+    {
+      "month": "2017-11",
+      "state": "SE",
+      "late": 1,
+      "n": 7,
+      "low": 5
+    },
+    {
+      "month": "2017-11",
+      "state": "SP",
+      "late": 0,
+      "n": 2684,
+      "low": 244
+    },
+    {
+      "month": "2017-11",
+      "state": "SP",
+      "late": 1,
+      "n": 195,
+      "low": 106
+    },
+    {
+      "month": "2017-11",
+      "state": "TO",
+      "late": 0,
+      "n": 14,
+      "low": 0
+    },
+    {
+      "month": "2017-11",
+      "state": "TO",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2017-12",
+      "state": "AC",
+      "late": 0,
+      "n": 5,
+      "low": 0
+    },
+    {
+      "month": "2017-12",
+      "state": "AL",
+      "late": 0,
+      "n": 12,
+      "low": 0
+    },
+    {
+      "month": "2017-12",
+      "state": "AM",
+      "late": 0,
+      "n": 6,
+      "low": 0
+    },
+    {
+      "month": "2017-12",
+      "state": "AP",
+      "late": 0,
+      "n": 4,
+      "low": 0
+    },
+    {
+      "month": "2017-12",
+      "state": "BA",
+      "late": 0,
+      "n": 161,
+      "low": 14
+    },
+    {
+      "month": "2017-12",
+      "state": "BA",
+      "late": 1,
+      "n": 24,
+      "low": 13
+    },
+    {
+      "month": "2017-12",
+      "state": "CE",
+      "late": 0,
+      "n": 73,
+      "low": 5
+    },
+    {
+      "month": "2017-12",
+      "state": "CE",
+      "late": 1,
+      "n": 6,
+      "low": 4
+    },
+    {
+      "month": "2017-12",
+      "state": "DF",
+      "late": 0,
+      "n": 121,
+      "low": 10
+    },
+    {
+      "month": "2017-12",
+      "state": "DF",
+      "late": 1,
+      "n": 6,
+      "low": 4
+    },
+    {
+      "month": "2017-12",
+      "state": "ES",
+      "late": 0,
+      "n": 100,
+      "low": 8
+    },
+    {
+      "month": "2017-12",
+      "state": "ES",
+      "late": 1,
+      "n": 6,
+      "low": 3
+    },
+    {
+      "month": "2017-12",
+      "state": "GO",
+      "late": 0,
+      "n": 115,
+      "low": 15
+    },
+    {
+      "month": "2017-12",
+      "state": "GO",
+      "late": 1,
+      "n": 9,
+      "low": 6
+    },
+    {
+      "month": "2017-12",
+      "state": "MA",
+      "late": 0,
+      "n": 35,
+      "low": 8
+    },
+    {
+      "month": "2017-12",
+      "state": "MA",
+      "late": 1,
+      "n": 5,
+      "low": 4
+    },
+    {
+      "month": "2017-12",
+      "state": "MG",
+      "late": 0,
+      "n": 644,
+      "low": 76
+    },
+    {
+      "month": "2017-12",
+      "state": "MG",
+      "late": 1,
+      "n": 23,
+      "low": 13
+    },
+    {
+      "month": "2017-12",
+      "state": "MS",
+      "late": 0,
+      "n": 32,
+      "low": 3
+    },
+    {
+      "month": "2017-12",
+      "state": "MS",
+      "late": 1,
+      "n": 2,
+      "low": 2
+    },
+    {
+      "month": "2017-12",
+      "state": "MT",
+      "late": 0,
+      "n": 44,
+      "low": 6
+    },
+    {
+      "month": "2017-12",
+      "state": "MT",
+      "late": 1,
+      "n": 4,
+      "low": 4
+    },
+    {
+      "month": "2017-12",
+      "state": "PA",
+      "late": 0,
+      "n": 53,
+      "low": 7
+    },
+    {
+      "month": "2017-12",
+      "state": "PA",
+      "late": 1,
+      "n": 4,
+      "low": 3
+    },
+    {
+      "month": "2017-12",
+      "state": "PB",
+      "late": 0,
+      "n": 32,
+      "low": 3
+    },
+    {
+      "month": "2017-12",
+      "state": "PB",
+      "late": 1,
+      "n": 4,
+      "low": 4
+    },
+    {
+      "month": "2017-12",
+      "state": "PE",
+      "late": 0,
+      "n": 91,
+      "low": 8
+    },
+    {
+      "month": "2017-12",
+      "state": "PE",
+      "late": 1,
+      "n": 8,
+      "low": 6
+    },
+    {
+      "month": "2017-12",
+      "state": "PI",
+      "late": 0,
+      "n": 20,
+      "low": 1
+    },
+    {
+      "month": "2017-12",
+      "state": "PI",
+      "late": 1,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2017-12",
+      "state": "PR",
+      "late": 0,
+      "n": 247,
+      "low": 29
+    },
+    {
+      "month": "2017-12",
+      "state": "PR",
+      "late": 1,
+      "n": 12,
+      "low": 7
+    },
+    {
+      "month": "2017-12",
+      "state": "RJ",
+      "late": 0,
+      "n": 557,
+      "low": 78
+    },
+    {
+      "month": "2017-12",
+      "state": "RJ",
+      "late": 1,
+      "n": 175,
+      "low": 135
+    },
+    {
+      "month": "2017-12",
+      "state": "RN",
+      "late": 0,
+      "n": 28,
+      "low": 0
+    },
+    {
+      "month": "2017-12",
+      "state": "RN",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2017-12",
+      "state": "RO",
+      "late": 0,
+      "n": 11,
+      "low": 2
+    },
+    {
+      "month": "2017-12",
+      "state": "RS",
+      "late": 0,
+      "n": 249,
+      "low": 25
+    },
+    {
+      "month": "2017-12",
+      "state": "RS",
+      "late": 1,
+      "n": 26,
+      "low": 19
+    },
+    {
+      "month": "2017-12",
+      "state": "SC",
+      "late": 0,
+      "n": 183,
+      "low": 20
+    },
+    {
+      "month": "2017-12",
+      "state": "SC",
+      "late": 1,
+      "n": 8,
+      "low": 3
+    },
+    {
+      "month": "2017-12",
+      "state": "SE",
+      "late": 0,
+      "n": 17,
+      "low": 1
+    },
+    {
+      "month": "2017-12",
+      "state": "SE",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2017-12",
+      "state": "SP",
+      "late": 0,
+      "n": 2206,
+      "low": 194
+    },
+    {
+      "month": "2017-12",
+      "state": "SP",
+      "late": 1,
+      "n": 71,
+      "low": 41
+    },
+    {
+      "month": "2017-12",
+      "state": "TO",
+      "late": 0,
+      "n": 14,
+      "low": 1
+    },
+    {
+      "month": "2018-01",
+      "state": "AC",
+      "late": 0,
+      "n": 6,
+      "low": 0
+    },
+    {
+      "month": "2018-01",
+      "state": "AL",
+      "late": 0,
+      "n": 24,
+      "low": 4
+    },
+    {
+      "month": "2018-01",
+      "state": "AL",
+      "late": 1,
+      "n": 12,
+      "low": 9
+    },
+    {
+      "month": "2018-01",
+      "state": "AM",
+      "late": 0,
+      "n": 12,
+      "low": 3
+    },
+    {
+      "month": "2018-01",
+      "state": "AP",
+      "late": 0,
+      "n": 11,
+      "low": 2
+    },
+    {
+      "month": "2018-01",
+      "state": "BA",
+      "late": 0,
+      "n": 212,
+      "low": 31
+    },
+    {
+      "month": "2018-01",
+      "state": "BA",
+      "late": 1,
+      "n": 12,
+      "low": 9
+    },
+    {
+      "month": "2018-01",
+      "state": "CE",
+      "late": 0,
+      "n": 66,
+      "low": 7
+    },
+    {
+      "month": "2018-01",
+      "state": "CE",
+      "late": 1,
+      "n": 8,
+      "low": 6
+    },
+    {
+      "month": "2018-01",
+      "state": "DF",
+      "late": 0,
+      "n": 130,
+      "low": 15
+    },
+    {
+      "month": "2018-01",
+      "state": "DF",
+      "late": 1,
+      "n": 4,
+      "low": 3
+    },
+    {
+      "month": "2018-01",
+      "state": "ES",
+      "late": 0,
+      "n": 130,
+      "low": 8
+    },
+    {
+      "month": "2018-01",
+      "state": "ES",
+      "late": 1,
+      "n": 14,
+      "low": 6
+    },
+    {
+      "month": "2018-01",
+      "state": "GO",
+      "late": 0,
+      "n": 136,
+      "low": 11
+    },
+    {
+      "month": "2018-01",
+      "state": "GO",
+      "late": 1,
+      "n": 7,
+      "low": 5
+    },
+    {
+      "month": "2018-01",
+      "state": "MA",
+      "late": 0,
+      "n": 50,
+      "low": 4
+    },
+    {
+      "month": "2018-01",
+      "state": "MA",
+      "late": 1,
+      "n": 4,
+      "low": 3
+    },
+    {
+      "month": "2018-01",
+      "state": "MG",
+      "late": 0,
+      "n": 817,
+      "low": 76
+    },
+    {
+      "month": "2018-01",
+      "state": "MG",
+      "late": 1,
+      "n": 26,
+      "low": 14
+    },
+    {
+      "month": "2018-01",
+      "state": "MS",
+      "late": 0,
+      "n": 67,
+      "low": 6
+    },
+    {
+      "month": "2018-01",
+      "state": "MS",
+      "late": 1,
+      "n": 3,
+      "low": 1
+    },
+    {
+      "month": "2018-01",
+      "state": "MT",
+      "late": 0,
+      "n": 79,
+      "low": 11
+    },
+    {
+      "month": "2018-01",
+      "state": "MT",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2018-01",
+      "state": "PA",
+      "late": 0,
+      "n": 62,
+      "low": 10
+    },
+    {
+      "month": "2018-01",
+      "state": "PA",
+      "late": 1,
+      "n": 6,
+      "low": 4
+    },
+    {
+      "month": "2018-01",
+      "state": "PB",
+      "late": 0,
+      "n": 27,
+      "low": 1
+    },
+    {
+      "month": "2018-01",
+      "state": "PB",
+      "late": 1,
+      "n": 4,
+      "low": 2
+    },
+    {
+      "month": "2018-01",
+      "state": "PE",
+      "late": 0,
+      "n": 93,
+      "low": 8
+    },
+    {
+      "month": "2018-01",
+      "state": "PE",
+      "late": 1,
+      "n": 8,
+      "low": 7
+    },
+    {
+      "month": "2018-01",
+      "state": "PI",
+      "late": 0,
+      "n": 42,
+      "low": 3
+    },
+    {
+      "month": "2018-01",
+      "state": "PI",
+      "late": 1,
+      "n": 5,
+      "low": 5
+    },
+    {
+      "month": "2018-01",
+      "state": "PR",
+      "late": 0,
+      "n": 362,
+      "low": 37
+    },
+    {
+      "month": "2018-01",
+      "state": "PR",
+      "late": 1,
+      "n": 6,
+      "low": 6
+    },
+    {
+      "month": "2018-01",
+      "state": "RJ",
+      "late": 0,
+      "n": 731,
+      "low": 93
+    },
+    {
+      "month": "2018-01",
+      "state": "RJ",
+      "late": 1,
+      "n": 109,
+      "low": 87
+    },
+    {
+      "month": "2018-01",
+      "state": "RN",
+      "late": 0,
+      "n": 41,
+      "low": 1
+    },
+    {
+      "month": "2018-01",
+      "state": "RN",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2018-01",
+      "state": "RO",
+      "late": 0,
+      "n": 19,
+      "low": 1
+    },
+    {
+      "month": "2018-01",
+      "state": "RO",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2018-01",
+      "state": "RR",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2018-01",
+      "state": "RS",
+      "late": 0,
+      "n": 336,
+      "low": 31
+    },
+    {
+      "month": "2018-01",
+      "state": "RS",
+      "late": 1,
+      "n": 30,
+      "low": 16
+    },
+    {
+      "month": "2018-01",
+      "state": "SC",
+      "late": 0,
+      "n": 274,
+      "low": 33
+    },
+    {
+      "month": "2018-01",
+      "state": "SC",
+      "late": 1,
+      "n": 31,
+      "low": 21
+    },
+    {
+      "month": "2018-01",
+      "state": "SE",
+      "late": 0,
+      "n": 18,
+      "low": 1
+    },
+    {
+      "month": "2018-01",
+      "state": "SE",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2018-01",
+      "state": "SP",
+      "late": 0,
+      "n": 2855,
+      "low": 283
+    },
+    {
+      "month": "2018-01",
+      "state": "SP",
+      "late": 1,
+      "n": 101,
+      "low": 69
+    },
+    {
+      "month": "2018-01",
+      "state": "TO",
+      "late": 0,
+      "n": 16,
+      "low": 3
+    },
+    {
+      "month": "2018-02",
+      "state": "AC",
+      "late": 0,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2018-02",
+      "state": "AL",
+      "late": 0,
+      "n": 17,
+      "low": 2
+    },
+    {
+      "month": "2018-02",
+      "state": "AL",
+      "late": 1,
+      "n": 9,
+      "low": 7
+    },
+    {
+      "month": "2018-02",
+      "state": "AM",
+      "late": 0,
+      "n": 7,
+      "low": 2
+    },
+    {
+      "month": "2018-02",
+      "state": "AM",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2018-02",
+      "state": "AP",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2018-02",
+      "state": "BA",
+      "late": 0,
+      "n": 168,
+      "low": 24
+    },
+    {
+      "month": "2018-02",
+      "state": "BA",
+      "late": 1,
+      "n": 40,
+      "low": 24
+    },
+    {
+      "month": "2018-02",
+      "state": "CE",
+      "late": 0,
+      "n": 51,
+      "low": 10
+    },
+    {
+      "month": "2018-02",
+      "state": "CE",
+      "late": 1,
+      "n": 33,
+      "low": 27
+    },
+    {
+      "month": "2018-02",
+      "state": "DF",
+      "late": 0,
+      "n": 150,
+      "low": 18
+    },
+    {
+      "month": "2018-02",
+      "state": "DF",
+      "late": 1,
+      "n": 20,
+      "low": 15
+    },
+    {
+      "month": "2018-02",
+      "state": "ES",
+      "late": 0,
+      "n": 129,
+      "low": 13
+    },
+    {
+      "month": "2018-02",
+      "state": "ES",
+      "late": 1,
+      "n": 18,
+      "low": 11
+    },
+    {
+      "month": "2018-02",
+      "state": "GO",
+      "late": 0,
+      "n": 123,
+      "low": 10
+    },
+    {
+      "month": "2018-02",
+      "state": "GO",
+      "late": 1,
+      "n": 21,
+      "low": 17
+    },
+    {
+      "month": "2018-02",
+      "state": "MA",
+      "late": 0,
+      "n": 37,
+      "low": 4
+    },
+    {
+      "month": "2018-02",
+      "state": "MA",
+      "late": 1,
+      "n": 18,
+      "low": 14
+    },
+    {
+      "month": "2018-02",
+      "state": "MG",
+      "late": 0,
+      "n": 718,
+      "low": 80
+    },
+    {
+      "month": "2018-02",
+      "state": "MG",
+      "late": 1,
+      "n": 65,
+      "low": 42
+    },
+    {
+      "month": "2018-02",
+      "state": "MS",
+      "late": 0,
+      "n": 51,
+      "low": 3
+    },
+    {
+      "month": "2018-02",
+      "state": "MS",
+      "late": 1,
+      "n": 13,
+      "low": 8
+    },
+    {
+      "month": "2018-02",
+      "state": "MT",
+      "late": 0,
+      "n": 59,
+      "low": 3
+    },
+    {
+      "month": "2018-02",
+      "state": "MT",
+      "late": 1,
+      "n": 8,
+      "low": 6
+    },
+    {
+      "month": "2018-02",
+      "state": "PA",
+      "late": 0,
+      "n": 50,
+      "low": 4
+    },
+    {
+      "month": "2018-02",
+      "state": "PA",
+      "late": 1,
+      "n": 6,
+      "low": 4
+    },
+    {
+      "month": "2018-02",
+      "state": "PB",
+      "late": 0,
+      "n": 32,
+      "low": 6
+    },
+    {
+      "month": "2018-02",
+      "state": "PB",
+      "late": 1,
+      "n": 3,
+      "low": 1
+    },
+    {
+      "month": "2018-02",
+      "state": "PE",
+      "late": 0,
+      "n": 104,
+      "low": 10
+    },
+    {
+      "month": "2018-02",
+      "state": "PE",
+      "late": 1,
+      "n": 13,
+      "low": 5
+    },
+    {
+      "month": "2018-02",
+      "state": "PI",
+      "late": 0,
+      "n": 25,
+      "low": 4
+    },
+    {
+      "month": "2018-02",
+      "state": "PI",
+      "late": 1,
+      "n": 7,
+      "low": 5
+    },
+    {
+      "month": "2018-02",
+      "state": "PR",
+      "late": 0,
+      "n": 303,
+      "low": 33
+    },
+    {
+      "month": "2018-02",
+      "state": "PR",
+      "late": 1,
+      "n": 30,
+      "low": 18
+    },
+    {
+      "month": "2018-02",
+      "state": "RJ",
+      "late": 0,
+      "n": 574,
+      "low": 77
+    },
+    {
+      "month": "2018-02",
+      "state": "RJ",
+      "late": 1,
+      "n": 295,
+      "low": 238
+    },
+    {
+      "month": "2018-02",
+      "state": "RN",
+      "late": 0,
+      "n": 21,
+      "low": 0
+    },
+    {
+      "month": "2018-02",
+      "state": "RN",
+      "late": 1,
+      "n": 2,
+      "low": 2
+    },
+    {
+      "month": "2018-02",
+      "state": "RO",
+      "late": 0,
+      "n": 13,
+      "low": 1
+    },
+    {
+      "month": "2018-02",
+      "state": "RR",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2018-02",
+      "state": "RR",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2018-02",
+      "state": "RS",
+      "late": 0,
+      "n": 313,
+      "low": 24
+    },
+    {
+      "month": "2018-02",
+      "state": "RS",
+      "late": 1,
+      "n": 48,
+      "low": 32
+    },
+    {
+      "month": "2018-02",
+      "state": "SC",
+      "late": 0,
+      "n": 193,
+      "low": 24
+    },
+    {
+      "month": "2018-02",
+      "state": "SC",
+      "late": 1,
+      "n": 59,
+      "low": 40
+    },
+    {
+      "month": "2018-02",
+      "state": "SE",
+      "late": 0,
+      "n": 13,
+      "low": 0
+    },
+    {
+      "month": "2018-02",
+      "state": "SE",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2018-02",
+      "state": "SP",
+      "late": 0,
+      "n": 2426,
+      "low": 246
+    },
+    {
+      "month": "2018-02",
+      "state": "SP",
+      "late": 1,
+      "n": 191,
+      "low": 138
+    },
+    {
+      "month": "2018-02",
+      "state": "TO",
+      "late": 0,
+      "n": 11,
+      "low": 2
+    },
+    {
+      "month": "2018-02",
+      "state": "TO",
+      "late": 1,
+      "n": 9,
+      "low": 4
+    },
+    {
+      "month": "2018-03",
+      "state": "AC",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2018-03",
+      "state": "AL",
+      "late": 0,
+      "n": 18,
+      "low": 1
+    },
+    {
+      "month": "2018-03",
+      "state": "AL",
+      "late": 1,
+      "n": 9,
+      "low": 5
+    },
+    {
+      "month": "2018-03",
+      "state": "AM",
+      "late": 0,
+      "n": 6,
+      "low": 0
+    },
+    {
+      "month": "2018-03",
+      "state": "AM",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2018-03",
+      "state": "AP",
+      "late": 0,
+      "n": 5,
+      "low": 2
+    },
+    {
+      "month": "2018-03",
+      "state": "BA",
+      "late": 0,
+      "n": 161,
+      "low": 21
+    },
+    {
+      "month": "2018-03",
+      "state": "BA",
+      "late": 1,
+      "n": 73,
+      "low": 49
+    },
+    {
+      "month": "2018-03",
+      "state": "CE",
+      "late": 0,
+      "n": 46,
+      "low": 5
+    },
+    {
+      "month": "2018-03",
+      "state": "CE",
+      "late": 1,
+      "n": 46,
+      "low": 31
+    },
+    {
+      "month": "2018-03",
+      "state": "DF",
+      "late": 0,
+      "n": 118,
+      "low": 13
+    },
+    {
+      "month": "2018-03",
+      "state": "DF",
+      "late": 1,
+      "n": 27,
+      "low": 18
+    },
+    {
+      "month": "2018-03",
+      "state": "ES",
+      "late": 0,
+      "n": 76,
+      "low": 4
+    },
+    {
+      "month": "2018-03",
+      "state": "ES",
+      "late": 1,
+      "n": 54,
+      "low": 39
+    },
+    {
+      "month": "2018-03",
+      "state": "GO",
+      "late": 0,
+      "n": 113,
+      "low": 12
+    },
+    {
+      "month": "2018-03",
+      "state": "GO",
+      "late": 1,
+      "n": 28,
+      "low": 14
+    },
+    {
+      "month": "2018-03",
+      "state": "MA",
+      "late": 0,
+      "n": 24,
+      "low": 2
+    },
+    {
+      "month": "2018-03",
+      "state": "MA",
+      "late": 1,
+      "n": 24,
+      "low": 16
+    },
+    {
+      "month": "2018-03",
+      "state": "MG",
+      "late": 0,
+      "n": 679,
+      "low": 92
+    },
+    {
+      "month": "2018-03",
+      "state": "MG",
+      "late": 1,
+      "n": 168,
+      "low": 108
+    },
+    {
+      "month": "2018-03",
+      "state": "MS",
+      "late": 0,
+      "n": 34,
+      "low": 3
+    },
+    {
+      "month": "2018-03",
+      "state": "MS",
+      "late": 1,
+      "n": 23,
+      "low": 15
+    },
+    {
+      "month": "2018-03",
+      "state": "MT",
+      "late": 0,
+      "n": 39,
+      "low": 5
+    },
+    {
+      "month": "2018-03",
+      "state": "MT",
+      "late": 1,
+      "n": 12,
+      "low": 7
+    },
+    {
+      "month": "2018-03",
+      "state": "PA",
+      "late": 0,
+      "n": 32,
+      "low": 9
+    },
+    {
+      "month": "2018-03",
+      "state": "PA",
+      "late": 1,
+      "n": 33,
+      "low": 26
+    },
+    {
+      "month": "2018-03",
+      "state": "PB",
+      "late": 0,
+      "n": 34,
+      "low": 3
+    },
+    {
+      "month": "2018-03",
+      "state": "PB",
+      "late": 1,
+      "n": 5,
+      "low": 4
+    },
+    {
+      "month": "2018-03",
+      "state": "PE",
+      "late": 0,
+      "n": 85,
+      "low": 8
+    },
+    {
+      "month": "2018-03",
+      "state": "PE",
+      "late": 1,
+      "n": 21,
+      "low": 15
+    },
+    {
+      "month": "2018-03",
+      "state": "PI",
+      "late": 0,
+      "n": 24,
+      "low": 2
+    },
+    {
+      "month": "2018-03",
+      "state": "PI",
+      "late": 1,
+      "n": 9,
+      "low": 8
+    },
+    {
+      "month": "2018-03",
+      "state": "PR",
+      "late": 0,
+      "n": 319,
+      "low": 37
+    },
+    {
+      "month": "2018-03",
+      "state": "PR",
+      "late": 1,
+      "n": 49,
+      "low": 30
+    },
+    {
+      "month": "2018-03",
+      "state": "RJ",
+      "late": 0,
+      "n": 563,
+      "low": 77
+    },
+    {
+      "month": "2018-03",
+      "state": "RJ",
+      "late": 1,
+      "n": 285,
+      "low": 228
+    },
+    {
+      "month": "2018-03",
+      "state": "RN",
+      "late": 0,
+      "n": 31,
+      "low": 2
+    },
+    {
+      "month": "2018-03",
+      "state": "RN",
+      "late": 1,
+      "n": 7,
+      "low": 5
+    },
+    {
+      "month": "2018-03",
+      "state": "RO",
+      "late": 0,
+      "n": 10,
+      "low": 2
+    },
+    {
+      "month": "2018-03",
+      "state": "RO",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2018-03",
+      "state": "RR",
+      "late": 0,
+      "n": 5,
+      "low": 1
+    },
+    {
+      "month": "2018-03",
+      "state": "RS",
+      "late": 0,
+      "n": 328,
+      "low": 32
+    },
+    {
+      "month": "2018-03",
+      "state": "RS",
+      "late": 1,
+      "n": 78,
+      "low": 57
+    },
+    {
+      "month": "2018-03",
+      "state": "SC",
+      "late": 0,
+      "n": 196,
+      "low": 20
+    },
+    {
+      "month": "2018-03",
+      "state": "SC",
+      "late": 1,
+      "n": 48,
+      "low": 25
+    },
+    {
+      "month": "2018-03",
+      "state": "SE",
+      "late": 0,
+      "n": 6,
+      "low": 0
+    },
+    {
+      "month": "2018-03",
+      "state": "SE",
+      "late": 1,
+      "n": 11,
+      "low": 9
+    },
+    {
+      "month": "2018-03",
+      "state": "SP",
+      "late": 0,
+      "n": 2683,
+      "low": 236
+    },
+    {
+      "month": "2018-03",
+      "state": "SP",
+      "late": 1,
+      "n": 276,
+      "low": 163
+    },
+    {
+      "month": "2018-03",
+      "state": "TO",
+      "late": 0,
+      "n": 15,
+      "low": 4
+    },
+    {
+      "month": "2018-03",
+      "state": "TO",
+      "late": 1,
+      "n": 5,
+      "low": 3
+    },
+    {
+      "month": "2018-04",
+      "state": "AC",
+      "late": 0,
+      "n": 3,
+      "low": 1
+    },
+    {
+      "month": "2018-04",
+      "state": "AC",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2018-04",
+      "state": "AL",
+      "late": 0,
+      "n": 20,
+      "low": 3
+    },
+    {
+      "month": "2018-04",
+      "state": "AL",
+      "late": 1,
+      "n": 7,
+      "low": 4
+    },
+    {
+      "month": "2018-04",
+      "state": "AM",
+      "late": 0,
+      "n": 6,
+      "low": 0
+    },
+    {
+      "month": "2018-04",
+      "state": "AP",
+      "late": 0,
+      "n": 4,
+      "low": 0
+    },
+    {
+      "month": "2018-04",
+      "state": "BA",
+      "late": 0,
+      "n": 174,
+      "low": 14
+    },
+    {
+      "month": "2018-04",
+      "state": "BA",
+      "late": 1,
+      "n": 39,
+      "low": 26
+    },
+    {
+      "month": "2018-04",
+      "state": "CE",
+      "late": 0,
+      "n": 73,
+      "low": 6
+    },
+    {
+      "month": "2018-04",
+      "state": "CE",
+      "late": 1,
+      "n": 23,
+      "low": 13
+    },
+    {
+      "month": "2018-04",
+      "state": "DF",
+      "late": 0,
+      "n": 141,
+      "low": 14
+    },
+    {
+      "month": "2018-04",
+      "state": "DF",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2018-04",
+      "state": "ES",
+      "late": 0,
+      "n": 117,
+      "low": 12
+    },
+    {
+      "month": "2018-04",
+      "state": "ES",
+      "late": 1,
+      "n": 21,
+      "low": 11
+    },
+    {
+      "month": "2018-04",
+      "state": "GO",
+      "late": 0,
+      "n": 126,
+      "low": 9
+    },
+    {
+      "month": "2018-04",
+      "state": "GO",
+      "late": 1,
+      "n": 5,
+      "low": 5
+    },
+    {
+      "month": "2018-04",
+      "state": "MA",
+      "late": 0,
+      "n": 40,
+      "low": 3
+    },
+    {
+      "month": "2018-04",
+      "state": "MA",
+      "late": 1,
+      "n": 6,
+      "low": 1
+    },
+    {
+      "month": "2018-04",
+      "state": "MG",
+      "late": 0,
+      "n": 756,
+      "low": 74
+    },
+    {
+      "month": "2018-04",
+      "state": "MG",
+      "late": 1,
+      "n": 19,
+      "low": 12
+    },
+    {
+      "month": "2018-04",
+      "state": "MS",
+      "late": 0,
+      "n": 40,
+      "low": 4
+    },
+    {
+      "month": "2018-04",
+      "state": "MS",
+      "late": 1,
+      "n": 3,
+      "low": 3
+    },
+    {
+      "month": "2018-04",
+      "state": "MT",
+      "late": 0,
+      "n": 63,
+      "low": 3
+    },
+    {
+      "month": "2018-04",
+      "state": "MT",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2018-04",
+      "state": "PA",
+      "late": 0,
+      "n": 42,
+      "low": 4
+    },
+    {
+      "month": "2018-04",
+      "state": "PA",
+      "late": 1,
+      "n": 18,
+      "low": 12
+    },
+    {
+      "month": "2018-04",
+      "state": "PB",
+      "late": 0,
+      "n": 22,
+      "low": 1
+    },
+    {
+      "month": "2018-04",
+      "state": "PB",
+      "late": 1,
+      "n": 6,
+      "low": 6
+    },
+    {
+      "month": "2018-04",
+      "state": "PE",
+      "late": 0,
+      "n": 94,
+      "low": 13
+    },
+    {
+      "month": "2018-04",
+      "state": "PE",
+      "late": 1,
+      "n": 15,
+      "low": 12
+    },
+    {
+      "month": "2018-04",
+      "state": "PI",
+      "late": 0,
+      "n": 30,
+      "low": 3
+    },
+    {
+      "month": "2018-04",
+      "state": "PI",
+      "late": 1,
+      "n": 4,
+      "low": 2
+    },
+    {
+      "month": "2018-04",
+      "state": "PR",
+      "late": 0,
+      "n": 375,
+      "low": 34
+    },
+    {
+      "month": "2018-04",
+      "state": "PR",
+      "late": 1,
+      "n": 5,
+      "low": 2
+    },
+    {
+      "month": "2018-04",
+      "state": "RJ",
+      "late": 0,
+      "n": 761,
+      "low": 92
+    },
+    {
+      "month": "2018-04",
+      "state": "RJ",
+      "late": 1,
+      "n": 38,
+      "low": 26
+    },
+    {
+      "month": "2018-04",
+      "state": "RN",
+      "late": 0,
+      "n": 22,
+      "low": 4
+    },
+    {
+      "month": "2018-04",
+      "state": "RN",
+      "late": 1,
+      "n": 9,
+      "low": 6
+    },
+    {
+      "month": "2018-04",
+      "state": "RO",
+      "late": 0,
+      "n": 11,
+      "low": 1
+    },
+    {
+      "month": "2018-04",
+      "state": "RR",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2018-04",
+      "state": "RR",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2018-04",
+      "state": "RS",
+      "late": 0,
+      "n": 332,
+      "low": 31
+    },
+    {
+      "month": "2018-04",
+      "state": "RS",
+      "late": 1,
+      "n": 12,
+      "low": 6
+    },
+    {
+      "month": "2018-04",
+      "state": "SC",
+      "late": 0,
+      "n": 239,
+      "low": 17
+    },
+    {
+      "month": "2018-04",
+      "state": "SC",
+      "late": 1,
+      "n": 4,
+      "low": 3
+    },
+    {
+      "month": "2018-04",
+      "state": "SE",
+      "late": 0,
+      "n": 7,
+      "low": 1
+    },
+    {
+      "month": "2018-04",
+      "state": "SE",
+      "late": 1,
+      "n": 6,
+      "low": 5
+    },
+    {
+      "month": "2018-04",
+      "state": "SP",
+      "late": 0,
+      "n": 2938,
+      "low": 265
+    },
+    {
+      "month": "2018-04",
+      "state": "SP",
+      "late": 1,
+      "n": 50,
+      "low": 27
+    },
+    {
+      "month": "2018-04",
+      "state": "TO",
+      "late": 0,
+      "n": 18,
+      "low": 1
+    },
+    {
+      "month": "2018-04",
+      "state": "TO",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2018-05",
+      "state": "AC",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2018-05",
+      "state": "AL",
+      "late": 0,
+      "n": 17,
+      "low": 1
+    },
+    {
+      "month": "2018-05",
+      "state": "AL",
+      "late": 1,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2018-05",
+      "state": "AM",
+      "late": 0,
+      "n": 9,
+      "low": 0
+    },
+    {
+      "month": "2018-05",
+      "state": "AP",
+      "late": 0,
+      "n": 6,
+      "low": 0
+    },
+    {
+      "month": "2018-05",
+      "state": "BA",
+      "late": 0,
+      "n": 189,
+      "low": 20
+    },
+    {
+      "month": "2018-05",
+      "state": "BA",
+      "late": 1,
+      "n": 46,
+      "low": 23
+    },
+    {
+      "month": "2018-05",
+      "state": "CE",
+      "late": 0,
+      "n": 64,
+      "low": 4
+    },
+    {
+      "month": "2018-05",
+      "state": "CE",
+      "late": 1,
+      "n": 8,
+      "low": 2
+    },
+    {
+      "month": "2018-05",
+      "state": "DF",
+      "late": 0,
+      "n": 126,
+      "low": 10
+    },
+    {
+      "month": "2018-05",
+      "state": "DF",
+      "late": 1,
+      "n": 13,
+      "low": 7
+    },
+    {
+      "month": "2018-05",
+      "state": "ES",
+      "late": 0,
+      "n": 110,
+      "low": 9
+    },
+    {
+      "month": "2018-05",
+      "state": "ES",
+      "late": 1,
+      "n": 20,
+      "low": 8
+    },
+    {
+      "month": "2018-05",
+      "state": "GO",
+      "late": 0,
+      "n": 129,
+      "low": 17
+    },
+    {
+      "month": "2018-05",
+      "state": "GO",
+      "late": 1,
+      "n": 7,
+      "low": 4
+    },
+    {
+      "month": "2018-05",
+      "state": "MA",
+      "late": 0,
+      "n": 30,
+      "low": 4
+    },
+    {
+      "month": "2018-05",
+      "state": "MA",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2018-05",
+      "state": "MG",
+      "late": 0,
+      "n": 678,
+      "low": 51
+    },
+    {
+      "month": "2018-05",
+      "state": "MG",
+      "late": 1,
+      "n": 69,
+      "low": 35
+    },
+    {
+      "month": "2018-05",
+      "state": "MS",
+      "late": 0,
+      "n": 40,
+      "low": 3
+    },
+    {
+      "month": "2018-05",
+      "state": "MS",
+      "late": 1,
+      "n": 4,
+      "low": 1
+    },
+    {
+      "month": "2018-05",
+      "state": "MT",
+      "late": 0,
+      "n": 64,
+      "low": 3
+    },
+    {
+      "month": "2018-05",
+      "state": "MT",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2018-05",
+      "state": "PA",
+      "late": 0,
+      "n": 35,
+      "low": 5
+    },
+    {
+      "month": "2018-05",
+      "state": "PA",
+      "late": 1,
+      "n": 4,
+      "low": 2
+    },
+    {
+      "month": "2018-05",
+      "state": "PB",
+      "late": 0,
+      "n": 28,
+      "low": 0
+    },
+    {
+      "month": "2018-05",
+      "state": "PB",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2018-05",
+      "state": "PE",
+      "late": 0,
+      "n": 90,
+      "low": 11
+    },
+    {
+      "month": "2018-05",
+      "state": "PE",
+      "late": 1,
+      "n": 11,
+      "low": 5
+    },
+    {
+      "month": "2018-05",
+      "state": "PI",
+      "late": 0,
+      "n": 24,
+      "low": 2
+    },
+    {
+      "month": "2018-05",
+      "state": "PI",
+      "late": 1,
+      "n": 6,
+      "low": 3
+    },
+    {
+      "month": "2018-05",
+      "state": "PR",
+      "late": 0,
+      "n": 284,
+      "low": 20
+    },
+    {
+      "month": "2018-05",
+      "state": "PR",
+      "late": 1,
+      "n": 23,
+      "low": 11
+    },
+    {
+      "month": "2018-05",
+      "state": "RJ",
+      "late": 0,
+      "n": 758,
+      "low": 88
+    },
+    {
+      "month": "2018-05",
+      "state": "RJ",
+      "late": 1,
+      "n": 56,
+      "low": 28
+    },
+    {
+      "month": "2018-05",
+      "state": "RN",
+      "late": 0,
+      "n": 21,
+      "low": 2
+    },
+    {
+      "month": "2018-05",
+      "state": "RN",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2018-05",
+      "state": "RO",
+      "late": 0,
+      "n": 17,
+      "low": 2
+    },
+    {
+      "month": "2018-05",
+      "state": "RR",
+      "late": 0,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2018-05",
+      "state": "RS",
+      "late": 0,
+      "n": 340,
+      "low": 27
+    },
+    {
+      "month": "2018-05",
+      "state": "RS",
+      "late": 1,
+      "n": 9,
+      "low": 4
+    },
+    {
+      "month": "2018-05",
+      "state": "SC",
+      "late": 0,
+      "n": 213,
+      "low": 14
+    },
+    {
+      "month": "2018-05",
+      "state": "SC",
+      "late": 1,
+      "n": 12,
+      "low": 8
+    },
+    {
+      "month": "2018-05",
+      "state": "SE",
+      "late": 0,
+      "n": 6,
+      "low": 1
+    },
+    {
+      "month": "2018-05",
+      "state": "SE",
+      "late": 1,
+      "n": 2,
+      "low": 2
+    },
+    {
+      "month": "2018-05",
+      "state": "SP",
+      "late": 0,
+      "n": 2992,
+      "low": 224
+    },
+    {
+      "month": "2018-05",
+      "state": "SP",
+      "late": 1,
+      "n": 135,
+      "low": 56
+    },
+    {
+      "month": "2018-05",
+      "state": "TO",
+      "late": 0,
+      "n": 12,
+      "low": 1
+    },
+    {
+      "month": "2018-05",
+      "state": "TO",
+      "late": 1,
+      "n": 4,
+      "low": 2
+    },
+    {
+      "month": "2018-06",
+      "state": "AC",
+      "late": 0,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2018-06",
+      "state": "AL",
+      "late": 0,
+      "n": 24,
+      "low": 1
+    },
+    {
+      "month": "2018-06",
+      "state": "AM",
+      "late": 0,
+      "n": 7,
+      "low": 1
+    },
+    {
+      "month": "2018-06",
+      "state": "AP",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2018-06",
+      "state": "BA",
+      "late": 0,
+      "n": 186,
+      "low": 17
+    },
+    {
+      "month": "2018-06",
+      "state": "BA",
+      "late": 1,
+      "n": 11,
+      "low": 7
+    },
+    {
+      "month": "2018-06",
+      "state": "CE",
+      "late": 0,
+      "n": 72,
+      "low": 6
+    },
+    {
+      "month": "2018-06",
+      "state": "DF",
+      "late": 0,
+      "n": 145,
+      "low": 13
+    },
+    {
+      "month": "2018-06",
+      "state": "DF",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2018-06",
+      "state": "ES",
+      "late": 0,
+      "n": 118,
+      "low": 14
+    },
+    {
+      "month": "2018-06",
+      "state": "ES",
+      "late": 1,
+      "n": 5,
+      "low": 1
+    },
+    {
+      "month": "2018-06",
+      "state": "GO",
+      "late": 0,
+      "n": 104,
+      "low": 9
+    },
+    {
+      "month": "2018-06",
+      "state": "GO",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2018-06",
+      "state": "MA",
+      "late": 0,
+      "n": 36,
+      "low": 1
+    },
+    {
+      "month": "2018-06",
+      "state": "MA",
+      "late": 1,
+      "n": 5,
+      "low": 4
+    },
+    {
+      "month": "2018-06",
+      "state": "MG",
+      "late": 0,
+      "n": 707,
+      "low": 64
+    },
+    {
+      "month": "2018-06",
+      "state": "MG",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2018-06",
+      "state": "MS",
+      "late": 0,
+      "n": 47,
+      "low": 4
+    },
+    {
+      "month": "2018-06",
+      "state": "MS",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2018-06",
+      "state": "MT",
+      "late": 0,
+      "n": 56,
+      "low": 6
+    },
+    {
+      "month": "2018-06",
+      "state": "MT",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2018-06",
+      "state": "PA",
+      "late": 0,
+      "n": 54,
+      "low": 3
+    },
+    {
+      "month": "2018-06",
+      "state": "PB",
+      "late": 0,
+      "n": 27,
+      "low": 3
+    },
+    {
+      "month": "2018-06",
+      "state": "PB",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2018-06",
+      "state": "PE",
+      "late": 0,
+      "n": 89,
+      "low": 3
+    },
+    {
+      "month": "2018-06",
+      "state": "PE",
+      "late": 1,
+      "n": 2,
+      "low": 2
+    },
+    {
+      "month": "2018-06",
+      "state": "PI",
+      "late": 0,
+      "n": 20,
+      "low": 1
+    },
+    {
+      "month": "2018-06",
+      "state": "PI",
+      "late": 1,
+      "n": 9,
+      "low": 5
+    },
+    {
+      "month": "2018-06",
+      "state": "PR",
+      "late": 0,
+      "n": 304,
+      "low": 39
+    },
+    {
+      "month": "2018-06",
+      "state": "RJ",
+      "late": 0,
+      "n": 693,
+      "low": 73
+    },
+    {
+      "month": "2018-06",
+      "state": "RJ",
+      "late": 1,
+      "n": 9,
+      "low": 6
+    },
+    {
+      "month": "2018-06",
+      "state": "RN",
+      "late": 0,
+      "n": 35,
+      "low": 4
+    },
+    {
+      "month": "2018-06",
+      "state": "RO",
+      "late": 0,
+      "n": 11,
+      "low": 1
+    },
+    {
+      "month": "2018-06",
+      "state": "RR",
+      "late": 0,
+      "n": 5,
+      "low": 1
+    },
+    {
+      "month": "2018-06",
+      "state": "RS",
+      "late": 0,
+      "n": 299,
+      "low": 21
+    },
+    {
+      "month": "2018-06",
+      "state": "RS",
+      "late": 1,
+      "n": 4,
+      "low": 2
+    },
+    {
+      "month": "2018-06",
+      "state": "SC",
+      "late": 0,
+      "n": 205,
+      "low": 23
+    },
+    {
+      "month": "2018-06",
+      "state": "SE",
+      "late": 0,
+      "n": 25,
+      "low": 1
+    },
+    {
+      "month": "2018-06",
+      "state": "SP",
+      "late": 0,
+      "n": 2709,
+      "low": 253
+    },
+    {
+      "month": "2018-06",
+      "state": "SP",
+      "late": 1,
+      "n": 20,
+      "low": 12
+    },
+    {
+      "month": "2018-06",
+      "state": "TO",
+      "late": 0,
+      "n": 18,
+      "low": 1
+    },
+    {
+      "month": "2018-07",
+      "state": "AC",
+      "late": 0,
+      "n": 4,
+      "low": 0
+    },
+    {
+      "month": "2018-07",
+      "state": "AL",
+      "late": 0,
+      "n": 18,
+      "low": 0
+    },
+    {
+      "month": "2018-07",
+      "state": "AL",
+      "late": 1,
+      "n": 4,
+      "low": 3
+    },
+    {
+      "month": "2018-07",
+      "state": "AM",
+      "late": 0,
+      "n": 18,
+      "low": 4
+    },
+    {
+      "month": "2018-07",
+      "state": "AP",
+      "late": 0,
+      "n": 6,
+      "low": 0
+    },
+    {
+      "month": "2018-07",
+      "state": "BA",
+      "late": 0,
+      "n": 230,
+      "low": 17
+    },
+    {
+      "month": "2018-07",
+      "state": "BA",
+      "late": 1,
+      "n": 13,
+      "low": 7
+    },
+    {
+      "month": "2018-07",
+      "state": "CE",
+      "late": 0,
+      "n": 83,
+      "low": 7
+    },
+    {
+      "month": "2018-07",
+      "state": "CE",
+      "late": 1,
+      "n": 1,
+      "low": 1
+    },
+    {
+      "month": "2018-07",
+      "state": "DF",
+      "late": 0,
+      "n": 158,
+      "low": 10
+    },
+    {
+      "month": "2018-07",
+      "state": "DF",
+      "late": 1,
+      "n": 7,
+      "low": 6
+    },
+    {
+      "month": "2018-07",
+      "state": "ES",
+      "late": 0,
+      "n": 112,
+      "low": 9
+    },
+    {
+      "month": "2018-07",
+      "state": "ES",
+      "late": 1,
+      "n": 8,
+      "low": 2
+    },
+    {
+      "month": "2018-07",
+      "state": "GO",
+      "late": 0,
+      "n": 107,
+      "low": 11
+    },
+    {
+      "month": "2018-07",
+      "state": "GO",
+      "late": 1,
+      "n": 5,
+      "low": 2
+    },
+    {
+      "month": "2018-07",
+      "state": "MA",
+      "late": 0,
+      "n": 32,
+      "low": 5
+    },
+    {
+      "month": "2018-07",
+      "state": "MA",
+      "late": 1,
+      "n": 7,
+      "low": 5
+    },
+    {
+      "month": "2018-07",
+      "state": "MG",
+      "late": 0,
+      "n": 633,
+      "low": 63
+    },
+    {
+      "month": "2018-07",
+      "state": "MG",
+      "late": 1,
+      "n": 8,
+      "low": 4
+    },
+    {
+      "month": "2018-07",
+      "state": "MS",
+      "late": 0,
+      "n": 47,
+      "low": 3
+    },
+    {
+      "month": "2018-07",
+      "state": "MS",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2018-07",
+      "state": "MT",
+      "late": 0,
+      "n": 47,
+      "low": 4
+    },
+    {
+      "month": "2018-07",
+      "state": "PA",
+      "late": 0,
+      "n": 54,
+      "low": 3
+    },
+    {
+      "month": "2018-07",
+      "state": "PA",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2018-07",
+      "state": "PB",
+      "late": 0,
+      "n": 49,
+      "low": 5
+    },
+    {
+      "month": "2018-07",
+      "state": "PB",
+      "late": 1,
+      "n": 2,
+      "low": 2
+    },
+    {
+      "month": "2018-07",
+      "state": "PE",
+      "late": 0,
+      "n": 128,
+      "low": 11
+    },
+    {
+      "month": "2018-07",
+      "state": "PE",
+      "late": 1,
+      "n": 8,
+      "low": 6
+    },
+    {
+      "month": "2018-07",
+      "state": "PI",
+      "late": 0,
+      "n": 29,
+      "low": 4
+    },
+    {
+      "month": "2018-07",
+      "state": "PI",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2018-07",
+      "state": "PR",
+      "late": 0,
+      "n": 308,
+      "low": 19
+    },
+    {
+      "month": "2018-07",
+      "state": "PR",
+      "late": 1,
+      "n": 4,
+      "low": 0
+    },
+    {
+      "month": "2018-07",
+      "state": "RJ",
+      "late": 0,
+      "n": 671,
+      "low": 63
+    },
+    {
+      "month": "2018-07",
+      "state": "RJ",
+      "late": 1,
+      "n": 17,
+      "low": 8
+    },
+    {
+      "month": "2018-07",
+      "state": "RN",
+      "late": 0,
+      "n": 27,
+      "low": 1
+    },
+    {
+      "month": "2018-07",
+      "state": "RO",
+      "late": 0,
+      "n": 16,
+      "low": 2
+    },
+    {
+      "month": "2018-07",
+      "state": "RR",
+      "late": 0,
+      "n": 5,
+      "low": 0
+    },
+    {
+      "month": "2018-07",
+      "state": "RS",
+      "late": 0,
+      "n": 303,
+      "low": 30
+    },
+    {
+      "month": "2018-07",
+      "state": "RS",
+      "late": 1,
+      "n": 5,
+      "low": 2
+    },
+    {
+      "month": "2018-07",
+      "state": "SC",
+      "late": 0,
+      "n": 191,
+      "low": 11
+    },
+    {
+      "month": "2018-07",
+      "state": "SC",
+      "late": 1,
+      "n": 4,
+      "low": 2
+    },
+    {
+      "month": "2018-07",
+      "state": "SE",
+      "late": 0,
+      "n": 24,
+      "low": 1
+    },
+    {
+      "month": "2018-07",
+      "state": "SE",
+      "late": 1,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2018-07",
+      "state": "SP",
+      "late": 0,
+      "n": 2597,
+      "low": 208
+    },
+    {
+      "month": "2018-07",
+      "state": "SP",
+      "late": 1,
+      "n": 97,
+      "low": 46
+    },
+    {
+      "month": "2018-07",
+      "state": "TO",
+      "late": 0,
+      "n": 21,
+      "low": 1
+    },
+    {
+      "month": "2018-07",
+      "state": "TO",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2018-08",
+      "state": "AC",
+      "late": 0,
+      "n": 3,
+      "low": 0
+    },
+    {
+      "month": "2018-08",
+      "state": "AL",
+      "late": 0,
+      "n": 16,
+      "low": 2
+    },
+    {
+      "month": "2018-08",
+      "state": "AM",
+      "late": 0,
+      "n": 4,
+      "low": 1
+    },
+    {
+      "month": "2018-08",
+      "state": "AP",
+      "late": 0,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2018-08",
+      "state": "BA",
+      "late": 0,
+      "n": 158,
+      "low": 14
+    },
+    {
+      "month": "2018-08",
+      "state": "BA",
+      "late": 1,
+      "n": 1,
+      "low": 0
+    },
+    {
+      "month": "2018-08",
+      "state": "CE",
+      "late": 0,
+      "n": 55,
+      "low": 3
+    },
+    {
+      "month": "2018-08",
+      "state": "DF",
+      "late": 0,
+      "n": 138,
+      "low": 11
+    },
+    {
+      "month": "2018-08",
+      "state": "DF",
+      "late": 1,
+      "n": 5,
+      "low": 4
+    },
+    {
+      "month": "2018-08",
+      "state": "ES",
+      "late": 0,
+      "n": 103,
+      "low": 9
+    },
+    {
+      "month": "2018-08",
+      "state": "GO",
+      "late": 0,
+      "n": 114,
+      "low": 10
+    },
+    {
+      "month": "2018-08",
+      "state": "GO",
+      "late": 1,
+      "n": 3,
+      "low": 2
+    },
+    {
+      "month": "2018-08",
+      "state": "MA",
+      "late": 0,
+      "n": 27,
+      "low": 2
+    },
+    {
+      "month": "2018-08",
+      "state": "MA",
+      "late": 1,
+      "n": 2,
+      "low": 1
+    },
+    {
+      "month": "2018-08",
+      "state": "MG",
+      "late": 0,
+      "n": 686,
+      "low": 53
+    },
+    {
+      "month": "2018-08",
+      "state": "MG",
+      "late": 1,
+      "n": 12,
+      "low": 3
+    },
+    {
+      "month": "2018-08",
+      "state": "MS",
+      "late": 0,
+      "n": 25,
+      "low": 1
+    },
+    {
+      "month": "2018-08",
+      "state": "MS",
+      "late": 1,
+      "n": 10,
+      "low": 6
+    },
+    {
+      "month": "2018-08",
+      "state": "MT",
+      "late": 0,
+      "n": 39,
+      "low": 3
+    },
+    {
+      "month": "2018-08",
+      "state": "PA",
+      "late": 0,
+      "n": 43,
+      "low": 4
+    },
+    {
+      "month": "2018-08",
+      "state": "PB",
+      "late": 0,
+      "n": 26,
+      "low": 3
+    },
+    {
+      "month": "2018-08",
+      "state": "PB",
+      "late": 1,
+      "n": 2,
+      "low": 0
+    },
+    {
+      "month": "2018-08",
+      "state": "PE",
+      "late": 0,
+      "n": 79,
+      "low": 3
+    },
+    {
+      "month": "2018-08",
+      "state": "PE",
+      "late": 1,
+      "n": 4,
+      "low": 3
+    },
+    {
+      "month": "2018-08",
+      "state": "PI",
+      "late": 0,
+      "n": 20,
+      "low": 3
+    },
+    {
+      "month": "2018-08",
+      "state": "PR",
+      "late": 0,
+      "n": 316,
+      "low": 20
+    },
+    {
+      "month": "2018-08",
+      "state": "PR",
+      "late": 1,
+      "n": 10,
+      "low": 2
+    },
+    {
+      "month": "2018-08",
+      "state": "RJ",
+      "late": 0,
+      "n": 678,
+      "low": 54
+    },
+    {
+      "month": "2018-08",
+      "state": "RJ",
+      "late": 1,
+      "n": 41,
+      "low": 29
+    },
+    {
+      "month": "2018-08",
+      "state": "RN",
+      "late": 0,
+      "n": 20,
+      "low": 0
+    },
+    {
+      "month": "2018-08",
+      "state": "RO",
+      "late": 0,
+      "n": 8,
+      "low": 0
+    },
+    {
+      "month": "2018-08",
+      "state": "RS",
+      "late": 0,
+      "n": 283,
+      "low": 17
+    },
+    {
+      "month": "2018-08",
+      "state": "RS",
+      "late": 1,
+      "n": 9,
+      "low": 4
+    },
+    {
+      "month": "2018-08",
+      "state": "SC",
+      "late": 0,
+      "n": 194,
+      "low": 14
+    },
+    {
+      "month": "2018-08",
+      "state": "SC",
+      "late": 1,
+      "n": 6,
+      "low": 3
+    },
+    {
+      "month": "2018-08",
+      "state": "SE",
+      "late": 0,
+      "n": 23,
+      "low": 3
+    },
+    {
+      "month": "2018-08",
+      "state": "SP",
+      "late": 0,
+      "n": 2874,
+      "low": 210
+    },
+    {
+      "month": "2018-08",
+      "state": "SP",
+      "late": 1,
+      "n": 278,
+      "low": 107
+    },
+    {
+      "month": "2018-08",
+      "state": "TO",
+      "late": 0,
+      "n": 11,
+      "low": 0
+    },
+    {
+      "month": "2018-08",
+      "state": "TO",
+      "late": 1,
+      "n": 2,
+      "low": 0
+    }
+  ],
+  "statuses": [
+    {
+      "status": "delivered",
+      "n": 96478
+    },
+    {
+      "status": "shipped",
+      "n": 1107
+    },
+    {
+      "status": "canceled",
+      "n": 625
+    },
+    {
+      "status": "unavailable",
+      "n": 609
+    },
+    {
+      "status": "invoiced",
+      "n": 314
+    },
+    {
+      "status": "processing",
+      "n": 301
+    },
+    {
+      "status": "created",
+      "n": 5
+    },
+    {
+      "status": "approved",
+      "n": 2
+    }
+  ],
+  "samples": [
+    {
+      "order_id": "10a045cdf6a5650c21e9cfeb60384c16",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-10-17 17:30:18",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-10-30 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "b059ee4de278302d550a3035c4cdb740",
+      "customer_state": "PI",
+      "order_status": "canceled",
+      "purchased_at": "2018-10-16 20:16:02",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-11-12 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 5
+    },
+    {
+      "order_id": "a2ac6dad85cf8af5b0afb510a240fe8c",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-10-03 18:55:29",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-10-16 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "616fa7d4871b87832197b2a137a115d2",
+      "customer_state": "RJ",
+      "order_status": "canceled",
+      "purchased_at": "2018-10-01 15:30:09",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-10-23 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 2
+    },
+    {
+      "order_id": "392ed9afd714e3c74767d0c4d3e3f477",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-29 09:13:03",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-10-15 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "869997fbe01f39d184956b5c6bccfdbe",
+      "customer_state": "RJ",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-26 08:40:15",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-10-25 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "5aac76cf7b07dd06fa4d50bf461d2f40",
+      "customer_state": "MG",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-25 11:59:18",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-10-11 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "ed3efbd3a87bea76c2812c66a0b32219",
+      "customer_state": "MG",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-20 13:54:16",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-10-17 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 2
+    },
+    {
+      "order_id": "bd35b677fd239386e9861d11ae98ab56",
+      "customer_state": "MG",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-17 17:21:16",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-10-01 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 2
+    },
+    {
+      "order_id": "ea844c92cf978ea23321fa7fe5871761",
+      "customer_state": "SC",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-13 09:56:12",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-27 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "1ad22e16129698e1a3cc11e4350d2cb7",
+      "customer_state": "MG",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-12 15:32:16",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-26 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 2
+    },
+    {
+      "order_id": "87ae60ef8b08ae0e5f903cacb53a6904",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-11 16:45:54",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-26 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "21a00b08cbeb5716bbb66105e3dbd850",
+      "customer_state": "RJ",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-10 17:51:25",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-20 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "a89abace0dcc01eeb267a9660b5ac126",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-06 18:45:47",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-27 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 4
+    },
+    {
+      "order_id": "4d59cc2a2e7bb6c0a851725f5888a9b5",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-06 14:50:07",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-21 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 5
+    },
+    {
+      "order_id": "afb61112fb99b07fe17e591c68c0c84c",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-06 10:48:12",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-19 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": null
+    },
+    {
+      "order_id": "cfdfd7862e532c4ec1ed1c6a1b56d320",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-03 18:45:34",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-14 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "0d3adebce4bebc1f80a7f36e9833f497",
+      "customer_state": "RJ",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-03 18:40:50",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-10-02 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "4637ca194b6387e2d538dc89b124b0ee",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-09-03 14:14:25",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-10 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 3
+    },
+    {
+      "order_id": "54282e97f61c23b78330c15b154c867d",
+      "customer_state": "SP",
+      "order_status": "shipped",
+      "purchased_at": "2018-09-03 09:06:57",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-06 00:00:00",
+      "amount_cents": 14500,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "3a3cddda5a7c27851bd96c3313412840",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-31 16:13:44",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-10-01 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 5
+    },
+    {
+      "order_id": "572c4bbf0f5f85a9b4a2c4fe0c7f04d5",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-30 15:11:58",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-14 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 5
+    },
+    {
+      "order_id": "2663ce3526465b7ee9809428adabdc45",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-30 13:07:46",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-12 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 2
+    },
+    {
+      "order_id": "bb8edfe0742a6a0279b7dff848289568",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-30 10:24:34",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-18 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "0a472c47d928bf4cd8b6a7a30345eeb7",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-30 10:14:00",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-10-02 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 3
+    },
+    {
+      "order_id": "8d4c637f1accf7a88a4555f02741e606",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-29 16:27:49",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-13 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 5
+    },
+    {
+      "order_id": "35a972d7f8436f405b56e36add1a7140",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-29 15:00:37",
+      "delivered_at": "2018-08-30 16:23:36",
+      "estimated_delivery_at": "2018-09-05 00:00:00",
+      "amount_cents": 8499,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "03ef5dedbe7492bdae72eec50764c43f",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-29 14:52:00",
+      "delivered_at": "2018-08-30 16:36:59",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 2490,
+      "late": 0,
+      "review_score": 3
+    },
+    {
+      "order_id": "168626408cb32af0ffaf76711caae1dc",
+      "customer_state": "MG",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-29 14:18:28",
+      "delivered_at": "2018-08-30 16:52:31",
+      "estimated_delivery_at": "2018-09-11 00:00:00",
+      "amount_cents": 4590,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "0b223d92c27432930dfe407c6aea3041",
+      "customer_state": "PR",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-29 14:18:23",
+      "delivered_at": "2018-08-30 16:24:55",
+      "estimated_delivery_at": "2018-09-04 00:00:00",
+      "amount_cents": 41800,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "52018484704db3661b98ce838612b507",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-29 12:25:59",
+      "delivered_at": "2018-08-30 22:48:27",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 6390,
+      "late": 0,
+      "review_score": 1
+    },
+    {
+      "order_id": "d03ca98f59480e7e76c71fa83ecd8fb6",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-29 11:06:11",
+      "delivered_at": "2018-08-30 23:56:54",
+      "estimated_delivery_at": "2018-09-04 00:00:00",
+      "amount_cents": 10990,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "d70442bc5e3cb7438da497cc6a210f80",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-29 10:22:35",
+      "delivered_at": "2018-08-30 16:03:19",
+      "estimated_delivery_at": "2018-09-04 00:00:00",
+      "amount_cents": 690,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "b102b42cde7719ae4b7c0163cf4d7dbe",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-29 10:15:27",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-05 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 3
+    },
+    {
+      "order_id": "912859fef5a0bd5059b6d48fa79d121a",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-29 09:48:09",
+      "delivered_at": "2018-08-30 23:28:52",
+      "estimated_delivery_at": "2018-09-04 00:00:00",
+      "amount_cents": 16980,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "fb393211459aac00af932cd7ab4fa2cc",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-29 09:14:11",
+      "delivered_at": "2018-08-30 13:03:28",
+      "estimated_delivery_at": "2018-09-04 00:00:00",
+      "amount_cents": 9900,
+      "late": 0,
+      "review_score": 1
+    },
+    {
+      "order_id": "bee12e8653a04e76786e8891cfb6330a",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-29 08:46:11",
+      "delivered_at": "2018-08-30 21:54:45",
+      "estimated_delivery_at": "2018-09-11 00:00:00",
+      "amount_cents": 45775,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "65fdcb432cb9cfa970e3a3817b39040d",
+      "customer_state": "MG",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-29 08:44:38",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-13 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 2
+    },
+    {
+      "order_id": "c84d88553f9878bf2c7ecda2eb211ece",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-29 08:25:34",
+      "delivered_at": "2018-08-30 16:56:24",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 6500,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "4c867c2aac81653679eff07e922441a0",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 22:51:54",
+      "delivered_at": "2018-08-31 02:03:50",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 2999,
+      "late": 0,
+      "review_score": 3
+    },
+    {
+      "order_id": "e7c290bfc31d7eed478c3d3d2d4d2953",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 22:30:32",
+      "delivered_at": "2018-08-30 17:18:48",
+      "estimated_delivery_at": "2018-09-12 00:00:00",
+      "amount_cents": 7998,
+      "late": 0,
+      "review_score": 2
+    },
+    {
+      "order_id": "dbb786f88b6d4e52fe3cb5d771b979d6",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 21:56:30",
+      "delivered_at": "2018-08-30 18:22:45",
+      "estimated_delivery_at": "2018-09-05 00:00:00",
+      "amount_cents": 14990,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "3064071cf67a2cc381cd53b13055eac5",
+      "customer_state": "RJ",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 21:56:12",
+      "delivered_at": "2018-08-30 19:04:08",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 1990,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "00b44ba3d7c4a5e9a9ebafef9150781d",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 21:10:46",
+      "delivered_at": "2018-08-30 13:38:53",
+      "estimated_delivery_at": "2018-09-26 00:00:00",
+      "amount_cents": 5990,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "cb9628da43a976b479b45230984a05b8",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 20:49:17",
+      "delivered_at": "2018-08-30 21:51:51",
+      "estimated_delivery_at": "2018-09-05 00:00:00",
+      "amount_cents": 71290,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "c8c528189310eaa44a745b8d9d26908b",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-28 20:05:14",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-11 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "bda15d43b16684fa4eff328a7db33d8b",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 19:44:25",
+      "delivered_at": "2018-08-30 20:53:55",
+      "estimated_delivery_at": "2018-09-11 00:00:00",
+      "amount_cents": 11999,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "d99a07d049ac5c39f6f62edba8d57721",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 19:32:31",
+      "delivered_at": "2018-08-30 18:22:46",
+      "estimated_delivery_at": "2018-09-05 00:00:00",
+      "amount_cents": 9990,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "d4fae577806d683110e00e18a5e181be",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 19:32:05",
+      "delivered_at": "2018-08-30 18:32:36",
+      "estimated_delivery_at": "2018-09-12 00:00:00",
+      "amount_cents": 10369,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "20db59f6705840a0ce5c76b77487ad03",
+      "customer_state": "RJ",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 19:31:41",
+      "delivered_at": "2018-08-30 23:18:35",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 16980,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "6d6783e9e03bc56ba0d4f018d45babe3",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 19:27:43",
+      "delivered_at": "2018-08-30 18:22:47",
+      "estimated_delivery_at": "2018-09-05 00:00:00",
+      "amount_cents": 2990,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "141d7ee98d9a50269f84d9a3c5330cba",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 18:58:13",
+      "delivered_at": "2018-08-30 21:26:27",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 3000,
+      "late": 0,
+      "review_score": 4
+    },
+    {
+      "order_id": "0ac69790e2a6e4c075edbd78648a3594",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 18:49:20",
+      "delivered_at": "2018-08-30 20:16:38",
+      "estimated_delivery_at": "2018-09-04 00:00:00",
+      "amount_cents": 750,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "ab7a53a8e94cab448240ff654797c44e",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 17:39:38",
+      "delivered_at": "2018-08-30 18:41:01",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 24990,
+      "late": 0,
+      "review_score": 4
+    },
+    {
+      "order_id": "93d7e1f0c5415c1a0679635187700f1d",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 16:33:22",
+      "delivered_at": "2018-08-30 20:58:42",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 17900,
+      "late": 0,
+      "review_score": 4
+    },
+    {
+      "order_id": "986983dd21e5167fac109fadaf7aac16",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 15:58:28",
+      "delivered_at": "2018-08-30 18:58:52",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 25000,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "2c1f8fd9aa5f50ec17f4c95e52223a3a",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 15:53:09",
+      "delivered_at": "2018-08-30 15:11:38",
+      "estimated_delivery_at": "2018-09-06 00:00:00",
+      "amount_cents": 4180,
+      "late": 0,
+      "review_score": 4
+    },
+    {
+      "order_id": "00b1cb0320190ca0daa2c88b35206009",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-28 15:26:39",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-12 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "9344079d5fbb7dd79af908b7eb667db7",
+      "customer_state": "PR",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 15:11:49",
+      "delivered_at": "2018-08-30 17:28:28",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 16900,
+      "late": 0,
+      "review_score": 4
+    },
+    {
+      "order_id": "c59712a9767189f0a1e5258b5c3447b0",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 14:37:52",
+      "delivered_at": "2018-08-30 16:21:57",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 5900,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "d2ce2764e877473355ddb49af8eb3bc5",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 14:32:59",
+      "delivered_at": "2018-08-30 15:02:39",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 10300,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "f9e254c56ad8dc27d6fd34b26f94711f",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 14:11:30",
+      "delivered_at": "2018-08-30 02:05:03",
+      "estimated_delivery_at": "2018-09-05 00:00:00",
+      "amount_cents": 1900,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "dd7fbf8b53b7ffa059c926a77c42f04f",
+      "customer_state": "RS",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 14:01:04",
+      "delivered_at": "2018-08-31 02:04:31",
+      "estimated_delivery_at": "2018-09-17 00:00:00",
+      "amount_cents": 11650,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "dec9169d4f8c2e229d7421e28ef70781",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 13:29:17",
+      "delivered_at": "2018-08-30 17:51:57",
+      "estimated_delivery_at": "2018-09-13 00:00:00",
+      "amount_cents": 4900,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "7b4f660a72183fc98991998a65320863",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 13:28:34",
+      "delivered_at": "2018-08-30 22:41:16",
+      "estimated_delivery_at": "2018-09-04 00:00:00",
+      "amount_cents": 1450,
+      "late": 0,
+      "review_score": 4
+    },
+    {
+      "order_id": "d01395763bb11d18d9482f322715b80d",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 12:48:50",
+      "delivered_at": "2018-08-29 15:44:47",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 15090,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "dbe2d1c6c34f5c31bb6736e1720c9b7e",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-28 12:45:15",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "a305557a41b3c1889b8e0d9255f9ef1a",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 12:38:17",
+      "delivered_at": "2018-08-31 01:32:26",
+      "estimated_delivery_at": "2018-09-05 00:00:00",
+      "amount_cents": 6399,
+      "late": 0,
+      "review_score": 3
+    },
+    {
+      "order_id": "a5faf579cc2b53168cc080836b834078",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 12:18:54",
+      "delivered_at": "2018-08-29 22:51:47",
+      "estimated_delivery_at": "2018-09-04 00:00:00",
+      "amount_cents": 1200,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "18995da0f41134f344ebeb2e97965d2d",
+      "customer_state": "RJ",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 11:51:45",
+      "delivered_at": "2018-08-29 15:54:46",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 5820,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "576466ecdb1ad73bb848943a98649668",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 11:26:59",
+      "delivered_at": "2018-08-30 14:22:51",
+      "estimated_delivery_at": "2018-09-13 00:00:00",
+      "amount_cents": 1899,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "b0abfb398741998a8e47cc773b5e0edb",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 11:26:02",
+      "delivered_at": "2018-08-30 18:39:49",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 3990,
+      "late": 0,
+      "review_score": 4
+    },
+    {
+      "order_id": "1776f9cc0f976e7aa0e8372a5325c41a",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 11:16:37",
+      "delivered_at": "2018-08-29 22:03:15",
+      "estimated_delivery_at": "2018-09-06 00:00:00",
+      "amount_cents": 6900,
+      "late": 0,
+      "review_score": 2
+    },
+    {
+      "order_id": "b18f96d97651133bd9a491945fa1d3bd",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 10:57:13",
+      "delivered_at": "2018-08-30 17:42:23",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 3000,
+      "late": 0,
+      "review_score": 3
+    },
+    {
+      "order_id": "652c3ffc10b11f6bb6567b4976d901c6",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 10:44:03",
+      "delivered_at": "2018-08-29 20:48:39",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 2890,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "d4e252756885006a02c890a27d6bbf53",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 10:00:01",
+      "delivered_at": "2018-08-29 16:03:12",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 17180,
+      "late": 0,
+      "review_score": 4
+    },
+    {
+      "order_id": "b669dc3736aa7bf3f5f181f9f460dde5",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 09:26:43",
+      "delivered_at": "2018-08-29 19:51:58",
+      "estimated_delivery_at": "2018-09-05 00:00:00",
+      "amount_cents": 4190,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "f4a8925490afed995d0e987c48908d2c",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 09:18:17",
+      "delivered_at": "2018-08-29 15:33:36",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 1490,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "0c1f1a0595fb30e05d526ab83576cd24",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 09:18:03",
+      "delivered_at": "2018-08-30 17:32:25",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 1490,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "85e05c3c9aa9834518f35d4f286014be",
+      "customer_state": "CE",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-28 08:18:22",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-10-10 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "4608a27e9e60c05b054631def491e7af",
+      "customer_state": "DF",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-28 08:10:22",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-12 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "71b4480b617e5a0468d7362efb7c4b3d",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 07:51:19",
+      "delivered_at": "2018-08-29 20:41:25",
+      "estimated_delivery_at": "2018-09-05 00:00:00",
+      "amount_cents": 1499,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "3e72677344408fece35547ac4c8ebb94",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-28 01:57:12",
+      "delivered_at": "2018-08-29 19:26:32",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 7949,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "d5cce452fb90a159a0b02988567a37bc",
+      "customer_state": "MG",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 23:31:47",
+      "delivered_at": "2018-08-30 11:32:21",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 4990,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "c941ad898bc2355a4c9e9a19b504c69c",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 23:30:28",
+      "delivered_at": "2018-08-30 21:36:54",
+      "estimated_delivery_at": "2018-09-06 00:00:00",
+      "amount_cents": 2500,
+      "late": 0,
+      "review_score": 4
+    },
+    {
+      "order_id": "266e6e41522572e8bc4068738beaef07",
+      "customer_state": "PR",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 23:12:55",
+      "delivered_at": "2018-08-30 19:22:00",
+      "estimated_delivery_at": "2018-09-10 00:00:00",
+      "amount_cents": 20190,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "68dd7c23e8b6c1e5f3ad16be5dd4bdf6",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 22:59:03",
+      "delivered_at": "2018-08-29 20:19:50",
+      "estimated_delivery_at": "2018-08-30 00:00:00",
+      "amount_cents": 4200,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "c469458d116f862637d6c26ae62ff8f2",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 22:54:07",
+      "delivered_at": "2018-08-30 20:32:38",
+      "estimated_delivery_at": "2018-08-30 00:00:00",
+      "amount_cents": 4949,
+      "late": 0,
+      "review_score": 4
+    },
+    {
+      "order_id": "e41e7842fa15d821ce598a8b80915cd8",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 22:34:17",
+      "delivered_at": "2018-08-29 20:02:13",
+      "estimated_delivery_at": "2018-08-30 00:00:00",
+      "amount_cents": 8398,
+      "late": 0,
+      "review_score": 4
+    },
+    {
+      "order_id": "24ac51b02d01abde547c474a994d2aa4",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 22:12:59",
+      "delivered_at": "2018-08-30 16:38:43",
+      "estimated_delivery_at": "2018-09-04 00:00:00",
+      "amount_cents": 2260,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "21cb15950725534b614707f82846010e",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 21:36:16",
+      "delivered_at": "2018-08-29 21:33:46",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 2020,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "06914a88cb181e922cc58fed3d198c98",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 21:28:43",
+      "delivered_at": "2018-08-29 20:03:23",
+      "estimated_delivery_at": "2018-09-03 00:00:00",
+      "amount_cents": 15900,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "c89cc188bf7fe39307862cb3dd2d0234",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 21:27:13",
+      "delivered_at": "2018-08-29 19:25:44",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 27490,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "993d5d78bd251d2ad7d2607110a04bbe",
+      "customer_state": "PR",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 21:04:17",
+      "delivered_at": "2018-08-31 00:56:31",
+      "estimated_delivery_at": "2018-09-24 00:00:00",
+      "amount_cents": 5555,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "eeeebba48c7b5fc22f6e12734ed319ed",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 20:47:15",
+      "delivered_at": "2018-08-30 21:03:24",
+      "estimated_delivery_at": "2018-09-10 00:00:00",
+      "amount_cents": 7900,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "a000067196006b1ac2a467ba2156b22d",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 20:31:22",
+      "delivered_at": "2018-08-29 22:18:51",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 6190,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "0785459f4688c430590e9ef6eff2fecb",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 20:03:07",
+      "delivered_at": "2018-08-30 18:48:47",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 2999,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "a966954fa1c451757b4d6c77946f9863",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 19:59:06",
+      "delivered_at": "2018-08-29 18:48:50",
+      "estimated_delivery_at": "2018-09-06 00:00:00",
+      "amount_cents": 4990,
+      "late": 0,
+      "review_score": 5
+    },
+    {
+      "order_id": "27667a063cb59b5d987a5a71c192cce5",
+      "customer_state": "SP",
+      "order_status": "canceled",
+      "purchased_at": "2018-08-27 19:54:54",
+      "delivered_at": null,
+      "estimated_delivery_at": "2018-09-06 00:00:00",
+      "amount_cents": 0,
+      "late": null,
+      "review_score": 1
+    },
+    {
+      "order_id": "d265e2114f019b12adfff1e68a241a8e",
+      "customer_state": "SP",
+      "order_status": "delivered",
+      "purchased_at": "2018-08-27 19:39:33",
+      "delivered_at": "2018-08-29 20:08:43",
+      "estimated_delivery_at": "2018-08-31 00:00:00",
+      "amount_cents": 3400,
+      "late": 0,
+      "review_score": 5
+    }
+  ],
+  "seller": [
+    {
+      "label": "4a3ca9315b744ce9f8e9374361493884",
+      "orders": 1806,
+      "delivery_eligible": 1772,
+      "late_orders": 172,
+      "late_rate": 0.09706546275395034
+    },
+    {
+      "label": "1f50f920176fa81dab994f9023523100",
+      "orders": 1404,
+      "delivery_eligible": 1399,
+      "late_orders": 124,
+      "late_rate": 0.08863473909935668
+    },
+    {
+      "label": "4869f7a5dfa277a7dca6462dcf3b52b2",
+      "orders": 1132,
+      "delivery_eligible": 1124,
+      "late_orders": 118,
+      "late_rate": 0.10498220640569395
+    },
+    {
+      "label": "6560211a19b47992c3666cc44a7e94c0",
+      "orders": 1854,
+      "delivery_eligible": 1819,
+      "late_orders": 96,
+      "late_rate": 0.052776250687190766
+    },
+    {
+      "label": "ea8482cd71df3c1969d7b9473ff13abc",
+      "orders": 1146,
+      "delivery_eligible": 1132,
+      "late_orders": 96,
+      "late_rate": 0.08480565371024736
+    },
+    {
+      "label": "7c67e1448b00f6e969d365cea6b010ab",
+      "orders": 982,
+      "delivery_eligible": 973,
+      "late_orders": 89,
+      "late_rate": 0.09146968139773895
+    },
+    {
+      "label": "cc419e0650a3c5ba77189a1882b7556a",
+      "orders": 1706,
+      "delivery_eligible": 1651,
+      "late_orders": 87,
+      "late_rate": 0.052695336159903086
+    },
+    {
+      "label": "da8622b14eb17ae2831f4ac5b9dab84a",
+      "orders": 1314,
+      "delivery_eligible": 1311,
+      "late_orders": 87,
+      "late_rate": 0.06636155606407322
+    },
+    {
+      "label": "8b321bb669392f5163d04c59e235e066",
+      "orders": 943,
+      "delivery_eligible": 930,
+      "late_orders": 81,
+      "late_rate": 0.08709677419354839
+    },
+    {
+      "label": "955fee9216a65b617aa5c0531780ce60",
+      "orders": 1287,
+      "delivery_eligible": 1261,
+      "late_orders": 77,
+      "late_rate": 0.06106264869151467
+    }
+  ],
+  "category": [
+    {
+      "label": "bed_bath_table",
+      "orders": 9417,
+      "delivery_eligible": 9272,
+      "late_orders": 689,
+      "late_rate": 0.0743097497842968
+    },
+    {
+      "label": "health_beauty",
+      "orders": 8836,
+      "delivery_eligible": 8647,
+      "late_orders": 649,
+      "late_rate": 0.07505493234647855
+    },
+    {
+      "label": "sports_leisure",
+      "orders": 7720,
+      "delivery_eligible": 7529,
+      "late_orders": 495,
+      "late_rate": 0.06574578297250631
+    },
+    {
+      "label": "furniture_decor",
+      "orders": 6449,
+      "delivery_eligible": 6307,
+      "late_orders": 449,
+      "late_rate": 0.07119074044712224
+    },
+    {
+      "label": "computers_accessories",
+      "orders": 6689,
+      "delivery_eligible": 6529,
+      "late_orders": 417,
+      "late_rate": 0.06386889263286874
+    },
+    {
+      "label": "watches_gifts",
+      "orders": 5624,
+      "delivery_eligible": 5493,
+      "late_orders": 406,
+      "late_rate": 0.07391225195703623
+    },
+    {
+      "label": "housewares",
+      "orders": 5884,
+      "delivery_eligible": 5743,
+      "late_orders": 308,
+      "late_rate": 0.053630506703813335
+    },
+    {
+      "label": "telephony",
+      "orders": 4199,
+      "delivery_eligible": 4093,
+      "late_orders": 291,
+      "late_rate": 0.07109699486928903
+    },
+    {
+      "label": "auto",
+      "orders": 3897,
+      "delivery_eligible": 3809,
+      "late_orders": 278,
+      "late_rate": 0.07298503544237332
+    },
+    {
+      "label": "toys",
+      "orders": 3886,
+      "delivery_eligible": 3803,
+      "late_orders": 243,
+      "late_rate": 0.063896923481462
+    }
+  ],
+  "verification": {
+    "status": "通过",
+    "engines": "SQLite (WebAssembly) / 独立 JavaScript",
+    "comparisons": [
+      {
+        "metric": "total_orders",
+        "sql": 99441,
+        "independent": 99441,
+        "passed": true
+      },
+      {
+        "metric": "delivered_orders",
+        "sql": 96478,
+        "independent": 96478,
+        "passed": true
+      },
+      {
+        "metric": "amount_cents",
+        "sql": 1322149811,
+        "independent": 1322149811,
+        "passed": true
+      },
+      {
+        "metric": "delivery_eligible",
+        "sql": 96470,
+        "independent": 96470,
+        "passed": true
+      },
+      {
+        "metric": "late_orders",
+        "sql": 6534,
+        "independent": 6534,
+        "passed": true
+      },
+      {
+        "metric": "review_eligible",
+        "sql": 95832,
+        "independent": 95832,
+        "passed": true
+      },
+      {
+        "metric": "low_reviews",
+        "sql": 12273,
+        "independent": 12273,
+        "passed": true
+      },
+      {
+        "metric": "all_item_cents",
+        "sql": 1359164370,
+        "independent": 1359164370,
+        "passed": true
+      }
+    ],
+    "python": {
+      "status": "通过",
+      "engines": "独立 Python Decimal / Python SQLite / WebAssembly SQLite",
+      "comparisons": [
+        {
+          "metric": "total_orders",
+          "python": 99441,
+          "sql": 99441,
+          "passed": true
+        },
+        {
+          "metric": "delivered_orders",
+          "python": 96478,
+          "sql": 96478,
+          "passed": true
+        },
+        {
+          "metric": "amount_cents",
+          "python": 1322149811,
+          "sql": 1322149811,
+          "passed": true
+        },
+        {
+          "metric": "delivery_eligible",
+          "python": 96470,
+          "sql": 96470,
+          "passed": true
+        },
+        {
+          "metric": "late_orders",
+          "python": 6534,
+          "sql": 6534,
+          "passed": true
+        },
+        {
+          "metric": "review_eligible",
+          "python": 95832,
+          "sql": 95832,
+          "passed": true
+        },
+        {
+          "metric": "low_reviews",
+          "python": 12273,
+          "sql": 12273,
+          "passed": true
+        }
+      ],
+      "aggregate_tables_verified": 9
+    }
+  },
+  "stratified": {
+    "dimensions": "购买月份 × 客户州",
+    "min_per_group": 30,
+    "strata": 49,
+    "orders": 49990,
+    "weighted_difference": 0.482606021265764,
+    "coverage": 0.5216855902487895,
+    "note": "仅包含两组各至少 30 单的共同分层，按分层总样本量加权；探索性关联，不证明因果，未控制品类等全部混杂"
+  },
+  "file_hashes": {
+    "orders.csv": "1747f6e4f0c84995e6c4c16bafb54eaa026ec98b6285073d467d39b9cc7a0515",
+    "order_items.csv": "ef23c7e07428ba5822bdca20da6db784697990b4ec28fc6620c677abb656729f",
+    "order_reviews.csv": "c8457c0f22ecc31980f777b8e5ebb849b976af9167d3f5dc161be764b0e7cba3"
+  },
+  "code_sha256": "018732e8f639898bd2e987f7c4259990aececfa125304e94cd6e08bf4c6645b8",
+  "id": "ab7a405f82b7cf35559a7bea"
+}

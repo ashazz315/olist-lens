@@ -1,0 +1,16 @@
+{
+  "url": "https://olist-lens-operations.redgoby7.chatgpt.site",
+  "platform_deployment": "succeeded",
+  "access_mode": "public",
+  "normal_browser_page_status": 200,
+  "anonymous_fetch_credentials": "omit",
+  "anonymous_fetch_status": 200,
+  "own_application_loaded": true,
+  "headless_and_python_http_status": 403,
+  "headless_reason": "Cloudflare security block; normal browser verified independently",
+  "cloud_file_attachment_test": "not_run_browser_extension_file_url_permission_missing",
+  "local_full_worker_import": "passed; exact published dataset fingerprint matched",
+  "source_commit": "90aacf10e1ecdef11e6229d6452ad395f653d54d",
+  "final_narrow_css_verified": true,
+  "public_download_statuses": {"case_pdf": 200, "templates_zip": 200, "source_zip": 200, "sqlite_wasm": 200}
+}

@@ -1,0 +1,13 @@
+{
+  "schema_version": "1.0.0",
+  "dataset_name": "",
+  "source_uri_or_description": "",
+  "extracted_at": "",
+  "coverage_start": "",
+  "coverage_end": "",
+  "currency": "BRL",
+  "source_timezone": "source_local_unknown",
+  "import_mode": "full_snapshot",
+  "coverage_notes": "",
+  "license_or_usage_notes": ""
+}

@@ -1,0 +1,172 @@
+{
+  "status": "需说明",
+  "errors": 0,
+  "warnings": 2812,
+  "issues": [
+    {
+      "severity": "warning",
+      "code": "timezone_unknown",
+      "file": "dataset_manifest.json",
+      "row": 1,
+      "field": "source_timezone",
+      "message": "来源本地时区未注明：仅作同来源日期比较，不进行跨时区合并",
+      "count": 1
+    },
+    {
+      "severity": "warning",
+      "code": "missing_dates",
+      "file": "orders.csv",
+      "row": null,
+      "field": "delivered_at",
+      "message": "缺履约日期的已交付订单排除延迟率，其他有效指标保留",
+      "count": 8
+    },
+    {
+      "severity": "warning",
+      "code": "status_dates",
+      "file": "orders.csv",
+      "row": null,
+      "field": "order_status",
+      "message": "未交付状态但有实际交付日期：按明确状态口径排除已交付指标，需来源核查",
+      "count": 6
+    },
+    {
+      "severity": "warning",
+      "code": "missing_optional",
+      "file": "order_items.csv",
+      "row": null,
+      "field": "category",
+      "message": "空值保留，相关指标或分组披露覆盖率",
+      "count": 1603
+    },
+    {
+      "severity": "warning",
+      "code": "unreviewed",
+      "file": "order_reviews.csv",
+      "row": null,
+      "field": "order_id",
+      "message": "已交付但无评价的订单不进入评分分母",
+      "count": 646
+    },
+    {
+      "severity": "warning",
+      "code": "multiple_reviews",
+      "file": "order_reviews.csv",
+      "row": null,
+      "field": "order_id",
+      "message": "同订单多评价按最新回答、创建时间及评价 ID 取一条",
+      "count": 547
+    },
+    {
+      "severity": "warning",
+      "code": "period_boundary",
+      "file": "orders.csv",
+      "row": null,
+      "field": "purchased_at",
+      "message": "边界月份与历史覆盖不代表完整经营期间，不能将末期下降直接解释为业务下滑",
+      "count": 1
+    }
+  ],
+  "summary": [
+    {
+      "severity": "warning",
+      "code": "timezone_unknown",
+      "file": "dataset_manifest.json",
+      "field": "source_timezone",
+      "count": 1,
+      "message": "来源本地时区未注明：仅作同来源日期比较，不进行跨时区合并"
+    },
+    {
+      "severity": "warning",
+      "code": "missing_dates",
+      "file": "orders.csv",
+      "field": "delivered_at",
+      "count": 8,
+      "message": "缺履约日期的已交付订单排除延迟率，其他有效指标保留"
+    },
+    {
+      "severity": "warning",
+      "code": "status_dates",
+      "file": "orders.csv",
+      "field": "order_status",
+      "count": 6,
+      "message": "未交付状态但有实际交付日期：按明确状态口径排除已交付指标，需来源核查"
+    },
+    {
+      "severity": "warning",
+      "code": "missing_optional",
+      "file": "order_items.csv",
+      "field": "category",
+      "count": 1603,
+      "message": "空值保留，相关指标或分组披露覆盖率"
+    },
+    {
+      "severity": "warning",
+      "code": "unreviewed",
+      "file": "order_reviews.csv",
+      "field": "order_id",
+      "count": 646,
+      "message": "已交付但无评价的订单不进入评分分母"
+    },
+    {
+      "severity": "warning",
+      "code": "multiple_reviews",
+      "file": "order_reviews.csv",
+      "field": "order_id",
+      "count": 547,
+      "message": "同订单多评价按最新回答、创建时间及评价 ID 取一条"
+    },
+    {
+      "severity": "warning",
+      "code": "period_boundary",
+      "file": "orders.csv",
+      "field": "purchased_at",
+      "count": 1,
+      "message": "边界月份与历史覆盖不代表完整经营期间，不能将末期下降直接解释为业务下滑"
+    }
+  ],
+  "profiles": [
+    {
+      "file": "orders.csv",
+      "input_rows": 99441,
+      "accepted_rows": 99441,
+      "missing": {
+        "order_id": 0,
+        "customer_id": 0,
+        "customer_state": 0,
+        "order_status": 0,
+        "purchased_at": 0,
+        "delivered_at": 2965,
+        "estimated_delivery_at": 0
+      }
+    },
+    {
+      "file": "order_items.csv",
+      "input_rows": 112650,
+      "accepted_rows": 112650,
+      "missing": {
+        "order_id": 0,
+        "order_item_id": 0,
+        "product_id": 0,
+        "seller_id": 0,
+        "category": 1603,
+        "price": 0,
+        "freight_value": 0
+      }
+    },
+    {
+      "file": "order_reviews.csv",
+      "input_rows": 99224,
+      "accepted_rows": 99224,
+      "missing": {
+        "review_id": 0,
+        "order_id": 0,
+        "review_score": 0,
+        "review_created_at": 0,
+        "review_answered_at": 0
+      }
+    }
+  ],
+  "rules_version": "1.0.0",
+  "details_truncated": false
+}

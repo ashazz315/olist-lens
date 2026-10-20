@@ -1,0 +1,155 @@
+{
+  "schema_version": "1.0.0",
+  "status": "implemented",
+  "encoding": "UTF-8",
+  "delimiter": ",",
+  "timestamp_format": "YYYY-MM-DD HH:MM:SS",
+  "import_mode": "full_snapshot",
+  "tables": {
+    "orders": {
+      "filename": "orders.csv",
+      "primary_key": [
+        "order_id"
+      ],
+      "fields": [
+        {
+          "name": "order_id",
+          "type": "string",
+          "nullable": false
+        },
+        {
+          "name": "customer_id",
+          "type": "string",
+          "nullable": false
+        },
+        {
+          "name": "customer_state",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "order_status",
+          "type": "enum",
+          "nullable": false,
+          "values": [
+            "created",
+            "approved",
+            "invoiced",
+            "processing",
+            "shipped",
+            "delivered",
+            "unavailable",
+            "canceled"
+          ]
+        },
+        {
+          "name": "purchased_at",
+          "type": "timestamp",
+          "nullable": false
+        },
+        {
+          "name": "delivered_at",
+          "type": "timestamp",
+          "nullable": true
+        },
+        {
+          "name": "estimated_delivery_at",
+          "type": "timestamp",
+          "nullable": true
+        }
+      ]
+    },
+    "order_items": {
+      "filename": "order_items.csv",
+      "primary_key": [
+        "order_id",
+        "order_item_id"
+      ],
+      "foreign_key": {
+        "order_id": "orders.order_id"
+      },
+      "fields": [
+        {
+          "name": "order_id",
+          "type": "string",
+          "nullable": false
+        },
+        {
+          "name": "order_item_id",
+          "type": "integer",
+          "nullable": false,
+          "minimum": 1
+        },
+        {
+          "name": "product_id",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "seller_id",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "category",
+          "type": "string",
+          "nullable": true
+        },
+        {
+          "name": "price",
+          "type": "decimal",
+          "nullable": false,
+          "minimum": 0,
+          "maximum_decimal_places": 2
+        },
+        {
+          "name": "freight_value",
+          "type": "decimal",
+          "nullable": true,
+          "minimum": 0,
+          "maximum_decimal_places": 2
+        }
+      ]
+    },
+    "order_reviews": {
+      "filename": "order_reviews.csv",
+      "primary_key": [
+        "review_id",
+        "order_id"
+      ],
+      "foreign_key": {
+        "order_id": "orders.order_id"
+      },
+      "allow_header_only": true,
+      "fields": [
+        {
+          "name": "review_id",
+          "type": "string",
+          "nullable": false
+        },
+        {
+          "name": "order_id",
+          "type": "string",
+          "nullable": false
+        },
+        {
+          "name": "review_score",
+          "type": "integer",
+          "nullable": true,
+          "minimum": 1,
+          "maximum": 5
+        },
+        {
+          "name": "review_created_at",
+          "type": "timestamp",
+          "nullable": true
+        },
+        {
+          "name": "review_answered_at",
+          "type": "timestamp",
+          "nullable": true
+        }
+      ]
+    }
+  }
+}
