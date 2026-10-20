@@ -2,7 +2,7 @@
 
 面向电商／运营数据分析岗位的个人作品：真实公开订单分析 + 可重复导入的小工具。公开案例与访客本机数据相互独立。
 
-在线体验：[Olist Lens](https://olist-lens-operations.redgoby7.chatgpt.site) · [案例报告 PDF](output/pdf/olist-case-study.pdf) · [导入模板](output/templates/import-templates-v1.zip) · [数据与计算核验](VALIDATION.md)
+在线体验：[Olist Lens](https://olist-lens-sy-d2g7eacoh8e6c1fae.webapps.tcloudbase.com) · [案例报告 PDF](output/pdf/olist-case-study.pdf) · [导入模板](output/templates/import-templates-v1.zip) · [数据与计算核验](VALIDATION.md)
 
 ![Olist Lens 经营分析概览](docs/images/overview.png)
 

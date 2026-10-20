@@ -1,6 +1,28 @@
-# 云端部署
+# 腾讯云 CloudBase 部署
 
-目标网址：https://olist-lens-operations.redgoby7.chatgpt.site
+当前公开网址：[Olist Lens](https://olist-lens-sy-d2g7eacoh8e6c1fae.webapps.tcloudbase.com/)。
+
+2026 年 10 月 20 日（Asia/Shanghai）已部署至现有环境 sy（sy-d2g7eacoh8e6c1fae），地域 ap-shanghai。当前版本 olist-lens-002，构建 ID 2609022588，云端构建状态 SUCCESS。
+
+首次使用浏览器访问腾讯云测试域名时，平台可能先显示访问提示页；等待倒计时后点击“确定访问”即可进入，无需腾讯云账号登录。
+
+## 发布配置
+
+- serviceName：olist-lens
+- appPath：`/olist-lens`；网关将本应用独立子域名的根路径映射至该存储目录。
+- framework：static；buildPath：dist；installCmd 和 buildCmd 均为空字符串；Node.js 22。
+- 将 cloud/dist 复制为发布暂存目录中的 dist。发布目录只包含公开静态资源与最小 package.json，不上传整个开发目录。
+- 后续使用同一 serviceName 和 appPath 发布新版本。两个产品共用环境，必须保留各自的存储目录，避免同名文件覆盖。
+
+## 线上验收
+
+19 个发布文件均返回 HTTP 200，SHA-256 与发布文件一致；96,478 笔已交付订单快照加载正常。真实 Worker CSV 导入、SQL/WASM 计算、确认切换、IndexedDB 保存、刷新恢复及恢复公开案例通过。桌面1440px与手机390px验收通过，无页面JavaScript错误或资源请求失败。
+
+访客数据仍在浏览器内处理与保存，不上传业务订单，也不跨设备同步。旧域名的浏览器存储不会自动迁移至新域名。
+
+## 原 Sites 部署历史（2026-10-19）
+
+当时网址：https://olist-lens-operations.redgoby7.chatgpt.site
 
 访问范围：public。平台已确认发布成功；普通浏览器正常打开产品，并以 credentials: omit 请求验证匿名 HTTP 200、返回本应用，无需登录。
 
