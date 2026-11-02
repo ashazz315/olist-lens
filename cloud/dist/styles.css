@@ -2,3 +2,86 @@
 .dataset-strip strong{overflow-wrap:anywhere}.chart-svg{min-width:560px}#chart{overflow:auto;display:block}@media print{.chart-svg{min-width:0}}
 @media print{.table-card{break-inside:avoid}th,td{padding:6px 9px}}
 .metric:nth-child(2) .metric-value{font-size:clamp(18px,1.9vw,30px);white-space:nowrap;overflow-wrap:normal}.preview-metrics strong{font-size:clamp(14px,1.4vw,21px);overflow-wrap:normal}@media(max-width:1150px){.metrics{grid-template-columns:repeat(2,1fr)}}
+
+/* Product workspace refresh · 2026-11-02. Local assets, existing workflows. */
+@media screen {
+  :root {--ink:#172b41;--muted:#526579;--line:#dce4ed;--paper:#f3f6fa;--bg:#f3f6fa;--teal:#087f83;--teal-dark:#07666a;--green:#087f83;--pale:#e8f3f4;--soft:#e8f3f4;--deep:#10263b;--white:#fff;--radius:12px}
+  html,body {background:#f3f6fa;color:#172b41}
+  body {font-family:'Segoe UI','Microsoft YaHei','PingFang SC',sans-serif;line-height:1.65;-webkit-font-smoothing:antialiased}
+  h1 {font-size:clamp(25px,2.3vw,34px);font-weight:650;letter-spacing:-.6px;line-height:1.35}
+  h2 {font-size:18px;line-height:1.5;font-weight:650}
+  h3 {font-weight:600}
+  .eyebrow,.section-kicker {font-size:10px;letter-spacing:1.7px;color:#08777c}
+  .sidebar,.rail {background:linear-gradient(165deg,#152b42,#101e30 75%);color:#dbe7f3;border-right:1px solid #23394d}
+  .sidebar .brand,.rail .brand {color:#f3f7fb}
+  .sidebar .brand small,.sidebar-section,.rail-label,.rail-caption,.sidebar .workspace {color:#a5b8cb}
+  .sidebar .nav-item,.sidebar .nav-button,.sidebar .nav,.rail .nav {color:#b9c9d9;border-radius:8px;min-height:46px;font-size:13px;transition:background .16s,color .16s}
+  .sidebar .nav-item:hover,.sidebar .nav-button:hover,.sidebar .nav:hover,.rail .nav:hover {background:#223d53;color:#fff}
+  .sidebar .nav-item.active,.sidebar .nav-button.active,.sidebar .nav.active,.rail .nav.active {background:#254b59;color:#d8fcf4;box-shadow:inset 3px 0 #63cebc}
+  .sidebar .nav-count {background:#173444;color:#d8fcf4}
+  .sidebar-bottom p,.sidebar .rail-bottom small,.side-bottom p {color:#a5b8cb;font-size:11px}
+  .sidebar-bottom .local-mark,.sidebar-bottom .subtle,.sidebar .rail-bottom,.rail .rail-bottom,.side-bottom,.side-bottom a {color:#bed5e4}
+  .sidebar .model-button {background:#1c344a;border-color:#355067;color:#e2eef8}
+  .sidebar .model-button small,.sidebar .model-button>span:last-child,.sidebar .app-version {color:#b5c6d5}
+  .brand-symbol,.brand-mark {box-shadow:0 4px 20px #0002}
+  .topbar {background:#ffffffeb;border-color:var(--line);min-height:64px}
+  .page-heading,.page-intro {margin-bottom:24px;gap:20px}
+  .page-heading p,.page-intro p,.lead {font-size:14px;line-height:1.8;color:#526579}
+  .panel,.card,.metric,.stat-card,.stats>article {background:#fff;border-color:#dce4ed;border-radius:12px;box-shadow:0 4px 18px #172b4105}
+  .button,.small-button,.text-button {font-size:13px;min-height:42px;border-radius:7px;transition:background .16s,border-color .16s,box-shadow .16s}
+  .button.primary,.primary {background:#087f83;border-color:#087f83;color:#fff}
+  .button.primary:hover,.primary:hover {background:#07666a;color:#fff}
+  .button.ghost,.button.secondary {background:#fff;color:#24435b;border-color:#c8d5df}
+  button:not(:disabled):hover {box-shadow:0 2px 7px #172b410a}
+  button:focus-visible,a:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,summary:focus-visible {outline:3px solid #238aab;outline-offset:3px}
+  input,select,textarea {font-size:13px;color:#243b51}
+  input:not([type=checkbox]):not([type=radio]),select {min-height:42px}
+  input::placeholder,textarea::placeholder {color:#637588}
+  th {background:#f1f5f9;color:#526579;font-size:12px;font-weight:600}
+  td {font-size:13px;font-variant-numeric:tabular-nums;border-color:#e7edf3}
+  tbody tr:hover {background:#f6fafc}
+  .table-wrap,.table-scroll {scrollbar-width:thin;scrollbar-color:#b7c8d7 transparent}
+  .metric strong,.metric-value,.stats strong {font-family:'Segoe UI','Microsoft YaHei',sans-serif;font-weight:650;font-variant-numeric:tabular-nums;letter-spacing:-.8px}
+  .metric-label,.metric p,.stat-label {font-size:13px;color:#526579}
+  .metric small,.chart-caption,.chart-note,.scope-note,.small,.panel-foot {font-size:12px;color:#526579;line-height:1.8}
+  .metric {border-top:2px solid #bddedb}
+  .badge,.pill,.local-badge {font-size:11px}
+  .notice,.dataset-banner {background:#edf4f8;border-color:#d5e3ed;color:#425b70;font-size:12px;border-radius:8px}
+  .notice.warning,.message.warning {background:#fff7e8;color:#855313;border-color:#eddbb6}
+  .empty-state {background:#fff;border-color:#c5d3e0;color:#526579}
+  .empty-state b {color:#203b53}
+  dialog {border-color:#cbd7e2;border-radius:14px;box-shadow:0 24px 90px #10203940;background:#fff}
+  dialog::backdrop {background:#101f3270;backdrop-filter:blur(4px)}
+  .guide-body,.guide-page,.report-body {background:#fff;border:1px solid #dce4ed;border-radius:14px;box-shadow:0 12px 40px #172b4108;line-height:1.9}
+  .guide-body h1,.guide-page h1,.report-body h1 {font-size:clamp(26px,3vw,36px)}
+  .guide-body p,.guide-page p,.guide-page li,.report-body p {font-size:14px;color:#455e73}
+  .workspace-footer,footer {font-size:11px;color:#62778a}
+  .guide-steps {display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin:26px 0}
+  .guide-steps article {padding:24px}
+  .guide-steps .step-number {display:inline-grid;place-items:center;width:32px;height:32px;border-radius:8px;background:#e5f2f2;color:#08777c;font:600 13px 'Segoe UI',sans-serif;margin-bottom:14px}
+  .guide-steps p {font-size:14px;color:#526579;line-height:1.9}
+  .guide-steps .button {margin-top:8px}
+  @media(prefers-reduced-motion:no-preference){
+    .view:not([hidden]):not(.hidden),.page-intro,.page-heading {animation:workspace-enter .38s cubic-bezier(.22,1,.36,1) both}
+    @keyframes workspace-enter {from{opacity:.75;transform:translateY(8px)}to{opacity:1;transform:none}}
+  }
+  @media(max-width:800px){
+    .sidebar,.rail {background:#13283d}
+    .sidebar nav,.rail nav {gap:5px;overflow-x:auto;scrollbar-width:thin}
+    .sidebar .nav-item,.sidebar .nav-button,.sidebar .nav,.rail .nav {font-size:12px;min-height:44px}
+    .page-heading,.page-intro {flex-wrap:wrap;gap:12px}
+    .intro-actions {gap:8px}
+    .button,.small-button {font-size:12px;min-height:44px}
+    .metric-label,.metric p {font-size:12px}
+    .metric small {font-size:11px}
+    .metric strong {font-size:27px}
+    .guide-steps {grid-template-columns:1fr}
+    .topbar {flex-wrap:wrap;gap:8px;height:auto;padding-block:12px}
+  }
+  @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+}
+
+@media screen{.shell{grid-template-columns:224px minmax(0,1fr)}.sidebar{padding-inline:22px}.mark{border-radius:5px;background:#7ed9ca;transform:rotate(-12deg)}.brand-dot{color:#7ed9ca}.card,.metric{background:#fff}.dataset-strip{background:#fff;border:1px solid #dce4ed;border-radius:10px;padding:16px 20px;gap:16px}.tiny-label{font-size:11px}.dataset-strip strong,.dataset-strip>div>span:not(.tiny-label){font-size:12px}.readout{background:linear-gradient(115deg,#143349,#204c5b);border:0;border-radius:12px;color:#eaf7fb;padding:24px;grid-template-columns:120px 1fr;gap:20px}.readout p,.readout b{color:#e0edf5;font-size:13px;line-height:1.8}.readout-label{font-size:16px;font-weight:600}.readout-label span{color:#a4c8d7;font-size:9px}.metric-value{font-size:30px;line-height:1.5}.metric small{font-size:11px}.action-card{background:#edf4f8}.action-item h3{font-size:14px}.action-item p{font-size:12px}.chart-tabs button{font-size:13px;min-height:44px}.unit-label{font-size:11px}.methods p{font-size:14px;line-height:1.9}.import-banner{border-radius:12px;background:#eaf2f7;padding:24px}.import-banner p{font-size:13px}.file-field{font-size:13px}.nav-button span{color:#9fb9cb}.table-card .small{font-size:12px}@media(max-width:800px){.shell{display:block}.sidebar{height:auto;position:relative;padding:16px}.sidebar nav{display:flex;gap:5px}.nav-button{width:auto;flex:0 0 auto;gap:6px;padding:10px}.rail-label,.rail-bottom{display:none}.brand{margin-bottom:14px}.workspace main{padding:24px 16px 0}.topbar{padding-inline:16px}.readout{grid-template-columns:1fr;gap:12px;padding:20px}.readout-label span{display:inline;margin-left:12px}.readout p{font-size:12px}.dataset-strip{grid-template-columns:1fr 1fr;padding:14px}.metric-value{font-size:25px}.metric{padding:14px}.analysis-layout{grid-template-columns:1fr}.card{padding:18px}.import-banner{padding:20px}}
+}
+
+@media screen{section.panel[id^="panel-"]{background:transparent;border:0;box-shadow:none}}
