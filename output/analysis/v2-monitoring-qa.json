@@ -2,7 +2,7 @@
   "ok": true,
   "synthetic_imports": true,
   "real_data_reimport": "not_run_missing_CSV",
-  "base": "http://127.0.0.1:55106",
+  "base": "http://127.0.0.1:51332",
   "checks": [
     "public historical snapshot shows no fabricated live monitoring",
     "import automatically recomputes; Worker and CLI evidence agree; preview remains unpublished",

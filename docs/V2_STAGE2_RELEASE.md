@@ -1,3 +1,5 @@
+> 本文件记录 2.0.0 / olist-lens-007 的阶段性交付。后续 2.0.1 专项审计见 [MONITORING_AUDIT.md](MONITORING_AUDIT.md)。
+
 # 第二阶段发布记录
 
 2026-11-14（Asia/Shanghai），腾讯云应用 `olist-lens` 发布版本 `olist-lens-007`，构建 `2612572730`，状态 SUCCESS。

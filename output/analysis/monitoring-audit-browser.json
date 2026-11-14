@@ -1,0 +1,39 @@
+{
+  "ok": true,
+  "synthetic_inputs": true,
+  "base": "https://olist-lens-sy-d2g7eacoh8e6c1fae.webapps.tcloudbase.com",
+  "checks": [
+    {
+      "name": "upgrade reads 007 IndexedDB records, preserves closure, and creates a separately bound new snapshot",
+      "passed": true
+    },
+    {
+      "name": "zero-denominator monitor card shows not applicable, not zero",
+      "passed": true
+    },
+    {
+      "name": "cancel after async ready checkpoint cannot resurrect candidate or overwrite active version",
+      "passed": true
+    },
+    {
+      "name": "cancel during raw-file read cannot start a worker or replace previous version",
+      "passed": true
+    },
+    {
+      "name": "operations SQL independent mismatch blocks whole candidate and retains accepted snapshot",
+      "passed": true
+    },
+    {
+      "name": "legacy SQL mismatch also records a quality failure and preserves current version",
+      "passed": true
+    },
+    {
+      "name": "commit checkpoint prevents competing restore, second upload and duplicate commit",
+      "passed": true
+    },
+    {
+      "name": "recovery refresh never guesses a new current pointer for an interrupted pre-save publication",
+      "passed": true
+    }
+  ]
+}

@@ -3,12 +3,14 @@ globalThis.LensMonitorStore=(()=>{
 'use strict';
 const fresh=()=>({schema_version:1,jobs:{},datasets:{},runs:{},events:{},event_history:[],snapshot_runs:{}});
 const terminal=new Set(['succeeded','duplicate','failed','canceled','interrupted']);
-function createJob(state,job){state.jobs[job.job_id]={...job,status:'queued',transitions:[{status:'queued',at:job.submitted_at}]};return state.jobs[job.job_id];}
+function createJob(state,job){if(Object.hasOwn(state.jobs,job.job_id))throw Error('任务编号已存在，不能覆盖执行历史');state.jobs[job.job_id]={...job,status:'queued',transitions:[{status:'queued',at:job.submitted_at}]};return state.jobs[job.job_id];}
 const transitions={queued:['validating','failed','canceled','interrupted'],validating:['computing','failed','canceled','interrupted'],computing:['awaiting_confirmation','failed','canceled','interrupted'],awaiting_confirmation:['publishing','duplicate','canceled','interrupted'],publishing:['succeeded','duplicate','publication_pending','failed'],publication_pending:['publishing','canceled']};
 function transition(state,id,status,extra={}){const job=state.jobs[id];if(!job)throw Error('更新任务不存在');if(job.status!==status&&!transitions[job.status]?.includes(status))throw Error('非法任务流转 '+job.status+' → '+status);Object.assign(job,extra,{status,updated_at:new Date().toISOString()});job.transitions.push({status,at:job.updated_at});if(terminal.has(status))job.finished_at=job.updated_at;return job;}
 function publish(state,id,pack){
  const job=state.jobs[id];if(!job||!['publishing','publication_pending'].includes(job.status))throw Error('任务尚未确认发布');
  if(pack.status!=='verified'||pack.gates.length)throw Error('监控质量门禁未通过');
+ for(const key of ['dataset_version','run_id','v1_snapshot_id'])if(!pack[key]||job[key]!==pack[key])throw Error('任务与证据包版本绑定不一致：'+key);
+ if(!Array.isArray(pack.events)||pack.events.some(e=>e.dataset_version!==pack.dataset_version||e.analysis_run_id!==pack.run_id||e.v1_snapshot_id!==pack.v1_snapshot_id||e.rule_version!==pack.rule_set_version||e.metric_version!==pack.metric_version||!e.fired||!e.evidence?.independent_verification?.passed||!e.evidence_ids?.includes(e.evidence.id)))throw Error('异常事件与证据包版本不一致');
  const existing=state.runs[pack.run_id],m=pack.source_ref.manifest;
  const prior=Object.values(state.datasets).filter(d=>d.source===m.source_uri_or_description&&d.coverage_start===m.coverage_start&&d.coverage_end===m.coverage_end&&d.dataset_version!==pack.dataset_version).sort((a,b)=>b.published_at.localeCompare(a.published_at))[0];
  const now=new Date().toISOString();

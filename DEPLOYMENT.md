@@ -1,3 +1,5 @@
+> 2026-11-14 v2.0.1 专项审计修复：olist-lens-008 / 2612577490。见 [本轮发布记录](docs/MONITORING_AUDIT_RELEASE.md)，旧 007 版本保留。
+
 > 2026-11-14 第二阶段已发布：olist-lens-007，build 2612572730，27 文件哈希一致，线上 12 + 14 个浏览器场景通过。见 [发布记录](docs/V2_STAGE2_RELEASE.md)。
 
 # 腾讯云 CloudBase 部署

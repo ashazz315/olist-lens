@@ -1,3 +1,5 @@
+> 2.0.1 对现有能力完成专项审计与边界修复，当前监控计算版本为 monitoring-2.0.1。下文保留第二阶段架构说明，修复详情见 [MONITORING_AUDIT.md](MONITORING_AUDIT.md)。
+
 # v2.0 第二阶段：数据更新与异常监控
 
 交付日期：2026-11-14（Asia/Shanghai）。计算版本 `monitoring-2.0.0`；购买指标契约仍为 `operations-2.0.0`。原 v1 履约口径不变。

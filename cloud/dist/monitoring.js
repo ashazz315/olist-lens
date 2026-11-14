@@ -2,13 +2,16 @@
 globalThis.LensMonitoring=(()=>{
 'use strict';
 const O=typeof module!=='undefined'?require('./operations.js'):globalThis.LensOperations;
-const VERSION='monitoring-2.0.0',METRICS={amount_cents:['购买订单商品金额','分'],orders:['购买订单量','单'],units:['商品件数','件'],aov_cents:['订单平均商品金额','分/单'],late_rate:['延迟率','比例']};
+const VERSION='monitoring-2.0.1',METRICS={amount_cents:['购买订单商品金额','分'],orders:['购买订单量','单'],units:['商品件数','件'],aov_cents:['订单平均商品金额','分/单'],late_rate:['延迟率','比例']};
 const median=a=>{const b=[...a].sort((x,y)=>x-y),n=b.length;return n?n%2?b[(n-1)/2]:(b[n/2-1]+b[n/2])/2:null;};
 const empty=()=>({amount_cents:0,orders:0,units:0,delivery_eligible:0,late_orders:0});
 function configuration(manifest){
+ const object=x=>x!==null&&typeof x==='object'&&!Array.isArray(x);
+ if(manifest.monitoring!==undefined&&!object(manifest.monitoring))return {config:{mode:'historical_replay'},errors:['invalid_monitoring_config']};
  const c=manifest.monitoring||{},o=manifest.operations||{};
  const config={mode:c.mode||'historical_replay',min_orders:c.min_orders??o.min_orders??30,baseline_periods:o.baseline_periods??8,mad_multiplier:c.mad_multiplier??o.thresholds?.mad_multiplier??3,thresholds:{amount_cents:{absolute:o.thresholds?.absolute_cents??10000,relative:o.thresholds?.relative??0.1},orders:{absolute:10,relative:0.1},units:{absolute:10,relative:0.1},aov_cents:{absolute:1000,relative:0.1},late_rate:{absolute:0.05,relative:0},...c.thresholds},fulfillment:c.fulfillment||null};
  const errors=[];
+ if(c.fulfillment!==undefined&&(!object(c.fulfillment)||typeof c.fulfillment.finalized_cohorts!=='boolean'||typeof c.fulfillment.observed_through!=='string'||typeof c.fulfillment.evidence!=='string'))errors.push('invalid_fulfillment_config');
  if(!['historical_replay','manual_snapshot'].includes(config.mode))errors.push('unsupported_mode');
  if(!Number.isSafeInteger(config.min_orders)||config.min_orders<1)errors.push('invalid_min_orders');
  if(!Number.isFinite(config.mad_multiplier)||config.mad_multiplier<=0)errors.push('invalid_mad_multiplier');
@@ -24,20 +27,28 @@ async function datasetIdentity(valid){
  const tables=Object.fromEntries(Object.entries(valid.tables).map(([k,rows])=>[k,rows.map(O.canonical).sort()]));
  return O.hash({tables,semantics});
 }
+// Exact fractions also cover derived monetary means and rate threshold boundaries.
+const abs=n=>n<0n?-n:n;
+function fraction(n,d=1n){if(d===0n)return null;if(d<0n){n=-n;d=-d;}let a=abs(n),b=d;while(b){const t=a%b;a=b;b=t;}const g=a||1n;return {n:n/g,d:d/g};}
+const subtract=(a,b)=>fraction(a.n*b.d-b.n*a.d,a.d*b.d),multiply=(a,b)=>fraction(a.n*b.n,a.d*b.d),absolute=a=>fraction(abs(a.n),a.d);
+const compare=(a,b)=>{const v=a.n*b.d-b.n*a.d;return v<0n?-1:v>0n?1:0;};
+const numeric=a=>a===null?null:Number(a.n)/Number(a.d),record=a=>a===null?null:{numerator:String(a.n),denominator:String(a.d)};
+function decimal(x){const [mantissa,exp='0']=String(x).split(/e/i),parts=mantissa.split('.'),digits=BigInt(parts.join('')),power=Number(exp)-(parts[1]?.length||0);return power>=0?fraction(digits*10n**BigInt(power)):fraction(digits,10n**BigInt(-power));}
+function medianFraction(values){if(!values.length)return null;const a=[...values].sort(compare),i=Math.floor(a.length/2);return a.length%2?a[i]:fraction(a[i-1].n*a[i].d+a[i].n*a[i-1].d,2n*a[i-1].d*a[i].d);}
 function evaluate(before,after,history,metric,config,reasons=[]){
- const value=r=>metric==='aov_cents'?(r.orders?r.amount_cents/r.orders:null):metric==='late_rate'?(r.delivery_eligible?r.late_orders/r.delivery_eligible:null):r[metric];
+ const value=r=>metric==='aov_cents'?fraction(BigInt(r.amount_cents),BigInt(r.orders)):metric==='late_rate'?fraction(BigInt(r.late_orders),BigInt(r.delivery_eligible)):fraction(BigInt(r[metric]));
  const a=value(before),b=value(after),h=history.map(value),denom=r=>metric==='late_rate'?r.delivery_eligible:r.orders;
  reasons=[...reasons];
  if(Math.min(denom(before),denom(after))<config.min_orders)reasons.push('low_sample');
  if(history.length<config.baseline_periods)reasons.push('insufficient_historical_coverage');
  if(history.some(r=>denom(r)<config.min_orders))reasons.push('low_historical_sample');
  if(a===null||b===null||h.some(x=>x===null))reasons.push('missing_denominator');
- if(a===0&&metric!=='late_rate')reasons.push('zero_baseline');
- const delta=a===null||b===null?null:b-a,relative=a?delta/a:null;
- const changes=h.slice(1).map((v,i)=>v===null||h[i]===null?null:v-h[i]).filter(v=>v!==null),center=median(changes),mad=center===null?null:median(changes.map(v=>Math.abs(v-center))),limit=mad===null?null:config.mad_multiplier*1.4826*mad;
- const t=config.thresholds[metric],deviation=center===null||delta===null?null:Math.abs(delta-center);
- const fired=!reasons.length&&delta!==0&&Math.abs(delta)>=t.absolute&&(metric==='late_rate'||relative!==null&&Math.abs(relative)>=t.relative)&&deviation>limit;
- return {metric_id:metric,metric_label:METRICS[metric][0],unit:METRICS[metric][1],before:a,after:b,absolute_change:delta,relative_change:relative,percentage_point_change:metric==='late_rate'&&delta!==null?delta*100:null,denominators:{before:denom(before),after:denom(after)},fired,suppressed_reasons:[...new Set(reasons)],thresholds:t,baseline:{values:h,changes,median_change:center,mad,limit,deviation,zero_mad:mad===0}};
+ if(a?.n===0n&&metric!=='late_rate')reasons.push('zero_baseline');
+ const delta=a===null||b===null?null:subtract(b,a),relative=a?.n&&delta?fraction(delta.n*a.d,delta.d*a.n):null;
+ const changes=h.slice(1).map((v,i)=>v===null||h[i]===null?null:subtract(v,h[i])).filter(v=>v!==null),center=medianFraction(changes),mad=center===null?null:medianFraction(changes.map(v=>absolute(subtract(v,center)))),limit=mad===null?null:multiply(mad,multiply(decimal(config.mad_multiplier),decimal(1.4826)));
+ const t=config.thresholds[metric],deviation=center===null||delta===null?null:absolute(subtract(delta,center));
+ const fired=!reasons.length&&delta?.n!==0n&&delta!==null&&compare(absolute(delta),decimal(t.absolute))>=0&&(metric==='late_rate'||relative!==null&&compare(absolute(relative),decimal(t.relative))>=0)&&deviation!==null&&compare(deviation,limit)>0;
+ return {metric_id:metric,metric_label:METRICS[metric][0],unit:METRICS[metric][1],before:numeric(a),after:numeric(b),absolute_change:numeric(delta),relative_change:numeric(relative),percentage_point_change:metric==='late_rate'&&delta!==null?numeric(multiply(delta,fraction(100n))):null,exact:{before:record(a),after:record(b),absolute_change:record(delta),relative_change:record(relative)},denominators:{before:denom(before),after:denom(after)},fired:!!fired,suppressed_reasons:[...new Set(reasons)],thresholds:t,baseline:{values:h.map(numeric),changes:changes.map(numeric),median_change:numeric(center),mad:numeric(mad),limit:numeric(limit),deviation:numeric(deviation),zero_mad:mad?.n===0n,exact:{median_change:record(center),mad:record(mad),limit:record(limit),deviation:record(deviation)}}};
 }
 function fulfillmentGate(valid,ops,config){
  const f=config.fulfillment;
@@ -75,6 +86,20 @@ async function run(valid,result,code_sha256){
  base.negative_products=ops.dimensions.product.filter(r=>r.delta_cents<0).sort((a,b)=>a.delta_cents-b.delta_cents).map(r=>({...r,evidence:ops.evidence.find(e=>e.id===r.evidence_id)}));
  base.status='verified';base.evidence_hash=await O.hash({dataset_version,rule_set_version,evaluations:base.evaluations});return base;
 }
-return {VERSION,METRICS,configuration,datasetIdentity,evaluate,run};
+// Keep v1 snapshot identities unchanged. v2 snapshots also bind their monitoring calculation.
+async function bindSnapshot(result){
+ if(!result.manifest.operations||!result.monitoring)return result;
+ result.operations_snapshot_id=result.operations_snapshot_id||result.id;
+ result.id=(await O.hash({operations_snapshot_id:result.operations_snapshot_id,monitoring_run_id:result.monitoring.run_id})).slice(0,24);
+ result.monitoring.v1_snapshot_id=result.id;for(const event of result.monitoring.events)event.v1_snapshot_id=result.id;
+ return result;
+}
+function blockingQuality(result){
+ const gates=(result.operations?.gates||[]).filter(g=>['independent_verification_failed','calculation_failed','operations_execution_failed'].includes(g)||g.startsWith('reconciliation_failed_'));
+ if(!gates.length)return null;
+ const issues=gates.map(code=>({severity:'error',code,file:'operations.sql',field:'',message:'经营计算或独立复算失败，禁止切换整个候选版本',count:1}));
+ return {...result.quality,status:'阻断',errors:result.quality.errors+issues.length,summary:[...result.quality.summary,...issues],issues:[...result.quality.issues,...issues]};
+}
+return {VERSION,METRICS,configuration,datasetIdentity,evaluate,run,bindSnapshot,blockingQuality};
 })();
 if(typeof module!=='undefined')module.exports=globalThis.LensMonitoring;

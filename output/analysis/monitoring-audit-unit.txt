@@ -1,0 +1,56 @@
+
+> olist-lens@2.0.1 test
+> node --test tests/core.test.cjs tests/operations.test.cjs tests/monitoring.test.cjs tests/monitor-server.test.cjs tests/monitoring-audit.test.cjs
+
+✔ money is exact; same-day midnight is on time; latest review; null coverage (41.8071ms)
+✔ identical duplicate is audited and does not multiply amounts (1.1928ms)
+✔ conflicting duplicate blocks candidate (0.7508ms)
+✔ orphan, missing delivered item, and invalid rating block (1.2855ms)
+✔ invalid real date, coverage, negative money and metadata are rejected (2.8644ms)
+✔ empty templates and duplicate or unknown headers block (1.407ms)
+✔ zero denominator remains not applicable, never 0 percent (5.7396ms)
+✔ SYNTHETIC: authenticated scheduler contract persists disabled config, rejects enablement and arbitrary sources (117.6932ms)
+✔ SYNTHETIC audit: independent expected totals, distinct orders, four dimension reconciliation and exact effects (78.1718ms)
+✔ SYNTHETIC audit: isolated absolute and relative threshold boundaries, stable history, zero MAD and flat period (0.7213ms)
+✔ SYNTHETIC audit: separate suppression reasons for history/current sample, missing dimensions and zero base (2.5728ms)
+✔ SYNTHETIC audit regression: percentage-point threshold equality must not be lost to floating subtraction (0.2281ms)
+✔ SYNTHETIC audit: derived monetary means retain inspectable exact rational evidence (0.6539ms)
+✔ SYNTHETIC audit regression: malformed monitor configuration fails closed (0.3542ms)
+✔ SYNTHETIC audit regression: monitor calculation revision must have a new complete-snapshot identity (36.3738ms)
+✔ SYNTHETIC audit regression: publication rejects wrong job/run/data/snapshot binding without mutations (15.8973ms)
+✔ SYNTHETIC audit regression: publication rejects cross-version event evidence despite verified pack label (13.6739ms)
+✔ SYNTHETIC audit regression: duplicate job ID cannot replace a completed execution history (12.3552ms)
+✔ SYNTHETIC audit: full lifecycle, evidence requirement, explicit reopen and quality gate (11.3665ms)
+✔ SYNTHETIC: four scopes have independent baselines and traceable metric snapshots (74.9817ms)
+✔ SYNTHETIC: canonical data version ignores row order and exact duplicates, rules create separate runs (54.0464ms)
+✔ SYNTHETIC: low samples, zero bases, missing dimensions and incomplete history suppress rather than normalize (46.4632ms)
+✔ SYNTHETIC: incomplete or invalid monitoring config blocks every new business conclusion (30.7328ms)
+✔ SYNTHETIC: mature fulfillment uses valid order denominator and calendar dates, not item/review fanout (21.4187ms)
+✔ SYNTHETIC: historical volatility and absolute thresholds suppress noise; baseline excludes present (0.3513ms)
+✔ SYNTHETIC: duplicate publication preserves manual closure and immutable audit history (11.6243ms)
+✔ SYNTHETIC: revised historical batch retains old version, evidence and processing state (19.4715ms)
+✔ SYNTHETIC: state machine rejects premature publication and quality event dedup preserves accepted datasets (10.0169ms)
+✔ SYNTHETIC: pending publication can be recovered idempotently from a saved verified pack (10.8531ms)
+✔ SYNTHETIC: purchase vs delivered, status exclusions, multi-item/review fanout, all dimensions reconcile (69.9072ms)
+✔ SYNTHETIC: exact rational identity across fractional unit averages and near-safe large amounts (2.6668ms)
+✔ SYNTHETIC: identical reruns keep identity; duplicate rows and extra reviews never multiply amounts (57.9583ms)
+✔ SYNTHETIC: missing shipped item blocks only v2 while old fulfillment still computes (6.3836ms)
+✔ SYNTHETIC: primary key conflict and invalid source data block all new conclusions (0.5661ms)
+✔ SYNTHETIC: completeness, period comparability and invalid thresholds fail closed (52.6378ms)
+✔ SYNTHETIC: missing product retains unknown amount but suppresses alert; missing optional dimensions disclosed (19.3673ms)
+✔ SYNTHETIC: low samples and short history suppress alerts without inventing baseline (21.1685ms)
+✔ SYNTHETIC: total delta zero returns null contribution; zero baseline and empty periods are not percentage drops (27.3458ms)
+✔ SYNTHETIC: configuration changes invalidate run and candidate identity (20.8237ms)
+✔ SYNTHETIC: SQL mutation is caught by independent JS verification (3.5333ms)
+✔ SYNTHETIC: AI adapter says evidence insufficient for missing facts, and binds answer and human action to version (10.3304ms)
+✔ SYNTHETIC: variable historical changes use median/MAD; current period never trains the baseline (27.0133ms)
+✔ SYNTHETIC: product movement across categories is flagged and dimensions stay additive (10.0639ms)
+✔ SYNTHETIC: extraction watermark respects source timezone and conservatively handles unknown timezone (22.3955ms)
+ℹ tests 44
+ℹ suites 0
+ℹ pass 44
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 464.6345

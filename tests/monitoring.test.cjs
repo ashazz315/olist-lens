@@ -3,7 +3,7 @@
 const test=require('node:test'),assert=require('node:assert/strict');
 const {fixture,files}=require('./operations-fixture.cjs'),{analyze}=require('../scripts/operations.cjs'),M=require('../cloud/dist/monitoring.js'),S=require('../cloud/dist/monitor-store.js');
 const evaluate=async(f=fixture())=>(await analyze(files(f.rows),f.manifest)).monitoring;
-function stage(s,p,id='job'){S.createJob(s,{job_id:id,submitted_at:new Date().toISOString()});for(const status of ['validating','computing','awaiting_confirmation','publishing'])S.transition(s,id,status);return S.publish(s,id,p);}
+function stage(s,p,id='job'){S.createJob(s,{job_id:id,dataset_version:p.dataset_version,run_id:p.run_id,v1_snapshot_id:p.v1_snapshot_id,submitted_at:new Date().toISOString()});for(const status of ['validating','computing','awaiting_confirmation','publishing'])S.transition(s,id,status);return S.publish(s,id,p);}
 test('SYNTHETIC: four scopes have independent baselines and traceable metric snapshots',async()=>{
  const p=await evaluate();assert.equal(p.status,'verified');assert.equal(p.mode,'historical_replay');assert.equal(p.is_synthetic,true);
  for(const scope of ['shop','product','category','seller'])assert(p.events.some(e=>e.scope_type===scope&&e.metric_id==='amount_cents'));
@@ -45,5 +45,5 @@ test('SYNTHETIC: state machine rejects premature publication and quality event d
  const p=await evaluate(),s=S.fresh();S.createJob(s,{job_id:'q',submitted_at:'2020-01-01'});assert.throws(()=>S.publish(s,'q',p),/确认/);assert.throws(()=>S.transition(s,'q','succeeded'),/非法/);S.transition(s,'q','failed');const e={event_id:'bad-batch',event_type:'data_quality',dataset_version:null,status:'pending'};S.qualityEvent(s,'q',e);S.qualityEvent(s,'q',e);assert.equal(Object.keys(s.events).length,1);assert.equal(s.events[e.event_id].attempts.length,1);assert.equal(Object.keys(s.datasets).length,0);
 });
 test('SYNTHETIC: pending publication can be recovered idempotently from a saved verified pack',async()=>{
- const p=await evaluate(),s=S.fresh();S.createJob(s,{job_id:'recover',submitted_at:'2020-01-01'});for(const status of ['validating','computing','awaiting_confirmation','publishing','publication_pending'])S.transition(s,'recover',status);S.publish(s,'recover',p);assert.equal(s.jobs.recover.status,'succeeded');assert.equal(s.snapshot_runs[p.v1_snapshot_id],p.run_id);
+ const p=await evaluate(),s=S.fresh();S.createJob(s,{job_id:'recover',dataset_version:p.dataset_version,run_id:p.run_id,v1_snapshot_id:p.v1_snapshot_id,submitted_at:'2020-01-01'});for(const status of ['validating','computing','awaiting_confirmation','publishing','publication_pending'])S.transition(s,'recover',status);S.publish(s,'recover',p);assert.equal(s.jobs.recover.status,'succeeded');assert.equal(s.snapshot_runs[p.v1_snapshot_id],p.run_id);
 });

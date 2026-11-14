@@ -1,12 +1,14 @@
 {
   "name": "olist-lens",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "private": true,
   "description": "Historical ecommerce replay, verified metrics and local anomaly monitoring",
-  "engines": {"node": ">=22"},
+  "engines": {
+    "node": ">=22"
+  },
   "scripts": {
-    "test": "node --test tests/core.test.cjs tests/operations.test.cjs tests/monitoring.test.cjs tests/monitor-server.test.cjs",
-    "test:browser": "node scripts/qa_operations.cjs && node scripts/qa_monitoring.cjs",
+    "test": "node --test tests/core.test.cjs tests/operations.test.cjs tests/monitoring.test.cjs tests/monitor-server.test.cjs tests/monitoring-audit.test.cjs",
+    "test:browser": "node scripts/qa_operations.cjs && node scripts/qa_monitoring.cjs && node scripts/qa_monitoring_audit.cjs",
     "monitor:contract": "node scripts/monitor-server.cjs"
   }
 }

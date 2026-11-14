@@ -1,3 +1,5 @@
+> 本文件记录 2.0.0 / olist-lens-007 的阶段性交付。后续 2.0.1 专项审计见 [MONITORING_AUDIT.md](MONITORING_AUDIT.md)。
+
 # 第二阶段验收记录
 
 日期：2026-11-14（Asia/Shanghai）。所有新增输入均为明确标注的合成样本；不代表真实 Olist 经营表现、异常数量或改善效果。

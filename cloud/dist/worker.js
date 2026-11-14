@@ -20,8 +20,10 @@ self.onmessage=async e=>{
     result.analysis_runs=[{run_id:result.operations.id,status:result.operations.status,generated_at:result.operations.generated_at,gates:result.operations.gates}];
    }catch(err){result.operations={status:'blocked',gates:['operations_execution_failed'],error:err.message,alerts:[]};}
   }
+  const blockingQuality=LensMonitoring.blockingQuality(result);if(blockingQuality){self.postMessage({type:'blocked',quality:blockingQuality});return;}
   self.postMessage({type:'progress',message:'执行分维度监控规则与历史基线检查…'});
   result.monitoring=await LensMonitoring.run(valid,result,await sha(await fetch('monitoring.js').then(r=>{if(!r.ok)throw Error('监控模块读取失败');return r.text();})));
+  await LensMonitoring.bindSnapshot(result);
   self.postMessage({type:'ready',result});
- }catch(err){self.postMessage({type:'error',message:err.message||String(err)});}
+ }catch(err){self.postMessage({type:'error',failure_kind:/独立复算不一致/.test(err.message)?'data_quality':'execution',message:err.message||String(err)});}
 };

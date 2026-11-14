@@ -1,0 +1,126 @@
+{
+  "date": "2026-11-14",
+  "timezone": "Asia/Shanghai",
+  "baseline_commit": "b83f1199751b8ac5064756e688db1bf4e66372e4",
+  "baseline_cloud_version": "olist-lens-007",
+  "input_kind": "explicitly synthetic",
+  "real_csv_reimport": "not_run_missing_CSV",
+  "before_fix": {
+    "unit": {
+      "total": 10,
+      "pass": 4,
+      "fail": 6
+    },
+    "browser": {
+      "ok": false,
+      "synthetic_inputs": true,
+      "base": "http://127.0.0.1:51328",
+      "checks": [
+        {
+          "name": "zero-denominator monitor card shows not applicable, not zero",
+          "passed": false,
+          "error": "The input did not match the regular expression /不适用/. Input:\n\n'0 BRL'\n"
+        },
+        {
+          "name": "cancel after async ready checkpoint cannot resurrect candidate or overwrite active version",
+          "passed": false,
+          "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ {\n+   files: {\n+     'order_items.csv': 'order_id,order_item_id,product_id,seller_id,category,price,freight_value\\r\\n' +\n+       'H2020-01-06,1,P1,S1,cat,10.00,0\\r\\n' +\n+       'H2020-01-13,1,P1,S1,cat,10.00,0\\r\\n' +\n+       'H2020-01-20,1,P1,S1,cat,10.00,0\\r\\n' +\n+       'H2020-01-27,1,P1,S1,cat,10.00,0\\r\\n' +\n+       'B1,1,P1,S1,cat,10.00,0\\r\\n' +\n+       'B1,2,P1,S1,cat,10.00,0\\r\\n' +\n+       'B1,3,OLD,S1,cat,5.00,0\\r\\n' +\n+       'A1,1,P1,S1,cat,20.00,0\\r\\n' +\n+       'A1,2,P1,S1,cat,20.00,0\\r\\n' +\n+       'A1,3,P1,S1,cat,20.00,0\\r\\n' +\n+       'A1,4,NEW,S1,cat,7.00,0\\r\\n' +\n+       'X0,1,X,S1,cat,999.00,0\\r\\n' +\n+       'X1,1,"
+        },
+        {
+          "name": "cancel during raw-file read cannot start a worker or replace previous version",
+          "passed": true,
+          "error": ""
+        },
+        {
+          "name": "operations SQL independent mismatch blocks whole candidate and retains accepted snapshot",
+          "passed": false,
+          "error": "Expected values to be strictly equal:\n\ntrue !== false\n"
+        },
+        {
+          "name": "recovery refresh never guesses a new current pointer for an interrupted pre-save publication",
+          "passed": true,
+          "error": ""
+        }
+      ]
+    }
+  },
+  "after_fix": {
+    "unit": {
+      "total": 44,
+      "pass": 44,
+      "fail": 0
+    },
+    "browser": {
+      "legacy": 12,
+      "stage2": 14,
+      "audit": 8,
+      "total": 34,
+      "passed": true
+    }
+  },
+  "protected_files": [
+    {
+      "file": "cloud/dist/core.js",
+      "unchanged": true,
+      "sha256": "059490c6a6c378cd8e54b6530d81e9081609ccbbc86c5232c672bddd036727ee"
+    },
+    {
+      "file": "cloud/dist/analysis.sql",
+      "unchanged": true,
+      "sha256": "7c967f3b35ed9e035f05ab722c0db587265a222a742e7db70f1921f7a42e21a1"
+    },
+    {
+      "file": "cloud/dist/snapshot.js",
+      "unchanged": true,
+      "sha256": "77bc67cf4cddc76052164a7263ce7a41b092ba8518e56da1545b543f3cd27372"
+    },
+    {
+      "file": "cloud/dist/operations.js",
+      "unchanged": true,
+      "sha256": "ea144f3fb827ab31936a55f0f88e94d1da87419dfdd75ae5061354a5506ab130"
+    },
+    {
+      "file": "cloud/dist/operations.sql",
+      "unchanged": true,
+      "sha256": "7a09ce601854da739860c32e8f945c81217e9cca5718332d66618fbfdd88671a"
+    },
+    {
+      "file": "cloud/dist/operations-ui.js",
+      "unchanged": true,
+      "sha256": "dccb279059c6ae00eda5848e493b1cf61b6ba3d5bc748b3b8a4a21062d565f39"
+    },
+    {
+      "file": "cloud/dist/downloads/olist-case-study.pdf",
+      "unchanged": true,
+      "sha256": "c9d78be00f022727100f9978698f4c7c9f7d216138f259b5582be1ef49b98cb2"
+    },
+    {
+      "file": "cloud/dist/downloads/import-templates.zip",
+      "unchanged": true,
+      "sha256": "0ecbb5d4c2213cf7b4cd7b03ac112ccf042da38f53e4df6c8be8ab4efa6081e4"
+    },
+    {
+      "file": "tests/core.test.cjs",
+      "unchanged": true,
+      "sha256": "c715a0d2bf97172e6c42bb98f6b37f58741f51b0bbcdf8a38f82e686416688f1"
+    },
+    {
+      "file": "output/analysis/case.json",
+      "unchanged": true,
+      "sha256": "f28dca418a66c0649da6622ca6b19fd09ed3c7adb28cb10295f1aa7bc78ae656"
+    },
+    {
+      "file": "output/pdf/olist-case-study.pdf",
+      "unchanged": true,
+      "sha256": "c9d78be00f022727100f9978698f4c7c9f7d216138f259b5582be1ef49b98cb2"
+    }
+  ],
+  "publication": {
+    "cloud_version": "olist-lens-008",
+    "build_id": "2612577490",
+    "cloud_unit_pass": 44,
+    "live_browser_pass": 34,
+    "asset_sha256_matches": 27,
+    "previous_version_preserved": "olist-lens-007"
+  }
+}
