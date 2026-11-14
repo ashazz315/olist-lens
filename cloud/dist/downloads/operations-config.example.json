@@ -1,0 +1,10 @@
+{
+  "before": {"start": "2020-02-03", "end": "2020-02-10"},
+  "after": {"start": "2020-02-10", "end": "2020-02-17"},
+  "complete_through": "2020-02-16",
+  "completion_evidence": "",
+  "min_orders": 30,
+  "min_product_orders": 30,
+  "baseline_periods": 8,
+  "thresholds": {"absolute_cents": 10000, "relative": 0.1, "mad_multiplier": 3}
+}

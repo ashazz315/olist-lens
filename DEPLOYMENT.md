@@ -1,3 +1,5 @@
+> 2026-11-14 第二阶段已发布：olist-lens-007，build 2612572730，27 文件哈希一致，线上 12 + 14 个浏览器场景通过。见 [发布记录](docs/V2_STAGE2_RELEASE.md)。
+
 # 腾讯云 CloudBase 部署
 
 当前公开网址：[Olist Lens](https://olist-lens-sy-d2g7eacoh8e6c1fae.webapps.tcloudbase.com/)。

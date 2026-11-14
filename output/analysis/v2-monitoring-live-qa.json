@@ -1,0 +1,30 @@
+{
+  "ok": true,
+  "synthetic_imports": true,
+  "real_data_reimport": "not_run_missing_CSV",
+  "base": "https://olist-lens-sy-d2g7eacoh8e6c1fae.webapps.tcloudbase.com",
+  "checks": [
+    "public historical snapshot shows no fabricated live monitoring",
+    "import automatically recomputes; Worker and CLI evidence agree; preview remains unpublished",
+    "historical/synthetic labels, negative-only product ranking and decomposition evidence",
+    "event closure requires recorded evidence; status/history persist after reload",
+    "same batch rerun deduplicates alerts without resetting closed state",
+    "snapshot storage failure retains prior active data and monitoring",
+    "monitor publication failure recovers after reload; revision retains old evidence and manual state",
+    "bad import preserves valid version; quality events use attempted-batch IDs and deduplicate",
+    "incomplete cycle cannot publish business events or retain stale current ranking",
+    "restoring v1 snapshot selects matching monitoring run; historical/type/status filters work",
+    "abandoned task is marked interrupted after reopening, never falsely running",
+    "cross-tab transactions preserve both writes and recovery does not interrupt another live task",
+    "monitoring workbench responsive at 1440/768/390/320px; screenshots recorded",
+    "audit export includes source references, immutable evidence and processing history"
+  ],
+  "page_errors": [],
+  "business_uploads": [],
+  "viewports": [
+    1440,
+    768,
+    390,
+    320
+  ]
+}

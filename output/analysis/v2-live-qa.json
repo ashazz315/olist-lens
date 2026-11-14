@@ -1,0 +1,30 @@
+{
+  "url": "https://olist-lens-sy-d2g7eacoh8e6c1fae.webapps.tcloudbase.com/",
+  "environment": "CloudBase live",
+  "ok": true,
+  "synthetic_imports": true,
+  "real_data_reimport": "not_run_missing_CSV",
+  "checks": [
+    "public legacy snapshot remains unchanged; no invented product evidence",
+    "legacy download links and all panels responsive",
+    "empty import blocked",
+    "v1 Worker import, save, refresh and duplicate idempotence",
+    "v2 Worker and CLI hashes agree; preview is not published until confirmation",
+    "v2 duplicate import keeps one snapshot and does not add amounts",
+    "evidence viewer, insufficiency response, manual review/action gate and persistence",
+    "backup revalidates raw CSV and recomputes v1/v2, ignoring tampered results",
+    "restore older v1 snapshot removes current v2 conclusions",
+    "incomplete period blocks new business conclusions and clears stale product rows",
+    "configuration override is saved with snapshot and changes alert policy",
+    "failed legacy quality gate preserves active version"
+  ],
+  "page_errors": [],
+  "business_uploads": [],
+  "viewports": [
+    1440,
+    768,
+    390,
+    320
+  ],
+  "public_id": "ab7a405f82b7cf35559a7bea"
+}

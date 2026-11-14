@@ -1,0 +1,17 @@
+{
+  "mode": "historical_replay",
+  "min_orders": 30,
+  "mad_multiplier": 3,
+  "thresholds": {
+    "amount_cents": {"absolute": 10000, "relative": 0.1},
+    "orders": {"absolute": 10, "relative": 0.1},
+    "units": {"absolute": 10, "relative": 0.1},
+    "aov_cents": {"absolute": 1000, "relative": 0.1},
+    "late_rate": {"absolute": 0.05, "relative": 0}
+  },
+  "fulfillment": {
+    "finalized_cohorts": false,
+    "observed_through": "",
+    "evidence": ""
+  }
+}

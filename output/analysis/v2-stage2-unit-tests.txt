@@ -1,0 +1,41 @@
+✔ money is exact; same-day midnight is on time; latest review; null coverage (38.4661ms)
+✔ identical duplicate is audited and does not multiply amounts (0.7098ms)
+✔ conflicting duplicate blocks candidate (0.409ms)
+✔ orphan, missing delivered item, and invalid rating block (0.8959ms)
+✔ invalid real date, coverage, negative money and metadata are rejected (2.076ms)
+✔ empty templates and duplicate or unknown headers block (0.4117ms)
+✔ zero denominator remains not applicable, never 0 percent (4.8183ms)
+✔ SYNTHETIC: authenticated scheduler contract persists disabled config, rejects enablement and arbitrary sources (153.6766ms)
+✔ SYNTHETIC: four scopes have independent baselines and traceable metric snapshots (61.7272ms)
+✔ SYNTHETIC: canonical data version ignores row order and exact duplicates, rules create separate runs (44.7103ms)
+✔ SYNTHETIC: low samples, zero bases, missing dimensions and incomplete history suppress rather than normalize (39.1034ms)
+✔ SYNTHETIC: incomplete or invalid monitoring config blocks every new business conclusion (26.6149ms)
+✔ SYNTHETIC: mature fulfillment uses valid order denominator and calendar dates, not item/review fanout (19.2881ms)
+✔ SYNTHETIC: historical volatility and absolute thresholds suppress noise; baseline excludes present (0.2234ms)
+✔ SYNTHETIC: duplicate publication preserves manual closure and immutable audit history (9.3407ms)
+✔ SYNTHETIC: revised historical batch retains old version, evidence and processing state (16.0737ms)
+✔ SYNTHETIC: state machine rejects premature publication and quality event dedup preserves accepted datasets (8.3471ms)
+✔ SYNTHETIC: pending publication can be recovered idempotently from a saved verified pack (8.1962ms)
+✔ SYNTHETIC: purchase vs delivered, status exclusions, multi-item/review fanout, all dimensions reconcile (62.9801ms)
+✔ SYNTHETIC: exact rational identity across fractional unit averages and near-safe large amounts (1.2133ms)
+✔ SYNTHETIC: identical reruns keep identity; duplicate rows and extra reviews never multiply amounts (45.2274ms)
+✔ SYNTHETIC: missing shipped item blocks only v2 while old fulfillment still computes (5.2863ms)
+✔ SYNTHETIC: primary key conflict and invalid source data block all new conclusions (0.4713ms)
+✔ SYNTHETIC: completeness, period comparability and invalid thresholds fail closed (46.2062ms)
+✔ SYNTHETIC: missing product retains unknown amount but suppresses alert; missing optional dimensions disclosed (24.1219ms)
+✔ SYNTHETIC: low samples and short history suppress alerts without inventing baseline (16.3372ms)
+✔ SYNTHETIC: total delta zero returns null contribution; zero baseline and empty periods are not percentage drops (22.5512ms)
+✔ SYNTHETIC: configuration changes invalidate run and candidate identity (16.5132ms)
+✔ SYNTHETIC: SQL mutation is caught by independent JS verification (2.7744ms)
+✔ SYNTHETIC: AI adapter says evidence insufficient for missing facts, and binds answer and human action to version (8.8215ms)
+✔ SYNTHETIC: variable historical changes use median/MAD; current period never trains the baseline (23.2344ms)
+✔ SYNTHETIC: product movement across categories is flagged and dimensions stay additive (8.0429ms)
+✔ SYNTHETIC: extraction watermark respects source timezone and conservatively handles unknown timezone (19.7325ms)
+ℹ tests 33
+ℹ suites 0
+ℹ pass 33
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 400.8227
