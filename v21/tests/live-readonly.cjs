@@ -1,0 +1,13 @@
+// Read-only acceptance against the local real-data runtime; never creates tasks or approvals.
+const fs=require('node:fs'),path=require('node:path'),assert=require('node:assert/strict');
+const {chromium}=require('../.tools/node_modules/playwright-core');
+(async()=>{const base='http://127.0.0.1:8791',out=path.resolve(__dirname,'../evidence/live-'+new Date().toISOString().replace(/[:.]/g,'-'));fs.mkdirSync(out,{recursive:true});
+ const get=async route=>{const r=await fetch(base+route);assert(r.ok);return r.json();};
+ const state=await get('/api/state'),overview=await get('/api/overview'),matrix=await get('/api/compatibility'),negative=await get('/api/external?source=inventory&negative=true');
+ assert.equal(state.tasks.length,0);assert.equal(negative.count,1380);assert.equal(matrix.retail_internal.sales_rows_with_multiple_matches,0);assert.equal(matrix.retail_internal.inner_join_rows,92591);assert.equal(matrix.retail_internal.left_join_rows,125751);assert.equal(state.current.olist.shipping.matched,99441);assert.equal(overview.delta_cents,overview.reconciliation.product_sum);assert.equal(state.model.configured,false);
+ fs.writeFileSync(path.join(out,'actual-import-records.json'),JSON.stringify(state,null,2));fs.writeFileSync(path.join(out,'join-matrix.json'),JSON.stringify(matrix,null,2));
+ const browser=await chromium.launch({headless:true,executablePath:'C:/Program Files (x86)/Microsoft/Edge/Application/msedge.exe'});const errors=[];
+ try{const page=await browser.newPage({viewport:{width:1440,height:1050}});page.on('pageerror',e=>errors.push(e.message));await page.goto(base);await page.locator('[data-sku]').first().waitFor();await page.screenshot({path:path.join(out,'overview-desktop.png')});await page.locator('[data-sku]').first().click();await page.locator('.diagnostics').waitFor();await page.screenshot({path:path.join(out,'sku-desktop.png'),fullPage:true});for(const width of [390,320]){await page.setViewportSize({width,height:844});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);await page.screenshot({path:path.join(out,'sku-mobile-'+width+'.png'),fullPage:true});}assert.deepEqual(errors,[]);
+ }finally{await browser.close();}
+ fs.writeFileSync(path.join(out,'results.json'),JSON.stringify({status:'passed',mode:'actual_runtime_readonly',is_synthetic:false,task_count:state.tasks.length,negative_inventory:negative.count,shipping_matched:state.current.olist.shipping.matched,delta_cents:overview.delta_cents,model_connected:false,errors},null,2));console.log(JSON.stringify({status:'passed',out}));
+})().catch(e=>{console.error(e);process.exitCode=1;});

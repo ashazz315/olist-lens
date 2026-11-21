@@ -1,0 +1,9 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path'),crypto=require('node:crypto');
+const root=path.resolve(__dirname,'..'),evidence=path.join(__dirname,'evidence');
+const original=path.resolve(root,'../olist-stage3');
+const digest=file=>new Promise((resolve,reject)=>{const h=crypto.createHash('sha256'),s=fs.createReadStream(file);s.on('error',reject);s.on('data',b=>h.update(b));s.on('end',()=>resolve(h.digest('hex')));});
+(async()=>{const baseline=JSON.parse(fs.readFileSync(path.join(evidence,'original-files.json'))),changes=[];for(const r of baseline){const file=path.join(original,r.path);if(!fs.existsSync(file))changes.push({path:r.path,status:'missing'});else if(await digest(file)!==r.sha256)changes.push({path:r.path,status:'changed'});}
+ const frozen=['cloud/dist/core.js','cloud/dist/analysis.sql','cloud/dist/operations.js','cloud/dist/operations.sql','cloud/dist/monitoring.js','cloud/dist/monitor-store.js','cloud/dist/worker.js','cloud/dist/monitor-ui.js','cloud/dist/operations-ui.js','scripts/operations.cjs','package.json'];
+ const engines=[];for(const file of frozen){const a=await digest(path.join(original,file)),b=await digest(path.join(root,file));engines.push({path:file,source_sha256:a,copy_sha256:b,unchanged:a===b});}
+ const record={at:new Date().toISOString(),original_directory:original,baseline_files:baseline.length,original_content_changes:changes,frozen_files:engines,passed:!changes.length&&engines.every(r=>r.unchanged),scope:'Original baseline file bytes and frozen copied engines. No deploy, commit or merge.'};fs.writeFileSync(path.join(evidence,'protection-verification.json'),JSON.stringify(record,null,2));console.log(JSON.stringify({passed:record.passed,protected:baseline.length,changes:changes.length,frozen:engines.length}));if(!record.passed)process.exitCode=1;})().catch(e=>{console.error(e);process.exitCode=1;});

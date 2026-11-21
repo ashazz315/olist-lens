@@ -1,0 +1,4 @@
+'use strict';
+const fs=require('node:fs'),path=require('node:path');
+const {Cloud}=require('../lib/cloud.cjs');
+(async()=>{const root=path.resolve(__dirname,'..'),env=JSON.parse(fs.readFileSync(path.join(root,'private/config.json'),'utf8')),account=JSON.parse(fs.readFileSync(path.join(root,'private/initial-admin.json'),'utf8'));const cloud=new Cloud(env);const token=await cloud.login(account.username,account.password);const who=await cloud.identity(token.access_token);const sources=await cloud.read('sources');const result={at:new Date().toISOString(),username:account.username,subject:who.sub,provider_login:true,database_rpc:true,source_count:sources.length,member:await cloud.membership(token.access_token)};fs.mkdirSync(path.join(root,'evidence'),{recursive:true});fs.writeFileSync(path.join(root,'evidence/cloud-connection.json'),JSON.stringify(result,null,2));console.log(JSON.stringify(result));})().catch(e=>{console.error(e.message);process.exitCode=1;});

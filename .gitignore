@@ -13,3 +13,25 @@ output/previews/
 output/*.tar.gz
 .DS_Store
 Thumbs.db
+output/stage3/recheck/
+
+# Local handoff: secrets, acquired data and runtime results never enter Git.
+**/private/
+**/runtime/
+**/evidence/
+**/.tools/
+**/.npm-cache/
+**/.env
+**/.env.*
+**/external_staging/
+**/outputs/
+*.csv
+*.sqlite
+*.db
+*.zip
+*.pdf
+*.xlsx
+cloud/dist/snapshot.js
+
+# Local handoff examples
+/examples/

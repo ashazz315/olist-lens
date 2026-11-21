@@ -1,0 +1,27 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Olist Lens · 经营平台</title><link rel="stylesheet" href="/style.css"></head><body data-portal="business"><aside class="portal-sidebar">
+ <div class="sidebar-head"><a class="brand" href="/" aria-label="Olist Lens 业务前台"><span class="brand-mark" aria-hidden="true">◈</span> Olist <b>Lens</b></a>
+ <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="nav">菜单</button></div>
+ <p class="portal-name">业务前台</p>
+ <nav id="nav" aria-label="业务导航"></nav>
+ <div class="side-bottom"><a href="/admin/">管理后台 <span aria-hidden="true">↗</span></a></div>
+</aside>
+<main>
+ <header class="portal-header"><div><p id="section-name" class="page-breadcrumb">业务前台</p><h1 id="title">经营驾驶舱</h1><p id="page-description" class="page-description"></p></div>
+ <button type="button" id="login-toggle" class="secondary">登录</button></header>
+ <section class="workspace-bar" aria-label="数据工作区">
+ <label for="workspace">数据工作区</label><select id="workspace"><option value="real">Olist 真实历史</option><option value="scenario">独立模拟场景</option></select>
+ <p id="workspace-note"></p><p id="session-note" aria-live="polite"></p>
+ </section>
+ <section id="login" hidden><form id="login-form" class="panel"><h2>登录 Olist 工作空间</h2><label>应用用户名<input name="username" autocomplete="username" required></label><label>密码<input name="password" type="password" autocomplete="current-password" required></label><button>登录</button><p>只有已分配 Olist 角色的应用账号可以操作数据。不要在聊天中提供密码。</p></form></section><div id="message" role="status" aria-live="polite"></div><section id="content"><p>读取已验证历史结果…</p></section><footer>购买订单商品金额不含运费和退款调整。历史与独立模拟均按各自数据来源展示。</footer></main>
+<div id="showcase-widget" hidden>
+ <div id="showcase-widget-tip" class="assistant-tip" hidden>
+  <button type="button" id="showcase-tip-open">想核对数据？问问调查助手</button>
+  <button type="button" id="showcase-tip-dismiss" aria-label="关闭提示">×</button>
+ </div>
+ <section id="showcase-float" class="assistant-float" role="dialog" aria-labelledby="showcase-float-title" hidden>
+  <header><h2 id="showcase-float-title">调查助手</h2><button type="button" id="showcase-float-close" aria-label="收起调查助手">×</button></header>
+  <div id="showcase-float-content" class="assistant-float-content"></div>
+ </section>
+ <button type="button" id="showcase-launcher" aria-expanded="false" aria-controls="showcase-float"><span class="assistant-icon" aria-hidden="true"></span>调查助手</button>
+</div>
+<script src="/m2.js" defer></script><script src="/replay.js" defer></script><script src="/showcase.js" defer></script><script src="/app.js" defer></script></body></html>

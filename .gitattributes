@@ -1,0 +1,2 @@
+# Preserve exact engine/source bytes; hashes must survive a Windows checkout.
+* -text

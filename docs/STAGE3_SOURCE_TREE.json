@@ -1,0 +1,977 @@
+{
+  "sha": "d466911862ef09065ccca2032359300b85e8b225",
+  "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/d466911862ef09065ccca2032359300b85e8b225",
+  "tree": [
+    {
+      "path": ".gitignore",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5e34659268a0de7eef2b924c98a3116a31c55f1f",
+      "size": 175,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/5e34659268a0de7eef2b924c98a3116a31c55f1f"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a085dba3ea58f5b07b0f7011e9e9fcb96aaf5b48",
+      "size": 2875,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/a085dba3ea58f5b07b0f7011e9e9fcb96aaf5b48"
+    },
+    {
+      "path": "DEPLOYMENT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2afeddf83fee3ac522a01c5a313f948040d061ee",
+      "size": 3643,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/2afeddf83fee3ac522a01c5a313f948040d061ee"
+    },
+    {
+      "path": "FEATURES.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f9d54325b2325102f591fc37c523829675d9a370",
+      "size": 2617,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/f9d54325b2325102f591fc37c523829675d9a370"
+    },
+    {
+      "path": "PROJECT_BRIEF.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5a64f79b00540443f617f9fcb83c5b9a2ca14fc6",
+      "size": 8605,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/5a64f79b00540443f617f9fcb83c5b9a2ca14fc6"
+    },
+    {
+      "path": "QA_NOTES.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8a05319bdb1fded7a4a8b1de5721b523e733c3f3",
+      "size": 4502,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/8a05319bdb1fded7a4a8b1de5721b523e733c3f3"
+    },
+    {
+      "path": "QUALITY_AND_IMPORT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "98dbeb7c145b95163b9068285a31235ffb338fc1",
+      "size": 9807,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/98dbeb7c145b95163b9068285a31235ffb338fc1"
+    },
+    {
+      "path": "README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4c505beab890ef89586913191a9528cc68c25056",
+      "size": 8201,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/4c505beab890ef89586913191a9528cc68c25056"
+    },
+    {
+      "path": "Start.ps1",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6fd8d8157d711b1a32e35cfae3c37aff52e50db1",
+      "size": 574,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/6fd8d8157d711b1a32e35cfae3c37aff52e50db1"
+    },
+    {
+      "path": "TOOL_REFERENCES.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0f6a912c0c35a7bb6b105295a7ad311f73bb2bbf",
+      "size": 4087,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/0f6a912c0c35a7bb6b105295a7ad311f73bb2bbf"
+    },
+    {
+      "path": "V2_README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dd1f08160c466abe53b8e80f3fcfe25985b43393",
+      "size": 5193,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/dd1f08160c466abe53b8e80f3fcfe25985b43393"
+    },
+    {
+      "path": "VALIDATION.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb31cd8ec160451a4a3487ad9d5445a73a980863",
+      "size": 2155,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/bb31cd8ec160451a4a3487ad9d5445a73a980863"
+    },
+    {
+      "path": "cloud",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "091ec362d8c041f8c7bf22ba226461f6b8b0046b",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/091ec362d8c041f8c7bf22ba226461f6b8b0046b"
+    },
+    {
+      "path": "cloud/dist",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "34e53083df0e2a4af7b9389b08c13c39ccfbec78",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/34e53083df0e2a4af7b9389b08c13c39ccfbec78"
+    },
+    {
+      "path": "cloud/dist/analysis.sql",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "88cd8b374f3620cfa893d20a0483076538b32d6a",
+      "size": 4023,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/88cd8b374f3620cfa893d20a0483076538b32d6a"
+    },
+    {
+      "path": "cloud/dist/app.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "eabd8f3795091605bb07ef39f8ce1948d0703536",
+      "size": 26850,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/eabd8f3795091605bb07ef39f8ce1948d0703536"
+    },
+    {
+      "path": "cloud/dist/core.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fd26eb7e040d2bbcc912f1493d1468ce81b04517",
+      "size": 15206,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/fd26eb7e040d2bbcc912f1493d1468ce81b04517"
+    },
+    {
+      "path": "cloud/dist/downloads",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "aac5f4b607c91b3cb32a65217144d022b4076f98",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/aac5f4b607c91b3cb32a65217144d022b4076f98"
+    },
+    {
+      "path": "cloud/dist/downloads/import-guide.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e2645a60232760a8a9fa45df879733b3f07333a7",
+      "size": 4848,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/e2645a60232760a8a9fa45df879733b3f07333a7"
+    },
+    {
+      "path": "cloud/dist/downloads/import-templates.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "23c535961bd418d2b356ed7db392b270d2a99342",
+      "size": 4100,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/23c535961bd418d2b356ed7db392b270d2a99342"
+    },
+    {
+      "path": "cloud/dist/downloads/monitoring-config.example.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ab16c9462097c8c55e14b16749074d6d7b003084",
+      "size": 463,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/ab16c9462097c8c55e14b16749074d6d7b003084"
+    },
+    {
+      "path": "cloud/dist/downloads/olist-case-study.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04f8fdfc360a65ae41d643df918385c1a56f4786",
+      "size": 302063,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/04f8fdfc360a65ae41d643df918385c1a56f4786"
+    },
+    {
+      "path": "cloud/dist/downloads/operations-config.example.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "473cd0d235b0522df5ccf0101bf25faf190dbf92",
+      "size": 337,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/473cd0d235b0522df5ccf0101bf25faf190dbf92"
+    },
+    {
+      "path": "cloud/dist/downloads/project-source.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "99a7f293958c796445e56324f826f4acffb08a7f",
+      "size": 783209,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/99a7f293958c796445e56324f826f4acffb08a7f"
+    },
+    {
+      "path": "cloud/dist/downloads/provenance.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e0415ad6d236ce5258351d67ed039282b3be6163",
+      "size": 4054,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/e0415ad6d236ce5258351d67ed039282b3be6163"
+    },
+    {
+      "path": "cloud/dist/favicon.svg",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c614e12a600438fa3b4bc171a58d8d2f513e5a0",
+      "size": 167,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/2c614e12a600438fa3b4bc171a58d8d2f513e5a0"
+    },
+    {
+      "path": "cloud/dist/index.html",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "66d578e5f7e3903127c1c6ebcd441ef3b4f5ff28",
+      "size": 21630,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/66d578e5f7e3903127c1c6ebcd441ef3b4f5ff28"
+    },
+    {
+      "path": "cloud/dist/monitor-store.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2b9d31e0d6c6d26b7fcec91e5984852265634288",
+      "size": 6556,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/2b9d31e0d6c6d26b7fcec91e5984852265634288"
+    },
+    {
+      "path": "cloud/dist/monitor-ui.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "57dc166882b8c8225bb02fdafe50e50760a31f72",
+      "size": 13638,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/57dc166882b8c8225bb02fdafe50e50760a31f72"
+    },
+    {
+      "path": "cloud/dist/monitoring.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "05c87d3702d77de8fafda18eda199df3c1e1d436",
+      "size": 13836,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/05c87d3702d77de8fafda18eda199df3c1e1d436"
+    },
+    {
+      "path": "cloud/dist/operations-ui.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3a14aad3b5ced79d87120d4ea3910fd77aa3197e",
+      "size": 8352,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/3a14aad3b5ced79d87120d4ea3910fd77aa3197e"
+    },
+    {
+      "path": "cloud/dist/operations.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f8a602498582fa6c7a5cf0ce27ef6a234fb69901",
+      "size": 22074,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/f8a602498582fa6c7a5cf0ce27ef6a234fb69901"
+    },
+    {
+      "path": "cloud/dist/operations.sql",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "69bf5c866294d80d89194b9dffe08202a3e330f0",
+      "size": 1820,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/69bf5c866294d80d89194b9dffe08202a3e330f0"
+    },
+    {
+      "path": "cloud/dist/snapshot.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9e295616c49ae71b2a6ba6a348acda9c2a4e9372",
+      "size": 99342,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/9e295616c49ae71b2a6ba6a348acda9c2a4e9372"
+    },
+    {
+      "path": "cloud/dist/styles.css",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "7165924de53ccb47c2334e1803f24672668cb3db",
+      "size": 23752,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/7165924de53ccb47c2334e1803f24672668cb3db"
+    },
+    {
+      "path": "cloud/dist/vendor",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "395e5741e5fa0ad5b557c051a4a3fba235d5a31b",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/395e5741e5fa0ad5b557c051a4a3fba235d5a31b"
+    },
+    {
+      "path": "cloud/dist/vendor/dependencies.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "875816d62cd2694a5cdac03c111703578d4c612f",
+      "size": 746,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/875816d62cd2694a5cdac03c111703578d4c612f"
+    },
+    {
+      "path": "cloud/dist/vendor/papaparse-LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "12f5b3503d99c72a03b654ac1b7ac51d6c408a05",
+      "size": 1079,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/12f5b3503d99c72a03b654ac1b7ac51d6c408a05"
+    },
+    {
+      "path": "cloud/dist/vendor/papaparse.min.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c8b41d27a1fce26b31f29132effe936a52c4d03f",
+      "size": 18874,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/c8b41d27a1fce26b31f29132effe936a52c4d03f"
+    },
+    {
+      "path": "cloud/dist/vendor/sql-js-LICENSE",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d5c3c98341738da8ae57423fd52e7d4b9dd9ba4c",
+      "size": 2199,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/d5c3c98341738da8ae57423fd52e7d4b9dd9ba4c"
+    },
+    {
+      "path": "cloud/dist/vendor/sql-wasm.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b781018a4d5a6efc8e3129db54c4d0a86d7adf19",
+      "size": 46731,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/b781018a4d5a6efc8e3129db54c4d0a86d7adf19"
+    },
+    {
+      "path": "cloud/dist/vendor/sql-wasm.wasm",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "daed935888d5bd3d65fd594644659fd4ef13e495",
+      "size": 684897,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/daed935888d5bd3d65fd594644659fd4ef13e495"
+    },
+    {
+      "path": "cloud/dist/worker.js",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "af7a074b1f3bd8deb59d15bb47a8efd7de56cd05",
+      "size": 3138,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/af7a074b1f3bd8deb59d15bb47a8efd7de56cd05"
+    },
+    {
+      "path": "docs",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d9f3e5843db32415576b7f0f63b4273ed1aec185",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/d9f3e5843db32415576b7f0f63b4273ed1aec185"
+    },
+    {
+      "path": "docs/MONITORING_AUDIT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92f4c3a49872f08793975cb9aa90a1c08b6d0083",
+      "size": 8259,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/92f4c3a49872f08793975cb9aa90a1c08b6d0083"
+    },
+    {
+      "path": "docs/MONITORING_AUDIT_RELEASE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "68e1576e42068eabc818a25fdd40c9896665a7a5",
+      "size": 1547,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/68e1576e42068eabc818a25fdd40c9896665a7a5"
+    },
+    {
+      "path": "docs/STAGE3_RAW_AUDIT.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cc8e886eb697b2d7b00c4f7b910747687a045cdf",
+      "size": 2568,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/cc8e886eb697b2d7b00c4f7b910747687a045cdf"
+    },
+    {
+      "path": "docs/UI_REFRESH_20261102.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3f9eb857b5988141d9738e64d601ed08ec38bdb7",
+      "size": 1067,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/3f9eb857b5988141d9738e64d601ed08ec38bdb7"
+    },
+    {
+      "path": "docs/V2_ACCEPTANCE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8e95c14b01465173a1b693e06869bf05a23fdb2d",
+      "size": 5654,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/8e95c14b01465173a1b693e06869bf05a23fdb2d"
+    },
+    {
+      "path": "docs/V2_DESIGN.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1d381e0ebaa81d05fd669290c9543611372c63b1",
+      "size": 13668,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/1d381e0ebaa81d05fd669290c9543611372c63b1"
+    },
+    {
+      "path": "docs/V2_STAGE2.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04e1b1778c3450482951ca68451659b0bf060c2e",
+      "size": 8923,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/04e1b1778c3450482951ca68451659b0bf060c2e"
+    },
+    {
+      "path": "docs/V2_STAGE2_ACCEPTANCE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fef3082c33e80730eb8c6602997778b5307d1c99",
+      "size": 4335,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/fef3082c33e80730eb8c6602997778b5307d1c99"
+    },
+    {
+      "path": "docs/V2_STAGE2_RELEASE.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "372fdc5a5fdd70638bcb615caf635845d31e5d64",
+      "size": 1916,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/372fdc5a5fdd70638bcb615caf635845d31e5d64"
+    },
+    {
+      "path": "docs/images",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "8ac53419146e04e590bf5e9b337420b62ac725e0",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/8ac53419146e04e590bf5e9b337420b62ac725e0"
+    },
+    {
+      "path": "docs/images/audit-zero-desktop.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6a8bebc14d904a0ea34b5f8ebc67e42b8f3343e4",
+      "size": 215010,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/6a8bebc14d904a0ea34b5f8ebc67e42b8f3343e4"
+    },
+    {
+      "path": "docs/images/audit-zero-mobile.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "957b2e466a6422e0337bec008364838be8822b8f",
+      "size": 145723,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/957b2e466a6422e0337bec008364838be8822b8f"
+    },
+    {
+      "path": "docs/images/overview.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b339d815ee88d47dc0c74c2fa721a6ae61bb5842",
+      "size": 180439,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/b339d815ee88d47dc0c74c2fa721a6ae61bb5842"
+    },
+    {
+      "path": "docs/images/quality.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e020d2c9bffe835a95281b9e5adfb96d8ae7b09a",
+      "size": 181146,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/e020d2c9bffe835a95281b9e5adfb96d8ae7b09a"
+    },
+    {
+      "path": "docs/images/v2-monitoring-desktop.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "08cb796dca1b64fda5e4a41aa81adf24dbc316d2",
+      "size": 283326,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/08cb796dca1b64fda5e4a41aa81adf24dbc316d2"
+    },
+    {
+      "path": "docs/images/v2-monitoring-evidence.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1f19b745479b0705081126f72f8271e0c017b56f",
+      "size": 43536,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/1f19b745479b0705081126f72f8271e0c017b56f"
+    },
+    {
+      "path": "docs/images/v2-monitoring-mobile.png",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "aaad878994cde4b8fb8422813e65c8657328a0fc",
+      "size": 162745,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/aaad878994cde4b8fb8422813e65c8657328a0fc"
+    },
+    {
+      "path": "notebooks",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e0ff6d4d77559bfbe6eadd725436fd90f0fbab20",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/e0ff6d4d77559bfbe6eadd725436fd90f0fbab20"
+    },
+    {
+      "path": "notebooks/case-study.ipynb",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9f5736237d1214d31ae659db0077dd14dac45b4e",
+      "size": 9432,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/9f5736237d1214d31ae659db0077dd14dac45b4e"
+    },
+    {
+      "path": "output",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "e50e9a7d362e8b99c31d9228e9196f0a90f55a3a",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/e50e9a7d362e8b99c31d9228e9196f0a90f55a3a"
+    },
+    {
+      "path": "output/analysis",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "028b283a3d1c9764c0456509263363c54570dcc2",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/028b283a3d1c9764c0456509263363c54570dcc2"
+    },
+    {
+      "path": "output/analysis/browser-qa.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bf1c2f8b67d14cabaed91a68b0ace93c6035cc58",
+      "size": 471,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/bf1c2f8b67d14cabaed91a68b0ace93c6035cc58"
+    },
+    {
+      "path": "output/analysis/case.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e2f0f4c28e44b46a4f17b200eb9e99ee23381dda",
+      "size": 171357,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/e2f0f4c28e44b46a4f17b200eb9e99ee23381dda"
+    },
+    {
+      "path": "output/analysis/case.json.quality.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "82319aa03fc1020d552d59d2c366a83dc42e6392",
+      "size": 4730,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/82319aa03fc1020d552d59d2c366a83dc42e6392"
+    },
+    {
+      "path": "output/analysis/live-qa.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "58aec45de7ea87c2598cacd7ed50382a0477aceb",
+      "size": 792,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/58aec45de7ea87c2598cacd7ed50382a0477aceb"
+    },
+    {
+      "path": "output/analysis/monitoring-audit-browser-local.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "bb812a997b42d5d73e5d3df7839f6d466017c7cb",
+      "size": 1180,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/bb812a997b42d5d73e5d3df7839f6d466017c7cb"
+    },
+    {
+      "path": "output/analysis/monitoring-audit-browser.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "14c0e657af84d1d80e2dc884285c6e7a17d4e3fa",
+      "size": 1220,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/14c0e657af84d1d80e2dc884285c6e7a17d4e3fa"
+    },
+    {
+      "path": "output/analysis/monitoring-audit-results.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2ddeb5a875d5cabee915b03b588cc7d505f74370",
+      "size": 4660,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/2ddeb5a875d5cabee915b03b588cc7d505f74370"
+    },
+    {
+      "path": "output/analysis/monitoring-audit-unit.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f2e2943e79b87d929dcc9e0ffc7d28a3d8ff36b8",
+      "size": 4964,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/f2e2943e79b87d929dcc9e0ffc7d28a3d8ff36b8"
+    },
+    {
+      "path": "output/analysis/v2-browser-qa.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "2c31290b50f07ebf88c93d4380f766f6dd8e2190",
+      "size": 1098,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/2c31290b50f07ebf88c93d4380f766f6dd8e2190"
+    },
+    {
+      "path": "output/analysis/v2-live-qa.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "dbbbd589be521b9e8dc47b1ca74f2d2f0e5bbb1b",
+      "size": 1209,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/dbbbd589be521b9e8dc47b1ca74f2d2f0e5bbb1b"
+    },
+    {
+      "path": "output/analysis/v2-monitoring-live-qa.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "0c100b5131d07a0afff9afa45f8b3bb05e7c976a",
+      "size": 1531,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/0c100b5131d07a0afff9afa45f8b3bb05e7c976a"
+    },
+    {
+      "path": "output/analysis/v2-monitoring-qa.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "9347a78af9b51f4c56e0e77b2ddffc92d111a836",
+      "size": 1491,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/9347a78af9b51f4c56e0e77b2ddffc92d111a836"
+    },
+    {
+      "path": "output/analysis/v2-stage2-release-receipt.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "a9fbf95a7e4fb7c17d435c2d1cf2fbd0b1e1ef9d",
+      "size": 499,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/a9fbf95a7e4fb7c17d435c2d1cf2fbd0b1e1ef9d"
+    },
+    {
+      "path": "output/analysis/v2-stage2-unit-tests.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "25bec9746b8e83cc6ae71f2ba43b16dd5a35656f",
+      "size": 3523,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/25bec9746b8e83cc6ae71f2ba43b16dd5a35656f"
+    },
+    {
+      "path": "output/pdf",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "55b6ba07079d81a730ecebdc664c6614138f4f41",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/55b6ba07079d81a730ecebdc664c6614138f4f41"
+    },
+    {
+      "path": "output/pdf/olist-case-study.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "04f8fdfc360a65ae41d643df918385c1a56f4786",
+      "size": 302063,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/04f8fdfc360a65ae41d643df918385c1a56f4786"
+    },
+    {
+      "path": "output/pdf/olist-report-template.pdf",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "816583e8fd012aa4c20e1198af4358fe57dd841a",
+      "size": 332222,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/816583e8fd012aa4c20e1198af4358fe57dd841a"
+    },
+    {
+      "path": "output/templates",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "9a1c6d760bcd83ed96a18edcd6d7204bf0d089ad",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/9a1c6d760bcd83ed96a18edcd6d7204bf0d089ad"
+    },
+    {
+      "path": "output/templates/README.md",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "e2645a60232760a8a9fa45df879733b3f07333a7",
+      "size": 4848,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/e2645a60232760a8a9fa45df879733b3f07333a7"
+    },
+    {
+      "path": "output/templates/dataset_manifest.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "178a41afd50507b7623ee12960854e9a06749b60",
+      "size": 324,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/178a41afd50507b7623ee12960854e9a06749b60"
+    },
+    {
+      "path": "output/templates/import-templates-v1.zip",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "23c535961bd418d2b356ed7db392b270d2a99342",
+      "size": 4100,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/23c535961bd418d2b356ed7db392b270d2a99342"
+    },
+    {
+      "path": "output/templates/order_items.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "87e1535a3c4fca8bc617b627a7bf99625cf9dbe1",
+      "size": 74,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/87e1535a3c4fca8bc617b627a7bf99625cf9dbe1"
+    },
+    {
+      "path": "output/templates/order_reviews.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b07a5742029f57e22b8536b6474729da1b7f19ee",
+      "size": 70,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/b07a5742029f57e22b8536b6474729da1b7f19ee"
+    },
+    {
+      "path": "output/templates/orders.csv",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "858849c272321dfed88b17638d4e85568dff9bdc",
+      "size": 98,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/858849c272321dfed88b17638d4e85568dff9bdc"
+    },
+    {
+      "path": "output/templates/schema.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6c54badcaf044b4b82ba6a1ef29003e771961251",
+      "size": 3524,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/6c54badcaf044b4b82ba6a1ef29003e771961251"
+    },
+    {
+      "path": "package.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "83712e4694f4eff8697e27d650e02009385eff29",
+      "size": 583,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/83712e4694f4eff8697e27d650e02009385eff29"
+    },
+    {
+      "path": "requirements-report.txt",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "6d67d79b5b8042e99867b643069216fd680f68ba",
+      "size": 45,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/6d67d79b5b8042e99867b643069216fd680f68ba"
+    },
+    {
+      "path": "scripts",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "d862cc7e987861170ff061004e48d2a87d26d997",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/d862cc7e987861170ff061004e48d2a87d26d997"
+    },
+    {
+      "path": "scripts/analyze.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "151fba08b4d7dde2334729d59e39da347b9af6cf",
+      "size": 2115,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/151fba08b4d7dde2334729d59e39da347b9af6cf"
+    },
+    {
+      "path": "scripts/audit_raw_stage3.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "24f335645d3eebbc09cdf2dffb7c06e4f0f6e16f",
+      "size": 14123,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/24f335645d3eebbc09cdf2dffb7c06e4f0f6e16f"
+    },
+    {
+      "path": "scripts/build_case_pdf.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "07b75bd93e40fdbf0c5cc73ff39b0826724c0fbb",
+      "size": 14566,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/07b75bd93e40fdbf0c5cc73ff39b0826724c0fbb"
+    },
+    {
+      "path": "scripts/build_notebook.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f5650530fa49a687a0e00229536a6cbf65d17f48",
+      "size": 6973,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/f5650530fa49a687a0e00229536a6cbf65d17f48"
+    },
+    {
+      "path": "scripts/build_pdf.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "763d00d240720187256a759ea0fea1d00503e7c3",
+      "size": 16227,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/763d00d240720187256a759ea0fea1d00503e7c3"
+    },
+    {
+      "path": "scripts/build_templates.mjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "85059fb0bcfa262fecf8b4b5ef22f41bff8e3875",
+      "size": 1363,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/85059fb0bcfa262fecf8b4b5ef22f41bff8e3875"
+    },
+    {
+      "path": "scripts/check_live.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f6a30888b85270fcc8300a72db2401e0483f0a6c",
+      "size": 467,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/f6a30888b85270fcc8300a72db2401e0483f0a6c"
+    },
+    {
+      "path": "scripts/download_kaggle.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "483fcb1aaea4a40ed879b157c48388f2b422cd66",
+      "size": 2679,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/483fcb1aaea4a40ed879b157c48388f2b422cd66"
+    },
+    {
+      "path": "scripts/monitor-server.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "d8a2f520405424f22f8273a6dc04e216edd03e2a",
+      "size": 5014,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/d8a2f520405424f22f8273a6dc04e216edd03e2a"
+    },
+    {
+      "path": "scripts/operations.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "b6180474dace4a395dc96266f2d1a98e361e7120",
+      "size": 3007,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/b6180474dace4a395dc96266f2d1a98e361e7120"
+    },
+    {
+      "path": "scripts/package_release.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "92bf149fdc03c352d66aac13c256a4394f05adc7",
+      "size": 3150,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/92bf149fdc03c352d66aac13c256a4394f05adc7"
+    },
+    {
+      "path": "scripts/prepare_case.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "4b511014a9e549df7c7c4af4cb57693c8c6d0d6c",
+      "size": 3400,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/4b511014a9e549df7c7c4af4cb57693c8c6d0d6c"
+    },
+    {
+      "path": "scripts/profile_raw.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "1e4ed03222ae558b08113568bb632cfeb2bc7339",
+      "size": 1696,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/1e4ed03222ae558b08113568bb632cfeb2bc7339"
+    },
+    {
+      "path": "scripts/qa_monitoring.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "cd9ad55437055f803ae2e4a6fc1371966f9219ff",
+      "size": 13420,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/cd9ad55437055f803ae2e4a6fc1371966f9219ff"
+    },
+    {
+      "path": "scripts/qa_monitoring_audit.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "3513dac27d5e4b6c8a781a7d0c5f47ef22f40cba",
+      "size": 11597,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/3513dac27d5e4b6c8a781a7d0c5f47ef22f40cba"
+    },
+    {
+      "path": "scripts/qa_operations.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "852b5349e2fa9813881295f92e727f53d9da81f9",
+      "size": 12244,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/852b5349e2fa9813881295f92e727f53d9da81f9"
+    },
+    {
+      "path": "scripts/qa_product.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "8064d8e36fe4c97b3cab68c10b4951c39bd4a4b1",
+      "size": 7827,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/8064d8e36fe4c97b3cab68c10b4951c39bd4a4b1"
+    },
+    {
+      "path": "scripts/qa_site.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "5a290ae3a94a4fc1fcc7ed7da1bc4bb03c2ae199",
+      "size": 3630,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/5a290ae3a94a4fc1fcc7ed7da1bc4bb03c2ae199"
+    },
+    {
+      "path": "scripts/vendor_browser.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "94409f6caee2a62fe2c95c3f1aba33bd584a9523",
+      "size": 1372,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/94409f6caee2a62fe2c95c3f1aba33bd584a9523"
+    },
+    {
+      "path": "scripts/verify_case.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "f463c00066bbb2742e97cb707949cb1b27ed6c4c",
+      "size": 3417,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/f463c00066bbb2742e97cb707949cb1b27ed6c4c"
+    },
+    {
+      "path": "tests",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "4c4a60ef368d753be545fee9dc2b991d2b871804",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/4c4a60ef368d753be545fee9dc2b991d2b871804"
+    },
+    {
+      "path": "tests/core.test.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "79a8c1a85b592387f764752473da911e505e7e3d",
+      "size": 5094,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/79a8c1a85b592387f764752473da911e505e7e3d"
+    },
+    {
+      "path": "tests/fixtures",
+      "mode": "040000",
+      "type": "tree",
+      "sha": "9ddc59913547df8f18cab6133b97cddce47caf99",
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/trees/9ddc59913547df8f18cab6133b97cddce47caf99"
+    },
+    {
+      "path": "tests/fixtures/synthetic-monitoring-007.json",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c0e0921cec93f8a72e2e908ffda11403fa0c307d",
+      "size": 291246,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/c0e0921cec93f8a72e2e908ffda11403fa0c307d"
+    },
+    {
+      "path": "tests/monitor-server.test.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "78c2c41b757953e4f345f77a55ef281bcb91409e",
+      "size": 1677,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/78c2c41b757953e4f345f77a55ef281bcb91409e"
+    },
+    {
+      "path": "tests/monitoring-audit.test.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ce67516e18ff889c2428194c032e5828039520d9",
+      "size": 7979,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/ce67516e18ff889c2428194c032e5828039520d9"
+    },
+    {
+      "path": "tests/monitoring.test.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "fc7eb4384dcff520b858e9e91d5581477910231a",
+      "size": 8323,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/fc7eb4384dcff520b858e9e91d5581477910231a"
+    },
+    {
+      "path": "tests/operations-fixture.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "ebc0043d2ccbe86ec09128e422d92cfaf4f1c4e2",
+      "size": 2479,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/ebc0043d2ccbe86ec09128e422d92cfaf4f1c4e2"
+    },
+    {
+      "path": "tests/operations.test.cjs",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "254cdb2078c60a26bbf4247efe85bb53803aa99c",
+      "size": 10698,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/254cdb2078c60a26bbf4247efe85bb53803aa99c"
+    },
+    {
+      "path": "tests/test_stage3_raw_audit.py",
+      "mode": "100644",
+      "type": "blob",
+      "sha": "c4abfaec70c552fbeebfe325b8006217a9820b6c",
+      "size": 4355,
+      "url": "https://api.github.com/repos/ashazz315/olist-lens/git/blobs/c4abfaec70c552fbeebfe325b8006217a9820b6c"
+    }
+  ],
+  "truncated": false
+}

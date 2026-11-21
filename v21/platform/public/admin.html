@@ -1,0 +1,15 @@
+<!doctype html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Olist Lens · 管理后台</title><link rel="stylesheet" href="/style.css"></head><body data-portal="admin"><aside class="portal-sidebar">
+ <div class="sidebar-head"><a class="brand" href="/" aria-label="Olist Lens 业务前台"><span class="brand-mark" aria-hidden="true">◈</span> Olist <b>Lens</b></a>
+ <button type="button" id="menu-toggle" aria-expanded="false" aria-controls="nav">菜单</button></div>
+ <p class="portal-name">管理后台</p>
+ <nav id="nav" aria-label="管理导航"></nav>
+ <div class="side-bottom"><a href="/">业务前台 <span aria-hidden="true">↗</span></a></div>
+</aside>
+<main>
+ <header class="portal-header"><div><p id="section-name" class="page-breadcrumb">管理后台</p><h1 id="title">数据源</h1><p id="page-description" class="page-description"></p></div>
+ <button type="button" id="login-toggle" class="secondary">登录</button></header>
+ <section class="workspace-bar" aria-label="数据工作区">
+ <label for="workspace">数据工作区</label><select id="workspace"><option value="real">Olist 真实历史</option><option value="scenario">独立模拟场景</option></select>
+ <p id="workspace-note"></p><p id="session-note" aria-live="polite"></p>
+ </section>
+ <section id="login" hidden><form id="login-form" class="panel"><h2>管理员登录</h2><label>应用用户名<input name="username" autocomplete="username" required></label><label>密码<input name="password" type="password" autocomplete="current-password" required></label><button>登录</button><p>业务用户可进入前台；数据导入、版本发布与配置仅限管理员。</p></form></section><div id="message" role="status" aria-live="polite"></div><section id="content"></section><footer>当前有效版本只在校验与人工确认后切换。<span>失败保留日志 · 原始文件和版本不可覆盖</span></footer></main><script src="/m2.js" defer></script><script src="/replay.js" defer></script><script src="/app.js" defer></script></body></html>

@@ -1,0 +1,56 @@
+-- INTERNAL SYNTHETIC fixtures only. All writes are rolled back; never a business import.
+BEGIN;
+DO $$
+DECLARE j jsonb; v jsonb; a jsonb; command_body jsonb; caught boolean; n integer; initial_current text;
+ id1 uuid='d438a270-560e-422c-8e68-4708b01b1001';
+ id2 uuid='d438a270-560e-422c-8e68-4708b01b1002';
+ id3 uuid='d438a270-560e-422c-8e68-4708b01b1003';
+ id4 uuid='d438a270-560e-422c-8e68-4708b01b1004';
+ actor text='INTERNAL_SYNTHETIC_ROLLBACK_TEST';
+BEGIN
+ SELECT version_id INTO initial_current FROM olist_v21.current_versions WHERE source='olist';
+ IF has_function_privilege('authenticated','public.olist_v21_command(text,jsonb,text)','EXECUTE') OR has_function_privilege('anon','public.olist_v21_read(text,text)','EXECUTE') THEN RAISE EXCEPTION 'permission leak'; END IF;
+ IF (SELECT count(*) FROM pg_class c JOIN pg_namespace n ON n.oid=c.relnamespace WHERE n.nspname='olist_v21' AND c.relkind='r' AND NOT c.relrowsecurity)<>0 THEN RAISE EXCEPTION 'RLS missing'; END IF;
+ j=public.olist_v21_command('submit',jsonb_build_object('id',id1,'source','olist','request','{"internal_synthetic_test":true}'::jsonb),actor);
+ caught=false; BEGIN PERFORM public.olist_v21_command('submit',jsonb_build_object('id',id2,'source','olist','request','{}'::jsonb),actor); EXCEPTION WHEN unique_violation THEN caught=true; END; IF NOT caught THEN RAISE EXCEPTION 'concurrent duplicate not blocked'; END IF;
+ j=public.olist_v21_command('claim',jsonb_build_object('id',id1,'worker_id','worker-a'),actor);
+ caught=false; BEGIN PERFORM public.olist_v21_command('claim',jsonb_build_object('id',id1,'worker_id','worker-b'),actor); EXCEPTION WHEN raise_exception THEN caught=true; END; IF NOT caught THEN RAISE EXCEPTION 'double execution'; END IF;
+ v=jsonb_build_object('id',repeat('a',64),'source','olist','manifest','{"is_synthetic":false,"internal_synthetic_test":true}'::jsonb,'file_hashes','{}'::jsonb,'quality','verified');
+ a='{"operations":{"verification":{"passed":true}},"monitoring":{"status":"verified","events":[{"event_id":"internal-synthetic-event"}]}}';
+ command_body=jsonb_build_object('job_id',id1,'worker_id','worker-a','version',v,'analysis',a,'result_sha256',repeat('b',64),'calculation_version','internal-synthetic-test');
+ caught=false; BEGIN PERFORM public.olist_v21_command('stage',jsonb_set(command_body,'{analysis,operations,verification,passed}','false'),actor); EXCEPTION WHEN raise_exception THEN caught=true; END; IF NOT caught THEN RAISE EXCEPTION 'quality gate bypassed'; END IF;
+ j=public.olist_v21_command('stage',command_body,actor);
+ caught=false; BEGIN PERFORM public.olist_v21_command('publish',jsonb_build_object('id',id1,'expected_current','stale'),actor); EXCEPTION WHEN raise_exception THEN caught=true; END; IF NOT caught THEN RAISE EXCEPTION 'stale publication accepted'; END IF;
+ IF (SELECT version_id FROM olist_v21.current_versions WHERE source='olist') IS DISTINCT FROM initial_current THEN RAISE EXCEPTION 'failed publish moved pointer'; END IF;
+ j=public.olist_v21_command('publish',jsonb_build_object('id',id1,'expected_current',initial_current),actor);
+ IF (SELECT count(*) FROM olist_v21.alerts WHERE version_id=repeat('a',64))<>1 THEN RAISE EXCEPTION 'missing alert'; END IF;
+ caught=false; BEGIN UPDATE olist_v21.versions SET quality='limited' WHERE id=repeat('a',64); EXCEPTION WHEN raise_exception THEN caught=true; END; IF NOT caught THEN RAISE EXCEPTION 'version mutable'; END IF;
+ caught=false; BEGIN DELETE FROM olist_v21.metric_snapshots WHERE version_id=repeat('a',64); EXCEPTION WHEN raise_exception THEN caught=true; END; IF NOT caught THEN RAISE EXCEPTION 'snapshot mutable'; END IF;
+ j=public.olist_v21_command('submit',jsonb_build_object('id',id2,'source','olist','request','{"internal_synthetic_test":true}'::jsonb),actor);
+ j=public.olist_v21_command('claim',jsonb_build_object('id',id2,'worker_id','worker-a'),actor);
+ j=public.olist_v21_command('stage',jsonb_set(command_body,'{job_id}',to_jsonb(id2::text)),actor);
+ j=public.olist_v21_command('publish',jsonb_build_object('id',id2,'expected_current',repeat('a',64)),actor);
+ IF (SELECT count(*) FROM olist_v21.alerts WHERE version_id=repeat('a',64))<>1 THEN RAISE EXCEPTION 'duplicate alert'; END IF;
+ j=public.olist_v21_command('submit',jsonb_build_object('id',id3,'source','olist','request','{"internal_synthetic_test":true}'::jsonb),actor);
+ j=public.olist_v21_command('claim',jsonb_build_object('id',id3,'worker_id','worker-c'),actor);
+ j=public.olist_v21_command('fail',jsonb_build_object('id',id3,'worker_id','worker-c','error','{"stage":"engine","exit_code":-1073741819}'::jsonb),actor);
+ IF (SELECT version_id FROM olist_v21.current_versions WHERE source='olist')<>repeat('a',64) THEN RAISE EXCEPTION 'failure changed current'; END IF;
+ j=public.olist_v21_command('submit',jsonb_build_object('id',id4,'source','olist','retry_of',id3,'request','{"internal_synthetic_test":true}'::jsonb),actor);
+ j=public.olist_v21_command('claim',jsonb_build_object('id',id4,'worker_id','worker-d'),actor);
+ j=public.olist_v21_cancel(id4,actor);
+ IF j->>'status'<>'running' OR j->>'cancel_requested'<>'true' THEN RAISE EXCEPTION 'cancel did not retain running lock'; END IF;
+ caught=false; BEGIN PERFORM public.olist_v21_command('submit',jsonb_build_object('id',gen_random_uuid(),'source','olist','request','{}'::jsonb),actor); EXCEPTION WHEN unique_violation THEN caught=true; END; IF NOT caught THEN RAISE EXCEPTION 'cancel released lock too early'; END IF;
+ caught=false; BEGIN PERFORM public.olist_v21_command('stage',jsonb_set(jsonb_set(command_body,'{job_id}',to_jsonb(id4::text)),'{worker_id}','"worker-d"'),actor); EXCEPTION WHEN raise_exception THEN caught=true; END; IF NOT caught THEN RAISE EXCEPTION 'canceled worker published'; END IF;
+ IF (SELECT version_id FROM olist_v21.current_versions WHERE source='olist')<>repeat('a',64) THEN RAISE EXCEPTION 'cancel changed current'; END IF;
+ j=public.olist_v21_ack_cancel(id4,'worker-d');
+ IF j->>'status'<>'canceled' THEN RAISE EXCEPTION 'cancel acknowledgement failed'; END IF;
+ -- Simulate crash after claim and lease expiry. Explicit recovery never re-runs computation.
+ j=public.olist_v21_command('submit',jsonb_build_object('id',gen_random_uuid(),'source','inventory','request','{"internal_synthetic_test":true}'::jsonb),actor);
+ j=public.olist_v21_command('claim',jsonb_build_object('id',j->>'id','worker_id','expired'),actor);
+ UPDATE olist_v21.jobs SET lease_until=now()-interval '1 second' WHERE id=(j->>'id')::uuid;
+ PERFORM public.olist_v21_command('recover','{}',actor);
+ IF (SELECT status FROM olist_v21.jobs WHERE id=(j->>'id')::uuid)<>'interrupted' THEN RAISE EXCEPTION 'recovery failed'; END IF;
+ IF (SELECT count(*) FROM olist_v21.audit_logs logs WHERE logs.actor='INTERNAL_SYNTHETIC_ROLLBACK_TEST')<10 THEN RAISE EXCEPTION 'audit incomplete'; END IF;
+END $$;
+SELECT 'PASS: permissions, RLS, dataset lock, exclusive claim, quality gate, atomic publish, immutable version/snapshot, alert dedupe, retry, cancellation, expired-lease recovery, audit' AS result;
+ROLLBACK;
